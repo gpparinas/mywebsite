@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Philip Pariñas - IT Support Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00447c;
+            --background-color: #f2f3f4;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            transition: background-color 0.3s ease;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 6rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1, h2 {
+            margin-bottom: 1rem;
+        }
+
+        .skill-list, .experience-list, .certification-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item, .experience-item, .certification-item {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-item:hover, .experience-item:hover, .certification-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .experience-item {
+            grid-column: 1 / -1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        #theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            background-color: #2980b9;
+        }
+
+        .dark-mode {
+            --background-color: #222;
+            --text-color: #f4f4f4;
+        }
+
+        .dark-mode .skill-item, .dark-mode .experience-item, .dark-mode .certification-item {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gabriel Philip Pariñas</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>IT Support Specialist with 5+ years of experience. Fluent in English, Tagalog, and Hiligaynon. Passionate about leveraging technology to solve complex problems and improve business operations.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skill-list">
+                <div class="skill-item">Python</div>
+                <div class="skill-item">VMware</div>
+                <div class="skill-item">Windows</div>
+                <div class="skill-item">Mac OS</div>
+                <div class="skill-item">Linux</div>
+                <div class="skill-item">Cisco Networking</div>
+                <div class="skill-item">Fortinet Firewall</div>
+                <div class="skill-item">Active Directory</div>
+                <div class="skill-item">Microsoft 365</div>
+                <div class="skill-item">Azure</div>
+                <div class="skill-item">Google Suite</div>
+                <div class="skill-item">Cybersecurity</div>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <div class="certification-list">
+                <div class="certification-item">Google IT Support</div>
+                <div class="certification-item">FortiGate Administrator</div>
+                <div class="certification-item">Forti Manager Administrator</div>
+                <div class="certification-item">Enterprise Firewall Administrator</div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-list">
+                <div class="experience-item">
+                    <h3>IT Support Specialist</h3>
+                    <p>Nearsol Philippines Inc. | April 2022 – September 2024</p>
+                    <ul>
+                        <li>Led team in Freshdesk ticketing system performance, consistently overseeing over 200 tickets per month.</li>
+                        <li>Provided remote support using Anydesk and Teamviewer.</li>
+                        <li>Managed Windows Servers, including maintenance and performance optimization.</li>
+                        <li>Designed and implemented IT infrastructure in new sites.</li>
+                        <li>Implemented local Ping Network Monitoring using Python.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>IT Admin/Support</h3>
+                    <p>WorldSource Pettigrew Philippines Inc. | December 2019 – February 2021</p>
+                    <ul>
+                        <li>Managed telecommunication and server systems, identifying and reporting potential vulnerabilities.</li>
+                        <li>Oversaw network infrastructure and security systems.</li>
+                        <li>Designed and executed installation of new server infrastructure.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <p>Bachelor's Science of Information Technology</p>
+            <p>University of San Agustin Iloilo | June 2014 – June 2018</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: gabriielpparinas@gmail.com</p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/gabriel-philip-parinas" target="_blank">linkedin.com/in/gabriel-philip-parinas</a></p>
+            <p>GitHub: <a href="https://github.com/gpparinas" target="_blank">github.com/gpparinas</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gabriel Philip Pariñas. All rights reserved.</p>
+    </footer>
+
+    <button id="theme-toggle">Toggle Dark Mode</button>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
