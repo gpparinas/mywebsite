@@ -7,8 +7,7 @@ This repository contains the source code for my personal website, showcasing my 
 The website is organized into the following sections:
 - **Hero Section** – A prominent banner introducing the website’s theme and message.  
 - **Features** – Highlights key platform or personal features in a visually appealing grid.  
-- **About Me** – Provides an overview of my background, mission, and what I do.  
-- **Pricing (Optional)** – If showcasing services or packages (can be hidden or repurposed).  
+- **About Me** – Provides an overview of my background, mission, and what I do.   
 - **Contact Information** – A form or direct links for reaching out.
 
 ### Previous Sections (Still Applicable)
@@ -25,7 +24,7 @@ The website is organized into the following sections:
 - **HTML5** – Markup for content structure.  
 - **CSS3** – Custom styling and responsive layouts (`style.css`).  
 - **JavaScript (ES6+)** – Interactive elements and features (`script.js`).  
-- **Google Fonts** (e.g., Roboto) – Clean, modern typography.  
+- **Google Fonts** (e.g., Sans-serif) – Clean, modern typography.  
 - **Git & GitHub** – Version control and hosting.
 
 ## Features
@@ -59,10 +58,9 @@ This site is deployed using GitHub Pages. Any changes pushed to the `main` branc
   ```
 
 ## Customization
-Feel free to fork this repository and modify it for your own personal or business website. You can easily:
+Feel free to fork this repository and modify it for your own personal or fortfolio website. You can easily:
 - Update text content, color schemes, and images in the **`index.html`** and **`style.css`** files.  
 - Adjust transitions and animations in **`script.js`** (if applicable).  
-- Add or remove sections (e.g., *Features*, *Pricing*, etc.) to suit your needs.
 
 ## Contact
 If you have any questions or suggestions, feel free to reach out:
