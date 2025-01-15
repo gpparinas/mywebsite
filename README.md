@@ -44,7 +44,7 @@ To run this project locally:
    ```
 2. **Navigate** to the project directory:
    ```bash
-   cd personal-website
+   cd mywebsite
    ```
 3. **Open** `index.html` in your preferred web browser.  
    - Ensure `style.css` and `script.js` are in the same folder (or properly linked).
