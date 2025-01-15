@@ -7,9 +7,10 @@
 
 html,
 body {
-  font-family: 'Roboto', sans-serif;
+  /* Previously: font-family: 'Roboto', sans-serif; */
+  font-family: 'Inter', sans-serif;
   color: #333;
-  background-color: #f3f4f6;
+  background-color: #f9fafb;
   scroll-behavior: smooth;
 }
 
@@ -193,7 +194,7 @@ a {
 .contact {
   padding: 4rem 0;
   text-align: center;
-  background-color: #057aff;
+  background-color: #0f172a;
   color: #fff;
 }
 
