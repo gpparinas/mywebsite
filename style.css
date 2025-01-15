@@ -102,7 +102,7 @@ a {
 /* Hero Section */
 .hero {
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1600x900') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
