@@ -1,90 +1,94 @@
 // script.js
 
-// Smooth Scroll for Internal Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    const targetSection = document.getElementById(targetId);
-    if (targetSection) {
-      window.scrollTo({
-        top: targetSection.offsetTop - 70,
-        behavior: 'smooth',
-      });
+// ======================
+// Mobile Menu Toggle (Needs HTML Update)
+// ======================
+const mobileMenuButton = document.querySelector('button[class*="md:hidden"]');
+const navLinks = document.querySelector('ul[class*="md:flex"]'); // Updated selector
 
-      // Highlight active section
-      document.querySelectorAll('.nav-links li a').forEach(link => link.classList.remove('active'));
-      this.classList.add('active');
-    }
-  });
+mobileMenuButton.addEventListener('click', () => {
+  navLinks.classList.toggle('hidden');
+  mobileMenuButton.classList.toggle('text-blue-600');
 });
 
-// Contact Form Submission
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-  contactForm.addEventListener('submit', event => {
-    event.preventDefault();
-
-    const name = contactForm.querySelector('input[type="text"]').value.trim();
-    const email = contactForm.querySelector('input[type="email"]').value.trim();
-    const message = contactForm.querySelector('textarea').value.trim();
-
-    if (name && email && message) {
-      alert(`Thank you, ${name}! Your message has been sent.`);
-      contactForm.reset(); // Clear the form after submission
-    } else {
-      alert('Please fill out all fields before submitting.');
-    }
-
-    // Here you can add AJAX / fetch call to send data to a server
-  });
-}
-
-// Scroll to Top Button
-const scrollTopBtn = document.createElement('button');
-scrollTopBtn.textContent = '↑';
-scrollTopBtn.className = 'scroll-to-top';
-scrollTopBtn.style.cssText = `
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: none;
-  padding: 10px 15px;
-  border: none;
-  background-color: #057aff;
-  color: #fff;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 18px;
-  z-index: 1000;
-`;
-document.body.appendChild(scrollTopBtn);
-
-// Show or Hide Scroll-to-Top Button
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    scrollTopBtn.style.display = 'block';
-  } else {
-    scrollTopBtn.style.display = 'none';
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!mobileMenuButton.contains(e.target) && !navLinks.contains(e.target)) {
+    navLinks.classList.add('hidden');
   }
 });
 
-// Scroll to Top Behavior
-scrollTopBtn.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
+// ======================
+// Smooth Scroll + Active Section (Fixed for Tailwind)
+// ======================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetId);
+    
+    if (targetSection) {
+      const headerHeight = document.querySelector('header').offsetHeight;
+      window.scrollTo({
+        top: targetSection.offsetTop - headerHeight,
+        behavior: 'smooth'
+      });
+    }
   });
 });
 
-// Animate Sections on Scroll
-const revealElements = document.querySelectorAll('.container');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+// Update active section on scroll (Improved Accuracy)
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section');
+  const scrollPosition = window.scrollY + 100;
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionBottom = sectionTop + section.offsetHeight;
+    
+    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+      document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('text-blue-600', 'dark:text-blue-400');
+        if (link.getAttribute('href') === `#${section.id}`) {
+          link.classList.add('text-blue-600', 'dark:text-blue-400');
+        }
+      });
     }
   });
-}, { threshold: 0.2 });
+});
 
-revealElements.forEach(el => observer.observe(el));
+// ======================
+// Dark Mode Toggle (Tailwind-Compatible)
+// ======================
+const darkModeToggle = document.querySelector('.dark-mode-toggle');
+darkModeToggle.addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+  localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+});
+
+// Initialize theme
+if (localStorage.getItem('theme') === 'dark') {
+  document.documentElement.classList.add('dark');
+}
+
+// ======================
+// Scroll-to-Top Button (Style Adjusted)
+// ======================
+const scrollTopBtn = document.createElement('button');
+scrollTopBtn.innerHTML = '↑';
+scrollTopBtn.className = 'fixed bottom-8 right-8 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all hidden';
+document.body.appendChild(scrollTopBtn);
+
+window.addEventListener('scroll', () => {
+  scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ======================
+// Removed Elements (Safe to Delete)
+// ======================
+// 1. Remove progress bars code (not in HTML)
+// 2. Remove contact form code (not in HTML)

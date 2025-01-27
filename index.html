@@ -1,117 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Gabriel Philip Pariñas - IT Support Specialist Portfolio" />
   <title>Gabriel Pariñas | IT Specialist</title>
-  <!-- Link to the CSS file -->
-  <link rel="stylesheet" href="style.css" />
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
-    rel="stylesheet"
-  />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes gradientShift {
+      0% { opacity: 0.2; }
+      100% { opacity: 0.4; }
+    }
+    
+    .animate-gradient {
+      animation: gradientShift 8s infinite alternate;
+    }
+
+    .dark-mode {
+      background-color: #1a1a1a;
+      color: white;
+    }
+
+    .job::before {
+      content: "";
+      position: absolute;
+      left: -36px;
+      top: 12px;
+      width: 12px;
+      height: 12px;
+      background: #057aff;
+      border-radius: 50%;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-gray-50 dark-mode transition-colors duration-300">
   <!-- HEADER -->
-  <header class="header">
-    <nav class="navbar container">
-      <div class="nav-logo">
-        <a href="#">GPP</a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
+  <header class="sticky top-0 bg-white/80 backdrop-blur-sm shadow-sm z-50 dark:bg-gray-900/80">
+    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold text-blue-600">GPP</div>
+      
+      <!-- Desktop Navigation -->
+      <ul class="hidden md:flex space-x-8">
+        <li><a href="#about" class="text-gray-600 hover:text-blue-600 dark:text-gray-300">About</a></li>
+        <li><a href="#skills" class="text-gray-600 hover:text-blue-600 dark:text-gray-300">Skills</a></li>
+        <li><a href="#experience" class="text-gray-600 hover:text-blue-600 dark:text-gray-300">Experience</a></li>
+        <li><a href="#contact" class="text-gray-600 hover:text-blue-600 dark:text-gray-300">Contact</a></li>
       </ul>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden p-2 text-gray-600 dark:text-gray-300">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+      <!-- Dark Mode Toggle -->
+      <button class="dark-mode-toggle ml-4 p-2 rounded-full hover:bg-gray-100 transition-colors dark:hover:bg-gray-800">
+        🌓
+      </button>
     </nav>
   </header>
 
   <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="container hero-content">
-      <h1>Hi, I'm Gabriel Philip Pariñas</h1>
-      <p>An IT Support Specialist with 5+ years of experience in system administration, network infrastructure, and cybersecurity.</p>
-      <a href="#contact" class="btn btn-primary">Let's Connect</a>
+  <section class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-600/20 to-indigo-600/30 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg')] bg-cover bg-center opacity-50 animate-gradient"></div>
+    <div class="container mx-auto px-4 text-center relative z-10">
+      <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6 dark:text-white">Hi, I'm Gabriel Philip Pariñas</h1>
+      <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto dark:text-gray-300">
+        IT Support Specialist with 5+ years experience in system administration, network infrastructure, and cybersecurity
+      </p>
+      <a href="#contact" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-all">
+        Let's Connect
+      </a>
     </div>
   </section>
 
   <!-- ABOUT SECTION -->
-  <section class="about container" id="about">
-    <h2>About Me</h2>
-	<br>
-    <p>
-      I'm an IT professional skilled in managing IT infrastructure, network administration, and end-user support. My dedication to solving complex problems and implementing efficient solutions has earned me recognition throughout my career.
-    </p>
+  <section id="about" class="py-20 bg-white dark:bg-gray-800">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 class="text-3xl font-bold text-center mb-8 dark:text-white">About Me</h2>
+      <p class="text-gray-600 text-lg leading-relaxed text-center dark:text-gray-300">
+        I'm an IT professional skilled in managing IT infrastructure, network administration, and end-user support. 
+        My dedication to solving complex problems and implementing efficient solutions has earned me recognition 
+        throughout my career.
+      </p>
+    </div>
   </section>
 
   <!-- SKILLS SECTION -->
-  <section class="skills container" id="skills">
-    <h2>Technical Skills</h2>
-	<br>
-    <ul>
-      <li>Python, HTML, CSS, Javascript</li>
-      <li>Network Administration (Fortinet, Cisco)</li>
-      <li>Windows, Mac, Linux Administration</li>
-      <li>Microsoft 365, Active Directory, Azure</li>
-      <li>Cybersecurity</li>
-    </ul>
-	<br>
-    <h2>Certifications</h2>
-	<br>
-    <ul>
-      <li>Google IT Support</li>
-      <li>FortiGate Administrator</li>
-      <li>CompTIA a+ Network</li>
-      <li>Microsoft Azure Fundamentals Exam Prep</li>
-    </ul>
+  <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-900">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">Technical Skills</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Technical Skills -->
+        <div class="bg-white p-6 rounded-xl shadow-sm dark:bg-gray-800">
+          <h3 class="text-xl font-semibold mb-4 dark:text-white">Technical Expertise</h3>
+          <ul class="space-y-3">
+            <li class="flex items-center text-gray-600 dark:text-gray-300">
+              <span class="mr-2">▹</span>Python, HTML, CSS, JavaScript
+            </li>
+            <li class="flex items-center text-gray-600 dark:text-gray-300">
+              <span class="mr-2">▹</span>Network Administration (Fortinet, Cisco)
+            </li>
+            <li class="flex items-center text-gray-600 dark:text-gray-300">
+              <span class="mr-2">▹</span>Windows, Mac, Linux Administration
+            </li>
+            <li class="flex items-center text-gray-600 dark:text-gray-300">
+              <span class="mr-2">▹</span>Microsoft 365, Active Directory, Azure
+            </li>
+            <li class="flex items-center text-gray-600 dark:text-gray-300">
+              <span class="mr-2">▹</span>Cybersecurity
+            </li>
+          </ul>
+        </div>
+
+        <!-- Certifications -->
+        <div class="bg-white p-6 rounded-xl shadow-sm dark:bg-gray-800">
+          <h3 class="text-xl font-semibold mb-4 dark:text-white">Certifications</h3>
+          <ul class="space-y-3">
+            <li class="flex items-center text-gray-600 dark:text-gray-300">
+              <span class="mr-2">▹</span>Google IT Support
+            </li>
+            <li class="flex items-center text-gray-600 dark:text-gray-300">
+              <span class="mr-2">▹</span>FortiGate Administrator
+            </li>
+            <li class="flex items-center text-gray-600 dark:text-gray-300">
+              <span class="mr-2">▹</span>CompTIA A+ Network
+            </li>
+            <li class="flex items-center text-gray-600 dark:text-gray-300">
+              <span class="mr-2">▹</span>Microsoft Azure Fundamentals Exam Prep
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- EXPERIENCE SECTION -->
-  <section class="experience container" id="experience">
-    <h2>Experience</h2>
-	<br>
-    <div class="job">
-      <h3>IT Support Specialist</h3>
-      <p><strong>Nearsol Philippines Inc.</strong> (April 2022 – September 2024)</p>
-      <ul>
-        <li>Led Freshdesk ticketing system performance, managing over 200 tickets per month.</li>
-		<li>Collaborated with cross-functional IT teams to troubleshoot complex issues, improving overall service delivery and contributing to SLA adherence.</li>
-        <li>Provided remote support using Anydesk and Teamviewer, ensuring prompt resolution of user issues.</li>
-        <li>Managed Microsoft 365, Active Directory, and Azure, optimizing user productivity and system efficiency.</li>
-        <li>Reduced network downtime through rapid analysis and resolution.</li>
-      </ul>
-    </div>
-    <div class="job">
-      <h3>IT Admin/Support</h3>
-      <p><strong>WorldSource Pettigrew Philippines Inc.</strong> (December 2019 – February 2021)</p>
-      <ul>
-        <li>Enhanced IT infrastructure resilience through proactive solutions.</li>
-        <li>Managed network security and server systems, implementing best practices.</li>
-		<li>Designed and executed new server infrastructure installation, improving application accessibility while maintaining security standards.</li>
-      </ul>
+  <section id="experience" class="py-20 bg-white dark:bg-gray-800">
+    <div class="container mx-auto px-4 max-w-4xl relative">
+      <h2 class="text-3xl font-bold text-center mb-12 dark:text-white">Experience</h2>
+      
+      <!-- Experience Timeline -->
+      <div class="border-l-2 border-blue-600 pl-8 space-y-12">
+        <!-- Job 1 -->
+        <div class="relative">
+          <h3 class="text-xl font-bold mb-2 dark:text-white">IT Support Specialist</h3>
+          <p class="text-gray-500 mb-4 dark:text-gray-400">
+            Nearsol Philippines Inc. (April 2022 – September 2024)
+          </p>
+          <ul class="space-y-2">
+            <li class="text-gray-600 dark:text-gray-300">▹ Led Freshdesk ticketing system performance</li>
+            <li class="text-gray-600 dark:text-gray-300">▹ Collaborated with cross-functional IT teams</li>
+            <li class="text-gray-600 dark:text-gray-300">▹ Provided remote support using Anydesk/Teamviewer</li>
+          </ul>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="relative">
+          <h3 class="text-xl font-bold mb-2 dark:text-white">IT Admin/Support</h3>
+          <p class="text-gray-500 mb-4 dark:text-gray-400">
+            WorldSource Pettigrew Philippines Inc. (December 2019 – February 2021)
+          </p>
+          <ul class="space-y-2">
+            <li class="text-gray-600 dark:text-gray-300">▹ Enhanced IT infrastructure resilience</li>
+            <li class="text-gray-600 dark:text-gray-300">▹ Managed network security and server systems</li>
+            <li class="text-gray-600 dark:text-gray-300">▹ Designed server infrastructure installation</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CONTACT SECTION -->
-  <section class="contact container" id="contact">
-    <h2>Contact Me</h2>
-	<br>
-    <p>Email: <a href="mailto:gabriielpparinas@gmail.com">gabriielpparinas@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/gabriel-philip-parinas" target="_blank">linkedin.com/in/gpparinas</a></p>
-    <p>GitHub: <a href="https://github.com/gpparinas" target="_blank">github.com/gpparinas</a></p>
+  <section id="contact" class="py-20 bg-blue-600 text-white">
+    <div class="container mx-auto px-4 max-w-3xl text-center">
+      <h2 class="text-3xl font-bold mb-8">Let's Connect</h2>
+      <div class="space-y-4">
+        <p>
+          <a href="mailto:gabriielpparinas@gmail.com" class="hover:text-blue-200 transition-colors">
+            gabriielpparinas@gmail.com
+          </a>
+        </p>
+        <p>
+          <a href="https://linkedin.com/in/gpparinas" target="_blank" 
+             class="hover:text-blue-200 transition-colors">
+            LinkedIn Profile
+          </a>
+        </p>
+        <p>
+          <a href="https://github.com/gpparinas" target="_blank" 
+             class="hover:text-blue-200 transition-colors">
+            GitHub Profile
+          </a>
+        </p>
+      </div>
+    </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
+  <footer class="bg-gray-800 text-white py-6">
+    <div class="container mx-auto px-4 text-center">
       <p>&copy; 2025 Gabriel Philip Pariñas. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
