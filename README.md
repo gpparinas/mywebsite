@@ -69,13 +69,3 @@ Automatically deployed via GitHub Pages:
 
 ## License
 Open source under [MIT License](LICENSE) - Free for personal and commercial use
-```
-
-**Key Changes from Original**:
-1. Removed references to CSS file
-2. Added Tailwind CSS to technologies
-3. Highlighted dark mode implementation
-4. Updated setup instructions (no CSS dependency)
-5. Added future roadmap section
-6. Simplified customization guide for Tailwind
-7. Included live deployment URL
