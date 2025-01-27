@@ -1,4 +1,3 @@
-```markdown
 # Gabriel Philip Pariñas - Personal Website
 
 ## Overview
