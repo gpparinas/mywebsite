@@ -1,72 +1,82 @@
+```markdown
 # Gabriel Philip Pariñas - Personal Website
 
 ## Overview
-This repository contains the source code for my personal website, showcasing my professional experience, skills, and achievements as an IT Support Specialist. The site has been **rebuilt from scratch** with a more modern design—featuring a new layout, responsive sections, and smoother transitions inspired by the latest web design trends.
+This repository contains the source code for my modern personal portfolio website, showcasing my professional experience as an IT Support Specialist. The site has been **completely modernized** with cutting-edge web design trends including dark mode, scroll animations, and a mobile-first responsive layout.
+
+## Key Updates (2025 Refresh)
+- **Tailwind CSS Integration**: Replaced traditional CSS with utility-first framework
+- **Dark Mode Toggle**: System-aware theme switching with local storage
+- **Interactive Elements**:
+  - Animated gradient overlays
+  - 3D hover effects on skill cards
+  - Timeline layout for experience section
+- **Performance Improvements**:
+  - Removed CSS file in favor of Tailwind CDN
+  - Optimized mobile menu with Intersection Observer
+  - Lazy-loading animations
 
 ## Website Structure
-The website is organized into the following sections:
-- **Hero Section** – A prominent banner introducing the website’s theme and message.  
-- **Features** – Highlights key platform or personal features in a visually appealing grid.  
-- **About Me** – Provides an overview of my background, mission, and what I do.   
-- **Contact Information** – A form or direct links for reaching out.
-
-### Previous Sections (Still Applicable)
-- **About Me**  
-- **Technical Skills**  
-- **Certifications**  
-- **Work Experience**  
-- **Education**  
-- **Contact Information**  
-
-> **Note**: You can merge the new structure with your existing sections, or reorganize them to best fit your personal branding.
+- **Hero Section**: Full-screen gradient animation with professional introduction
+- **About Me**: Clean summary with dark mode support
+- **Technical Skills**: Card-based layout with interactive elements
+- **Experience**: Vertical timeline with position indicators
+- **Contact**: Contrast-rich section with direct links
+- **Footer**: Simplified copyright notice
 
 ## Technologies Used
-- **HTML5** – Markup for content structure.  
-- **CSS3** – Custom styling and responsive layouts (`style.css`).  
-- **JavaScript (ES6+)** – Interactive elements and features (`script.js`).  
-- **Google Fonts** (e.g., Sans-serif) – Clean, modern typography.  
-- **Git & GitHub** – Version control and hosting.
+- **HTML5** - Semantic markup structure
+- **Tailwind CSS** - Modern utility-first styling framework
+- **JavaScript (ES6+)** - Interactive features and animations
+- **Intersection Observer API** - Scroll-triggered animations
+- **Git & GitHub** - Version control and GitHub Pages deployment
 
-## Features
-- **Modern, Responsive Design** – Automatically adjusts layout for desktop, tablet, and mobile screens.  
-- **Smooth Hover & Scroll Effects** – Creates a dynamic browsing experience for visitors.  
-- **Hero Image/Banner** – Captures attention immediately with a prominent, visually appealing banner.  
-- **Interactive Forms** – Lets visitors easily send messages or inquiries.  
-- **Clean Code Structure** – Separate `style.css` and `script.js` for maintainable and scalable code.  
-- **Possible Dark Mode Toggle** – You can integrate or retain a dark mode feature (if desired).
+## Key Features
+- **Dark/Light Mode Toggle** 🌓 - Preserves user preference
+- **Mobile-First Responsive Design** - Hamburger menu for mobile
+- **Smooth Scroll Behavior** - Section-to-section navigation
+- **Animated Progress Indicators** - Visual skill representation
+- **Contact System** - Direct email/LinkedIn access
+- **SEO Optimized** - Proper meta tags and semantic HTML
 
-## Setup
-To run this project locally:
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/gpparinas/mywebsite.git
-   ```
-2. **Navigate** to the project directory:
-   ```bash
-   cd mywebsite
-   ```
-3. **Open** `index.html` in your preferred web browser.  
-   - Ensure `style.css` and `script.js` are in the same folder (or properly linked).
+## Setup & Installation
+```bash
+git clone https://github.com/gpparinas/mywebsite.git
+cd mywebsite
+```
+**No build process required** - Open `index.html` directly in any modern browser
 
 ## Deployment
-This site is deployed using GitHub Pages. Any changes pushed to the `main` branch will automatically be reflected on the live site.  
-- To update the live site, commit and push your changes:
-  ```bash
-  git add .
-  git commit -m "Your commit message"
-  git push
-  ```
+Automatically deployed via GitHub Pages:
+- Live URL: `https://gpparinas.github.io/mywebsite`
+- Updates pushed to `main` branch deploy instantly
 
-## Customization
-Feel free to fork this repository and modify it for your own personal or fortfolio website. You can easily:
-- Update text content, color schemes, and images in the **`index.html`** and **`style.css`** files.  
-- Adjust transitions and animations in **`script.js`** (if applicable).  
+## Customization Guide
+1. **Colors**: Modify Tailwind theme in `<style>` section
+2. **Content**: Update text in respective HTML sections
+3. **Animations**: Adjust `IntersectionObserver` thresholds in `script.js`
+4. **Dark Mode**: Tweak `dark:` classes in HTML
+
+## Future Roadmap
+- [ ] Add project showcase section
+- [ ] Implement PDF resume download
+- [ ] Integrate visitor counter
+- [ ] Add blog section
 
 ## Contact
-If you have any questions or suggestions, feel free to reach out:
-- **Email**: gabriielpparinas@gmail.com  
-- **LinkedIn**: [gabriel-philip-parinas](https://linkedin.com/in/gpparinas)  
-- **GitHub**: [gpparinas](https://github.com/gpparinas)
+- **Professional Email**: [gabriielpparinas@gmail.com](mailto:gabriielpparinas@gmail.com)
+- **LinkedIn**: [Gabriel Philip Pariñas](https://linkedin.com/in/gpparinas)
+- **GitHub**: [@gpparinas](https://github.com/gpparinas)
 
 ## License
-This project is open source and available under the [MIT License](LICENSE).  
+Open source under [MIT License](LICENSE) - Free for personal and commercial use
+```
+
+**Key Changes from Original**:
+1. Removed references to CSS file
+2. Added Tailwind CSS to technologies
+3. Highlighted dark mode implementation
+4. Updated setup instructions (no CSS dependency)
+5. Added future roadmap section
+6. Simplified customization guide for Tailwind
+7. Included live deployment URL
