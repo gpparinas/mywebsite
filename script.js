@@ -1,35 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ======================
-  // Header & Navigation
-  // ======================
   const header = document.querySelector('header');
   const mobileMenuButton = document.getElementById('mobileMenuButton');
   const mobileNav = document.getElementById('mobileNav');
   const navLinks = document.querySelectorAll('nav a');
   const mobileNavLinks = mobileNav.querySelectorAll('a');
 
-  // Mobile Menu Toggle
   mobileMenuButton.addEventListener('click', (e) => {
     e.stopPropagation(); 
     mobileNav.classList.toggle('hidden');
   });
 
-  // Close menu when a link is clicked
   mobileNavLinks.forEach(link => {
     link.addEventListener('click', () => {
       mobileNav.classList.add('hidden');
     });
   });
 
-  // Close menu when clicking outside
   document.addEventListener('click', (e) => {
     if (!mobileMenuButton.contains(e.target) && !mobileNav.contains(e.target)) {
       mobileNav.classList.add('hidden');
     }
   });
 
-  // Smooth Scroll & Active Link Highlighting
   window.addEventListener('scroll', () => {
     const headerHeight = header.offsetHeight;
     const scrollPosition = window.scrollY + headerHeight;
@@ -62,9 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ======================
-  // Dark Mode Toggle
-  // ======================
   const darkModeToggle = document.getElementById('darkModeToggle');
   const sunIcon = document.getElementById('sunIcon');
   const moonIcon = document.getElementById('moonIcon');
@@ -81,28 +71,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
   
-  // THIS IS THE UPDATED PART: It now checks for a saved setting first, 
-  // then checks the system preference as a fallback.
   const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   applyTheme(savedTheme);
 
-    darkModeToggle.addEventListener('click', () => {
-    // This line toggles the 'dark' class on the main <html> element
+  darkModeToggle.addEventListener('click', () => {
     const isDark = document.documentElement.classList.toggle('dark');
-    
-    // This line determines the new theme based on whether the 'dark' class is present
     const newTheme = isDark ? 'dark' : 'light';
-    
-    // This line saves the user's choice in their browser's memory
     localStorage.setItem('theme', newTheme);
-    
-    // This line updates the sun/moon icons
     applyTheme(newTheme);
   });
-  
-  // ======================
-  // Scroll-to-Top Button
-  // ======================
+
   const scrollTopBtn = document.createElement('button');
   scrollTopBtn.innerHTML = '&#8593;';
   scrollTopBtn.className = 'fixed bottom-5 right-5 w-12 h-12 bg-blue-600 text-white text-2xl rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hidden hover:scale-110';
@@ -117,9 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // ======================
-  // Fade-in Sections on Scroll
-  // ======================
   const faders = document.querySelectorAll('.fade-in-section');
   const faderOptions = {
     threshold: 0.1,
