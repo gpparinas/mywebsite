@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mobile Menu Toggle
   mobileMenuButton.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevents the 'click outside' from firing immediately
+    e.stopPropagation(); 
     mobileNav.classList.toggle('hidden');
   });
 
@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerHeight = header.offsetHeight;
     const scrollPosition = window.scrollY + headerHeight;
     
-    // Highlight active link
     document.querySelectorAll('main section').forEach(section => {
       if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
         navLinks.forEach(link => {
@@ -47,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
-  // Smooth scroll for all anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
@@ -82,14 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
       moonIcon.classList.remove('hidden');
     }
   };
-
-  // On page load, check for saved theme
+  
+  // THIS IS THE UPDATED PART: It now checks for a saved setting first, 
+  // then checks the system preference as a fallback.
   const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   applyTheme(savedTheme);
 
   darkModeToggle.addEventListener('click', () => {
     const isDark = document.documentElement.classList.toggle('dark');
     const newTheme = isDark ? 'dark' : 'light';
+    // When the user clicks the button, we save their choice.
     localStorage.setItem('theme', newTheme);
     applyTheme(newTheme);
   });
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Scroll-to-Top Button
   // ======================
   const scrollTopBtn = document.createElement('button');
-  scrollTopBtn.innerHTML = '&#8593;'; // Up arrow character
+  scrollTopBtn.innerHTML = '&#8593;';
   scrollTopBtn.className = 'fixed bottom-5 right-5 w-12 h-12 bg-blue-600 text-white text-2xl rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hidden hover:scale-110';
   scrollTopBtn.setAttribute('aria-label', 'Scroll to top');
   document.body.appendChild(scrollTopBtn);
