@@ -1,301 +1,171 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark" >
+<!doctype html>
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Gabriel Philip Pariñas - IT Support Specialist Portfolio" />
+  <meta name="description" content="Gabriel Philip Pariñas - IT Support Specialist with experience in system administration, networking, and cybersecurity." />
   <title>Gabriel Pariñas | IT Specialist</title>
-
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
-    /* Example keyframes for gradient shift in hero */
-    @keyframes gradientShift {
-      0%   { opacity: 0.2; }
-      100% { opacity: 0.4; }
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
-    /* Gradient animation class */
-    .animate-gradient {
-      animation: gradientShift 8s infinite alternate;
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
 
-  <!-- HEADER -->
   <header class="sticky top-0 bg-white/80 backdrop-blur-sm shadow-sm z-50 dark:bg-gray-900/80">
     <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <!-- Logo -->
-      <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
-        GPP
-      </div>
+      <a href="#hero" class="text-2xl font-bold text-blue-600 dark:text-blue-400">GPP</a>
 
-      <!-- Desktop Navigation -->
       <ul class="hidden md:flex space-x-8">
-        <li>
-          <a href="#about" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
-            About
-          </a>
-        </li>
-        <li>
-          <a href="#skills" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
-            Skills
-          </a>
-        </li>
-        <li>
-          <a href="#experience" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
-            Experience
-          </a>
-        </li>
-        <li>
-          <a href="#contact" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
-            Contact
-          </a>
-        </li>
+        <li><a href="#about" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">About</a></li>
+        <li><a href="#skills" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Skills</a></li>
+        <li><a href="#projects" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+        <li><a href="#experience" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Experience</a></li>
+        <li><a href="#contact" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Contact</a></li>
       </ul>
 
-      <!-- Mobile Menu Button -->
-      <button
-        class="md:hidden p-2 text-gray-600 dark:text-gray-300 focus:outline-none transition-colors"
-        aria-label="Open Menu"
-      >
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </button>
+      <div class="flex items-center">
+        <button id="darkModeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle Dark Mode">
+          <svg id="moonIcon" class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          <svg id="sunIcon" class="w-6 h-6 text-gray-600 dark:text-gray-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+        </button>
 
-      <!-- Dark Mode Toggle -->
-      <button
-        class="dark-mode-toggle ml-4 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-        aria-label="Toggle Dark Mode"
-      >
-        <span class="sr-only">Toggle Dark Mode</span> 🌓
-      </button>
+        <button id="mobileMenuButton" class="md:hidden ml-4 p-2 text-gray-600 dark:text-gray-300 focus:outline-none" aria-label="Open Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
     </nav>
 
-    <!-- Mobile Navigation Dropdown -->
-    <div
-      id="mobileNav"
-      class="hidden md:hidden bg-white dark:bg-gray-900 shadow-sm"
-    >
+    <div id="mobileNav" class="hidden md:hidden bg-white dark:bg-gray-900 shadow-lg">
       <ul class="flex flex-col space-y-2 p-4">
-        <li>
-          <a href="#about" class="block text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
-            About
-          </a>
-        </li>
-        <li>
-          <a href="#skills" class="block text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
-            Skills
-          </a>
-        </li>
-        <li>
-          <a href="#experience" class="block text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
-            Experience
-          </a>
-        </li>
-        <li>
-          <a href="#contact" class="block text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">
-            Contact
-          </a>
-        </li>
+        <li><a href="#about" class="mobile-nav-link block text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">About</a></li>
+        <li><a href="#skills" class="mobile-nav-link block text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Skills</a></li>
+        <li><a href="#projects" class="mobile-nav-link block text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Projects</a></li>
+        <li><a href="#experience" class="mobile-nav-link block text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Experience</a></li>
+        <li><a href="#contact" class="mobile-nav-link block text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Contact</a></li>
       </ul>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section
-    class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-600/20 to-indigo-600/30 bg-fixed relative overflow-hidden fade-section opacity-0"
-    id="hero"
-  >
-    <div
-      class="absolute inset-0 bg-[url('https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg')] bg-cover bg-center animate-gradient"
-      style="opacity: 0.5"
-    ></div>
-    <div class="container mx-auto px-4 text-center relative z-10">
-      <h1 class="text-4xl md:text-6xl font-bold mb-6">
-        Hi, I'm <span class="text-blue-600 dark:text-blue-400">Gabriel Philip Pariñas</span>
-      </h1>
-      <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-        IT Support Specialist with 5+ years experience in system administration, 
-        network infrastructure, and cybersecurity
-      </p>
-      <a
-        href="#contact"
-        class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-all"
-      >
-        Let's Connect
-      </a>
-    </div>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section
-    id="about"
-    class="py-20 bg-white dark:bg-gray-800 fade-section opacity-0"
-  >
-    <div class="container mx-auto px-4 max-w-3xl text-center">
-      <h2 class="text-3xl font-bold mb-8">About Me</h2>
-      <p class="text-gray-600 text-lg leading-relaxed dark:text-gray-300">
-        I'm an IT professional skilled in managing IT infrastructure, 
-        network administration, and end-user support. My dedication to 
-        solving complex problems and implementing efficient solutions 
-        has earned me recognition throughout my career.
-      </p>
-    </div>
-  </section>
-
-  <!-- SKILLS SECTION -->
-  <section
-    id="skills"
-    class="py-20 bg-gray-50 dark:bg-gray-900 fade-section opacity-0"
-  >
-    <div class="container mx-auto px-4 max-w-4xl">
-      <h2 class="text-3xl font-bold text-center mb-12">Technical Skills</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Technical Skills -->
-        <div class="bg-white p-6 rounded-xl shadow-sm dark:bg-gray-800">
-          <h3 class="text-xl font-semibold mb-4">Technical Expertise</h3>
-          <ul class="space-y-3">
-            <li class="flex items-center text-gray-600 dark:text-gray-300">
-              <span class="mr-2">▹</span> Python, HTML, CSS, JavaScript
-            </li>
-            <li class="flex items-center text-gray-600 dark:text-gray-300">
-              <span class="mr-2">▹</span> Network Administration (Fortinet, Cisco)
-            </li>
-            <li class="flex items-center text-gray-600 dark:text-gray-300">
-              <span class="mr-2">▹</span> Windows, Mac, Linux Administration
-            </li>
-            <li class="flex items-center text-gray-600 dark:text-gray-300">
-              <span class="mr-2">▹</span> Microsoft 365, Active Directory, Azure
-            </li>
-            <li class="flex items-center text-gray-600 dark:text-gray-300">
-              <span class="mr-2">▹</span> Cybersecurity
-            </li>
-          </ul>
+  <main>
+    <section id="hero" class="min-h-screen flex items-center justify-center text-center relative overflow-hidden p-4">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/20 dark:from-blue-900/20 dark:to-indigo-900/30"></div>
+        <div class="relative z-10">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="text-blue-600 dark:text-blue-400">Gabriel Philip Pariñas</span></h1>
+            [span_0](start_span)<p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-600 dark:text-gray-300">An IT Support Specialist with 5+ years of experience in system administration, network infrastructure, and cybersecurity.[span_0](end_span)</p>
+            <a href="#projects" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-transform transform hover:scale-105">View My Work</a>
         </div>
+    </section>
 
-        <!-- Certifications -->
-        <div class="bg-white p-6 rounded-xl shadow-sm dark:bg-gray-800">
-          <h3 class="text-xl font-semibold mb-4">Certifications</h3>
-          <ul class="space-y-3">
-            <li class="flex items-center text-gray-600 dark:text-gray-300">
-              <span class="mr-2">▹</span> Google IT Support
-            </li>
-            <li class="flex items-center text-gray-600 dark:text-gray-300">
-              <span class="mr-2">▹</span> FortiGate Administrator
-            </li>
-            <li class="flex items-center text-gray-600 dark:text-gray-300">
-              <span class="mr-2">▹</span> CompTIA A+ Network
-            </li>
-            <li class="flex items-center text-gray-600 dark:text-gray-300">
-              <span class="mr-2">▹</span> Microsoft Azure Fundamentals Exam Prep
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE SECTION -->
-  <section
-    id="experience"
-    class="py-20 bg-white dark:bg-gray-800 fade-section opacity-0"
-  >
-    <div class="container mx-auto px-4 max-w-4xl relative">
-      <h2 class="text-3xl font-bold text-center mb-12">Experience</h2>
-
-      <!-- Experience Timeline -->
-      <div class="border-l-2 border-blue-600 pl-8 space-y-12">
-        <!-- Job 1 -->
-        <div class="relative">
-          <h3 class="text-xl font-bold mb-2">IT Support Specialist</h3>
-          <p class="text-gray-500 mb-4 dark:text-gray-400">
-            Nearsol Philippines Inc. (April 2022 – September 2024)
-          </p>
-          <ul class="space-y-2">
-            <li class="text-gray-600 dark:text-gray-300">
-              ▹ Led Freshdesk ticketing system performance
-            </li>
-            <li class="text-gray-600 dark:text-gray-300">
-              ▹ Collaborated with cross-functional IT teams
-            </li>
-            <li class="text-gray-600 dark:text-gray-300">
-              ▹ Provided remote support using Anydesk/Teamviewer
-            </li>
-          </ul>
-        </div>
-
-        <!-- Job 2 -->
-        <div class="relative">
-          <h3 class="text-xl font-bold mb-2">IT Admin/Support</h3>
-          <p class="text-gray-500 mb-4 dark:text-gray-400">
-            WorldSource Pettigrew Philippines Inc. (December 2019 – February 2021)
-          </p>
-          <ul class="space-y-2">
-            <li class="text-gray-600 dark:text-gray-300">
-              ▹ Enhanced IT infrastructure resilience
-            </li>
-            <li class="text-gray-600 dark:text-gray-300">
-              ▹ Managed network security and server systems
-            </li>
-            <li class="text-gray-600 dark:text-gray-300">
-              ▹ Designed server infrastructure installation
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="py-20 bg-blue-600 text-white fade-section opacity-0">
-    <div class="container mx-auto px-4 max-w-3xl text-center">
-      <h2 class="text-3xl font-bold mb-8">Let's Connect</h2>
-      <div class="space-y-4">
-        <p>
-          <a
-            href="mailto:gabriielpparinas@gmail.com"
-            class="hover:text-blue-200 transition-colors"
-          >
-            gabriielpparinas@gmail.com
-          </a>
-        </p>
-        <p>
-          <a
-            href="https://linkedin.com/in/gpparinas"
-            target="_blank"
-            class="hover:text-blue-200 transition-colors"
-          >
-            LinkedIn Profile
-          </a>
-        </p>
-        <p>
-          <a
-            href="https://github.com/gpparinas"
-            target="_blank"
-            class="hover:text-blue-200 transition-colors"
-          >
-            GitHub Profile
-          </a>
+    <section id="about" class="py-20 bg-white dark:bg-gray-800 fade-in-section">
+      <div class="container mx-auto px-4 max-w-3xl text-center">
+        <h2 class="text-3xl font-bold mb-8">About Me</h2>
+        <p class="text-gray-600 text-lg leading-relaxed dark:text-gray-300">
+            [span_1](start_span)A results-oriented IT professional excelling in the management of network infrastructure and Windows Server environments.[span_1](end_span) [span_2](start_span)I'm committed to bridging the gap between back-end administration and front-end user needs while pursuing growth in cybersecurity.[span_2](end_span)
         </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-gray-800 text-white py-6">
+    <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-900 fade-in-section">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-bold text-center mb-12">Core Competencies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">Cloud & System Administration</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                        <li>▹ Azure AD, Windows Server, Active Directory</li>
+                        <li>▹ Microsoft 365 & SaaS Platform Management</li>
+                        <li>▹ Virtualization & Remote Support (AnyDesk, TeamViewer)</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">Networking & Security</h3>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                        <li>▹ Cisco, Fortinet, Unifi AP Configuration</li>
+                        <li>▹ VLANs, VPNs, DNS, TCP/IP, DHCP</li>
+                        <li>▹ Security Best Practices & Vulnerability Analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-white dark:bg-gray-800 fade-in-section">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="text-3xl font-bold text-center mb-12">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg shadow-md flex flex-col">
+                    <h3 class="text-2xl font-bold mb-3">Python Network Monitoring Tool</h3>
+                    [span_3](start_span)<p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">Developed a custom tool to improve system uptime and diagnostics by actively monitoring network devices and services.[span_3](end_span)</p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">Python</span>
+                        <span class="inline-block bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">Shell/Batch</span>
+                    </div>
+                    <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline mt-auto">View on GitHub &rarr;</a>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg shadow-md flex flex-col">
+                    <h3 class="text-2xl font-bold mb-3">WordPress Website Revamp</h3>
+                    [span_4](start_span)<p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">Performed comprehensive maintenance on a WordPress site, including full backups, performance optimization, and security updates to ensure site integrity.[span_4](end_span)</p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-yellow-100 text-yellow-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">WordPress</span>
+                        <span class="inline-block bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">PHP</span>
+                         <span class="inline-block bg-gray-100 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">Security</span>
+                    </div>
+                    <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline mt-auto">View Live Site &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 bg-gray-50 dark:bg-gray-900 fade-in-section">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-3xl font-bold text-center mb-12">Professional Experience</h2>
+        <div class="relative border-l-2 border-blue-500 pl-8 space-y-12">
+          <div class="relative">
+             <div class="absolute -left-10 w-4 h-4 bg-blue-500 rounded-full mt-1.5"></div>
+            <h3 class="text-xl font-bold">ICT Support (Remote)</h3>
+            <p class="text-gray-500 mb-3 dark:text-gray-400">Rubixcare Ltd. | London, UK (March 2025 – August 2025)</p>
+            <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
+                [span_5](start_span)<li>Served as the primary technical contact, resolving network and software issues to minimize downtime.[span_5](end_span)</li>
+                [span_6](start_span)<li>Managed user lifecycle in Google Admin Console and conducted security audits on Google Drive.[span_6](end_span)</li>
+            </ul>
+          </div>
+          <div class="relative">
+             <div class="absolute -left-10 w-4 h-4 bg-blue-500 rounded-full mt-1.5"></div>
+            <h3 class="text-xl font-bold">IT Support Specialist</h3>
+            <p class="text-gray-500 mb-3 dark:text-gray-400">Nearsol Philippines Inc. | Iloilo City (April 2022 – September 2024)</p>
+            <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300">
+                [span_7](start_span)<li>Managed over 200 support tickets monthly via Freshdesk, maintaining a 90% SLA compliance rate.[span_7](end_span)</li>
+                [span_8](start_span)<li>Configured and maintained Windows servers, Azure AD, Fortinet Firewalls, and Cisco devices.[span_8](end_span)</li>
+                [span_9](start_span)<li>Led IT procurement and vendor negotiations, successfully reducing technology acquisition costs.[span_9](end_span)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-blue-600 text-white fade-in-section">
+      <div class="container mx-auto px-4 max-w-3xl text-center">
+        <h2 class="text-3xl font-bold mb-4">Let's Connect</h2>
+        <p class="mb-8 max-w-xl mx-auto">I'm currently seeking new opportunities and would love to hear from you. Feel free to reach out via email or connect with me on social media.</p>
+        <div class="flex justify-center items-center space-x-6">
+            <a href="mailto:gabriielpparinas@gmail.com" class="hover:text-blue-200 transition-colors" aria-label="Email Gabriel">Email</a>
+            <a href="https://linkedin.com/in/gpparinas" target="_blank" rel="noopener noreferrer" class="hover:text-blue-200 transition-colors" aria-label="View Gabriel's LinkedIn Profile">LinkedIn</a>
+            <a href="https://github.com/gpparinas" target="_blank" rel="noopener noreferrer" class="hover:text-blue-200 transition-colors" aria-label="View Gabriel's GitHub Profile">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-gray-400 py-6">
     <div class="container mx-auto px-4 text-center">
       <p>&copy; 2025 Gabriel Philip Pariñas. All rights reserved.</p>
     </div>
