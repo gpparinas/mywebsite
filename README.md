@@ -2,7 +2,7 @@
 
 ## Overview
 This repository contains the source code for a modern personal portfolio showcasing professional experience as an IT Support Specialist, now updated with an **OLED** true‑black dark theme, class-based toggling, and improved performance and accessibility.
-The site utilizes Tailwind CSS v4 via the Browser CDN, featuring a custom dark variant, an early pre-paint theme script, and compatibility improvements for Firefox Private and iOS Safari. 
+The site utilizes Tailwind CSS v4 via the Browser CDN, featuring a custom dark variant, an early pre-paint theme script, and compatibility improvements for Mozilla Firefox and Safari Browser. 
 All portfolio content has been aligned with the latest resume for accuracy across skills, experience, certifications, and education. 
 
 ## Key Updates (2025 OLED Refresh)
@@ -10,7 +10,7 @@ All portfolio content has been aligned with the latest resume for accuracy acros
 - Manual dark/light toggle that persists with localStorage, follows system preference when no choice is saved, and updates on OS theme changes.
 - Tailwind v4 Browser CDN with a custom dark variant override so html.dark reliably activates dark: utilities on click. 
 - Pre‑paint initialization script that sets the theme before rendering to prevent flash-of-wrong-theme (FOUC).
-- Resume-driven content refresh for Skills, Certifications, Experience, and Education. [3]  
+- Resume-driven content refresh for Skills, Certifications, Experience, and Education. 
 
 ## Website Structure
 - Hero/Summary section aligned with the resume’s professional summary and location/context.
