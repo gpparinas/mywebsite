@@ -17,15 +17,14 @@
     try {
       if (value === 'light' || value === 'dark') localStorage.setItem(STORAGE_KEY, value);
       else localStorage.removeItem(STORAGE_KEY);
-    } catch (e) {}
+    } catch (e) { /* ignore storage errors (private modes) */ }
   }
 
   function applyIcons() {
     const isDark = root.classList.contains('dark');
     if (sunIcon && moonIcon) {
-      // Show sun when in dark mode, moon when in light mode
-      sunIcon.classList.toggle('hidden', !isDark);
-      moonIcon.classList.toggle('hidden', isDark);
+      sunIcon.classList.toggle('hidden', !isDark); // show sun in dark mode
+      moonIcon.classList.toggle('hidden', isDark); // show moon in light mode
     }
   }
 
@@ -36,13 +35,15 @@
     applyIcons();
   }
 
-  // Update when OS theme changes, but only if no explicit user choice
-  mq.addEventListener?.('change', () => {
+  // React to OS changes only if user hasn't explicitly chosen
+  function onMQChange(e) {
     if (!getSaved()) {
-      root.classList.toggle('dark', mq.matches);
+      root.classList.toggle('dark', e.matches);
       applyIcons();
     }
-  });
+  }
+  if (mq.addEventListener) mq.addEventListener('change', onMQChange);
+  else if (mq.addListener) mq.addListener(onMQChange); // Safari/older support
 
   // Bind toggle
   btn?.addEventListener('click', () => {
