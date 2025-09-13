@@ -86,14 +86,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   applyTheme(savedTheme);
 
-  darkModeToggle.addEventListener('click', () => {
+    darkModeToggle.addEventListener('click', () => {
+    // This line toggles the 'dark' class on the main <html> element
     const isDark = document.documentElement.classList.toggle('dark');
+    
+    // This line determines the new theme based on whether the 'dark' class is present
     const newTheme = isDark ? 'dark' : 'light';
-    // When the user clicks the button, we save their choice.
+    
+    // This line saves the user's choice in their browser's memory
     localStorage.setItem('theme', newTheme);
+    
+    // This line updates the sun/moon icons
     applyTheme(newTheme);
   });
-
+  
   // ======================
   // Scroll-to-Top Button
   // ======================
