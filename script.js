@@ -17,25 +17,24 @@
     try {
       if (value === 'light' || value === 'dark') localStorage.setItem(STORAGE_KEY, value);
       else localStorage.removeItem(STORAGE_KEY);
-    } catch (e) { /* ignore storage errors (private modes) */ }
+    } catch (e) {}
   }
 
   function applyIcons() {
     const isDark = root.classList.contains('dark');
     if (sunIcon && moonIcon) {
-      sunIcon.classList.toggle('hidden', !isDark); // show sun in dark mode
-      moonIcon.classList.toggle('hidden', isDark); // show moon in light mode
+      sunIcon.classList.toggle('hidden', !isDark);
+      moonIcon.classList.toggle('hidden', isDark);
     }
   }
 
   function applyFrom(saved) {
     if (saved === 'dark') { root.classList.add('dark'); applyIcons(); return; }
     if (saved === 'light') { root.classList.remove('dark'); applyIcons(); return; }
-    root.classList.toggle('dark', mq.matches); // follow system if no saved choice
+    root.classList.toggle('dark', mq.matches);
     applyIcons();
   }
 
-  // React to OS changes only if user hasn't explicitly chosen
   function onMQChange(e) {
     if (!getSaved()) {
       root.classList.toggle('dark', e.matches);
@@ -43,16 +42,14 @@
     }
   }
   if (mq.addEventListener) mq.addEventListener('change', onMQChange);
-  else if (mq.addListener) mq.addListener(onMQChange); // Safari/older support
+  else if (mq.addListener) mq.addListener(onMQChange);
 
-  // Bind toggle
   btn?.addEventListener('click', () => {
     const isDark = root.classList.toggle('dark');
     setSaved(isDark ? 'dark' : 'light');
     applyIcons();
   });
 
-  // Initialize after DOM ready (initial paint handled by inline script in <head>)
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => applyFrom(getSaved()));
   } else {
@@ -64,18 +61,13 @@
   const mobileMenuButton = document.getElementById('mobileMenuButton');
   const mobileNav = document.getElementById('mobileNav');
 
-  // Open/close mobile nav
   mobileMenuButton?.addEventListener('click', (e) => {
     e.stopPropagation();
     mobileNav?.classList.toggle('hidden');
   });
-
-  // Close on link click
   mobileNav?.querySelectorAll('a')?.forEach(link => {
     link.addEventListener('click', () => mobileNav?.classList.add('hidden'));
   });
-
-  // Close on outside click
   document.addEventListener('click', (e) => {
     if (mobileMenuButton && mobileNav) {
       if (!mobileMenuButton.contains(e.target) && !mobileNav.contains(e.target)) {
@@ -84,7 +76,7 @@
     }
   });
 
-  // Scroll spy: highlight active link
+  // Scroll spy
   const navLinks = document.querySelectorAll('nav a');
   window.addEventListener('scroll', () => {
     const headerHeight = header ? header.offsetHeight : 0;
@@ -104,7 +96,7 @@
     });
   });
 
-  // Smooth anchor scrolling with header offset
+  // Smooth anchor scrolling
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
@@ -118,7 +110,7 @@
     });
   });
 
-  // ====== SCROLL TO TOP BUTTON ======
+  // Scroll-to-top button
   const scrollTopBtn = document.createElement('button');
   scrollTopBtn.innerHTML = '↑';
   scrollTopBtn.className = 'fixed bottom-5 right-5 w-12 h-12 bg-blue-600 text-white text-2xl rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hidden hover:scale-110';
@@ -133,7 +125,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // ====== INTERSECTION OBSERVER ANIMATIONS ======
+  // Fade-ins
   const faders = document.querySelectorAll('.fade-in-section');
   const faderOptions = { threshold: 0.1 };
   const faderObserver = 'IntersectionObserver' in window
