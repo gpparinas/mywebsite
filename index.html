@@ -3,11 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Gabriel Philip Pariñas — Portfolio</title>
+    <title>Gabriel Philip Pariñas — IT Support Specialist</title>
 
     <!-- Inform browsers we support both color schemes -->
-    <meta name="color-scheme" content="dark light" /> 
-
+    <meta name="color-scheme" content="dark light" />
     <!-- Address bar / browser UI colors -->
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
@@ -16,9 +15,9 @@
     <script>
       (function () {
         const key = 'theme';
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         let saved = null;
         try { saved = localStorage.getItem(key); } catch (e) {}
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const useDark = saved ? saved === 'dark' : prefersDark;
         document.documentElement.classList.toggle('dark', !!useDark);
       })();
@@ -27,7 +26,6 @@
     <!-- Optional: suppress transitions during first paint -->
     <style>
       .no-transitions * { transition: none !important; }
-      /* Minimal fade-in helper for IntersectionObserver */
       .fade-in-section { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
       .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
     </style>
@@ -43,7 +41,7 @@
 
     <!-- Tailwind v4: class-based dark variant for CDN usage -->
     <style type="text/tailwindcss">
-      @variant dark (&:where(.dark, .dark *));
+      @custom-variant dark (&:where(.dark, .dark *));
     </style>
   </head>
 
@@ -53,13 +51,15 @@
       <!-- Header -->
       <header class="sticky top-0 z-40 border-b border-gray-200/70 bg-white/80 backdrop-blur dark:bg-black/60 dark:border-white/10">
         <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          <a href="#" class="font-semibold tracking-tight text-gray-900 dark:text-white">Gabriel Philip Pariñas</a>
+          <a href="#home" class="font-semibold tracking-tight text-gray-900 dark:text-white">Gabriel Philip Pariñas</a>
 
           <!-- Desktop nav -->
           <nav class="hidden md:flex items-center gap-6">
             <a href="#home" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Home</a>
             <a href="#skills" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Skills</a>
+            <a href="#certs" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Certifications</a>
             <a href="#experience" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Experience</a>
+            <a href="#education" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Education</a>
             <a href="#contact" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Contact</a>
           </nav>
 
@@ -86,7 +86,9 @@
           <nav class="mx-auto max-w-6xl px-4 py-3 flex flex-col gap-3">
             <a href="#home" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Home</a>
             <a href="#skills" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Skills</a>
+            <a href="#certs" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Certifications</a>
             <a href="#experience" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Experience</a>
+            <a href="#education" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Education</a>
             <a href="#contact" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Contact</a>
           </nav>
         </div>
@@ -94,15 +96,19 @@
 
       <!-- Main -->
       <main class="flex-1">
+        <!-- Home / Summary -->
         <section id="home" class="relative">
           <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
             <div class="grid gap-8 sm:grid-cols-2 sm:items-center">
               <div class="fade-in-section">
                 <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
-                  IT Support Specialist & Portfolio
+                  IT Support Specialist — 5+ Years
                 </h1>
                 <p class="mt-4 text-gray-600 dark:text-gray-300">
-                  Modern, responsive portfolio with OLED-ready **dark** mode, smooth scrolling, and accessible UI.
+                  Results-oriented IT professional experienced in network infrastructure and Windows Server, bridging back-end administration with front-end user needs and pursuing growth in cybersecurity. [Resume]
+                </p>
+                <p class="mt-2 text-gray-600 dark:text-gray-300">
+                  Strong with Azure AD, security policy implementation, and remote helpdesk leadership to minimize downtime and improve user experience. [Resume]
                 </p>
                 <div class="mt-6 flex gap-3">
                   <a href="#contact" class="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-black dark:bg-white dark:text-black dark:hover:bg-gray-100">
@@ -116,61 +122,83 @@
               <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
                 <div class="grid grid-cols-2 gap-4 text-sm">
                   <div class="rounded-lg border border-gray-200 p-4 dark:border-white/10 dark:bg-black">
-                    <div class="text-gray-500 dark:text-gray-400">Uptime</div>
-                    <div class="mt-1 text-xl font-semibold">99.9%</div>
+                    <div class="text-gray-500 dark:text-gray-400">Location</div>
+                    <div class="mt-1 font-semibold">Roxas City, Capiz, PH</div>
                   </div>
                   <div class="rounded-lg border border-gray-200 p-4 dark:border-white/10 dark:bg-black">
-                    <div class="text-gray-500 dark:text-gray-400">Tickets</div>
-                    <div class="mt-1 text-xl font-semibold">1200+</div>
+                    <div class="text-gray-500 dark:text-gray-400">Focus</div>
+                    <div class="mt-1 font-semibold">IT Support & Security</div>
                   </div>
                   <div class="rounded-lg border border-gray-200 p-4 dark:border-white/10 dark:bg-black">
-                    <div class="text-gray-500 dark:text-gray-400">Response</div>
-                    <div class="mt-1 text-xl font-semibold">&lt; 15m</div>
+                    <div class="text-gray-500 dark:text-gray-400">Experience</div>
+                    <div class="mt-1 font-semibold">5+ years</div>
                   </div>
                   <div class="rounded-lg border border-gray-200 p-4 dark:border-white/10 dark:bg-black">
-                    <div class="text-gray-500 dark:text-gray-400">Satisfaction</div>
-                    <div class="mt-1 text-xl font-semibold">4.9/5</div>
+                    <div class="text-gray-500 dark:text-gray-400">Availability</div>
+                    <div class="mt-1 font-semibold">Open to opportunities</div>
                   </div>
                 </div>
                 <p class="mt-4 text-xs text-gray-500 dark:text-gray-400">
-                  Cards above use true black in dark mode to minimize OLED power draw.
+                  OLED dark mode uses true black backgrounds to minimize power draw on compatible displays.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
+        <!-- Skills -->
         <section id="skills" class="border-t border-gray-200/70 dark:border-white/10">
           <div class="mx-auto max-w-6xl px-4 py-14">
-            <h2 class="text-xl font-semibold">Technical Skills</h2>
+            <h2 class="text-xl font-semibold">Core Competencies & Technical Skills</h2>
             <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <article class="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow dark:border-white/10 dark:bg-black fade-in-section">
-                <h3 class="font-medium">Endpoint Management</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Intune, JAMF, GPO, imaging, patching.</p>
-                <div class="mt-4 h-1.5 w-full rounded-full bg-gray-200 dark:bg-white/10">
-                  <div class="h-full w-5/6 rounded-full bg-gray-900 dark:bg-white"></div>
-                </div>
+              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
+                <h3 class="font-medium">IT Support & Troubleshooting</h3>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Windows, Microsoft 365, SaaS platforms. [Resume]</p>
               </article>
-
-              <article class="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow dark:border-white/10 dark:bg-black fade-in-section">
-                <h3 class="font-medium">Networking</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">VLANs, Wi‑Fi, VPN, firewalls, DNS/DHCP.</p>
-                <div class="mt-4 h-1.5 w-full rounded-full bg-gray-200 dark:bg-white/10">
-                  <div class="h-full w-2/3 rounded-full bg-gray-900 dark:bg-white"></div>
-                </div>
+              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
+                <h3 class="font-medium">Networking & Security</h3>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Cisco, Fortinet, Unifi AP, VLANs, VPNs, DNS, TCP/IP, DHCP. [Resume]</p>
               </article>
-
-              <article class="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow dark:border-white/10 dark:bg-black fade-in-section">
-                <h3 class="font-medium">Scripting</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">PowerShell, Bash, Python automation.</p>
-                <div class="mt-4 h-1.5 w-full rounded-full bg-gray-200 dark:bg-white/10">
-                  <div class="h-full w-3/4 rounded-full bg-gray-900 dark:bg-white"></div>
-                </div>
+              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
+                <h3 class="font-medium">Cloud & System Administration</h3>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Azure AD, Windows Server, Active Directory, Virtualization. [Resume]</p>
+              </article>
+              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
+                <h3 class="font-medium">Helpdesk & Remote Support</h3>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">AnyDesk, TeamViewer, Freshdesk. [Resume]</p>
+              </article>
+              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
+                <h3 class="font-medium">Security & Monitoring</h3>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Best practices, vulnerability analysis, Nagios. [Resume]</p>
+              </article>
+              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
+                <h3 class="font-medium">Automation & Scripting</h3>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Basic Python, Shell/Batch, FOG Project (network boot). [Resume]</p>
+              </article>
+              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
+                <h3 class="font-medium">Documentation & Processes</h3>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">IT manuals, SOPs, Knowledge Base creation. [Resume]</p>
               </article>
             </div>
           </div>
         </section>
 
+        <!-- Certifications -->
+        <section id="certs" class="border-t border-gray-200/70 dark:border-white/10">
+          <div class="mx-auto max-w-6xl px-4 py-14">
+            <h2 class="text-xl font-semibold">Certifications & Training</h2>
+            <ul class="mt-4 list-disc pl-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+              <li>Google IT Support Professional Certification. [Resume]</li>
+              <li>CompTIA A+ Network. [Resume]</li>
+              <li>Microsoft Azure Fundamentals (Exam Prep). [Resume]</li>
+              <li>Microsoft Certified: Endpoint Administrator (Self-Study). [Resume]</li>
+              <li>CCNA (Self-Study). [Resume]</li>
+              <li>ITIL v4 Foundation (Self-Study). [Resume]</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Experience -->
         <section id="experience" class="border-t border-gray-200/70 dark:border-white/10">
           <div class="mx-auto max-w-6xl px-4 py-14">
             <h2 class="text-xl font-semibold">Experience</h2>
@@ -179,24 +207,85 @@
                 <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-gray-900 ring-2 ring-white dark:bg-white dark:ring-black"></span>
                 <div class="rounded-lg border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-black">
                   <div class="flex items-center justify-between">
-                    <h3 class="font-medium">IT Support Specialist</h3>
-                    <span class="text-xs text-gray-500 dark:text-gray-400">2022 — Present</span>
+                    <h3 class="font-medium">ICT Support — Rubixcare Ltd. (Remote, UK)</h3>
+                    <span class="text-xs text-gray-500 dark:text-gray-400">Mar 2025 – Aug 2025</span>
                   </div>
-                  <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
-                    Enterprise helpdesk, device lifecycle, automation, incident response.
-                  </p>
+                  <ul class="mt-2 list-disc pl-5 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                    <li>Designed a new company logo and standardized document templates with Canva for brand consistency. [Resume]</li>
+                    <li>Primary contact for support, resolving connectivity and software issues to minimize downtime. [Resume]</li>
+                    <li>Revamped WordPress site, handled backups, performance optimizations, and security updates. [Resume]</li>
+                    <li>Managed user lifecycle and audits in Google Admin Console and Google Drive. [Resume]</li>
+                    <li>Contributed in team sessions recommending tooling such as RotaCloud for process improvements. [Resume]</li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="relative pl-6 fade-in-section">
+                <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-gray-900 ring-2 ring-white dark:bg-white dark:ring-black"></span>
+                <div class="rounded-lg border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-black">
+                  <div class="flex items-center justify-between">
+                    <h3 class="font-medium">IT Support Specialist — Nearsol Philippines Inc.</h3>
+                    <span class="text-xs text-gray-500 dark:text-gray-400">Apr 2022 – Sep 2024</span>
+                  </div>
+                  <ul class="mt-2 list-disc pl-5 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                    <li>Handled 200+ tickets/month in Freshdesk with 90% SLA compliance. [Resume]</li>
+                    <li>Provided remote/on-site support for Windows, Microsoft 365, and SaaS apps. [Resume]</li>
+                    <li>Configured and maintained Windows Servers, AD/Azure AD, Fortinet, and Cisco. [Resume]</li>
+                    <li>Led procurement and vendor negotiation to reduce IT costs. [Resume]</li>
+                    <li>Built Python-based network monitoring for uptime and diagnostics. [Resume]</li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="relative pl-6 fade-in-section">
+                <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-gray-900 ring-2 ring-white dark:bg-white dark:ring-black"></span>
+                <div class="rounded-lg border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-black">
+                  <div class="flex items-center justify-between">
+                    <h3 class="font-medium">IT Admin/Support — World Source Pettigrew Philippines Inc.</h3>
+                    <span class="text-xs text-gray-500 dark:text-gray-400">Dec 2019 – Feb 2021</span>
+                  </div>
+                  <ul class="mt-2 list-disc pl-5 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                    <li>Maintained Windows Terminal Servers, AD, CCTV, and SonicWall Firewall. [Resume]</li>
+                    <li>Deployed Windows Server environments with performance and security compliance. [Resume]</li>
+                    <li>Provided technical support for telecom and enterprise applications. [Resume]</li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="relative pl-6 fade-in-section">
+                <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-gray-900 ring-2 ring-white dark:bg-white dark:ring-black"></span>
+                <div class="rounded-lg border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-black">
+                  <div class="flex items-center justify-between">
+                    <h3 class="font-medium">IT Intern — PLDT Site Office (La Paz Branch)</h3>
+                    <span class="text-xs text-gray-500 dark:text-gray-400">Nov 2018 – Mar 2019</span>
+                  </div>
+                  <ul class="mt-2 list-disc pl-5 space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                    <li>Assisted with cable testing, system upgrades, and infrastructure troubleshooting. [Resume]</li>
+                    <li>Gained familiarity with network hardware, telecom, and structured cabling. [Resume]</li>
+                  </ul>
                 </div>
               </li>
             </ol>
           </div>
         </section>
 
+        <!-- Education -->
+        <section id="education" class="border-t border-gray-200/70 dark:border-white/10">
+          <div class="mx-auto max-w-6xl px-4 py-14">
+            <h2 class="text-xl font-semibold">Education</h2>
+            <p class="mt-4 text-sm text-gray-700 dark:text-gray-300">
+              Bachelor of Science in Information Technology — University of San Agustin, Iloilo (2014–2018). [Resume]
+            </p>
+          </div>
+        </section>
+
+        <!-- Contact -->
         <section id="contact" class="border-t border-gray-200/70 dark:border-white/10">
           <div class="mx-auto max-w-6xl px-4 py-14">
             <h2 class="text-xl font-semibold">Contact</h2>
             <div class="mt-6 flex flex-wrap items-center gap-3">
               <a href="mailto:gabriielpparinas@gmail.com" class="rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-800 hover:bg-gray-50 dark:border-white/10 dark:text-gray-100 dark:hover:bg-neutral-900">Email</a>
-              <a href="https://www.linkedin.com" class="rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-800 hover:bg-gray-50 dark:border-white/10 dark:text-gray-100 dark:hover:bg-neutral-900">LinkedIn</a>
+              <a href="https://x.com/gpparinas" class="rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-800 hover:bg-gray-50 dark:border-white/10 dark:text-gray-100 dark:hover:bg-neutral-900">Twitter/X</a>
               <a href="https://github.com/gpparinas" class="rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-800 hover:bg-gray-50 dark:border-white/10 dark:text-gray-100 dark:hover:bg-neutral-900">GitHub</a>
             </div>
           </div>
