@@ -1,121 +1,134 @@
-// ======================
-// Mobile Menu Toggle
-// ======================
-const mobileMenuButton = document.querySelector('button[aria-label="Open Menu"]');
-const mobileNav = document.getElementById('mobileNav');
+document.addEventListener('DOMContentLoaded', () => {
 
-mobileMenuButton.addEventListener('click', () => {
-  mobileNav.classList.toggle('hidden');
-  mobileNav.classList.toggle('animate-fadeInDown');
-});
+  // ======================
+  // Header & Navigation
+  // ======================
+  const header = document.querySelector('header');
+  const mobileMenuButton = document.getElementById('mobileMenuButton');
+  const mobileNav = document.getElementById('mobileNav');
+  const navLinks = document.querySelectorAll('nav a');
+  const mobileNavLinks = mobileNav.querySelectorAll('a');
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-  if (!mobileMenuButton.contains(e.target) && !mobileNav.contains(e.target)) {
-    mobileNav.classList.add('hidden');
-  }
-});
+  // Mobile Menu Toggle
+  mobileMenuButton.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevents the 'click outside' from firing immediately
+    mobileNav.classList.toggle('hidden');
+  });
 
-// ======================
-// Smooth Scroll + Active Link
-// ======================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
+  // Close menu when a link is clicked
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.add('hidden');
+    });
+  });
 
-    // Close mobile nav if open
-    mobileNav.classList.add('hidden');
-
-    const targetId = this.getAttribute('href').substring(1);
-    const targetSection = document.getElementById(targetId);
-
-    if (targetSection) {
-      const headerHeight = document.querySelector('header').offsetHeight;
-      window.scrollTo({
-        top: targetSection.offsetTop - headerHeight,
-        behavior: 'smooth'
-      });
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!mobileMenuButton.contains(e.target) && !mobileNav.contains(e.target)) {
+      mobileNav.classList.add('hidden');
     }
   });
-});
 
-// Highlight current section link
-window.addEventListener('scroll', () => {
-  const sections = document.querySelectorAll('section');
-  const scrollPosition = window.scrollY + 100;
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionBottom = sectionTop + section.offsetHeight;
-
-    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-      document.querySelectorAll('nav a').forEach(link => {
-        link.classList.remove('text-blue-600', 'dark:text-blue-400');
-        if (link.getAttribute('href') === `#${section.id}`) {
-          link.classList.add('text-blue-600', 'dark:text-blue-400');
-        }
-      });
-    }
+  // Smooth Scroll & Active Link Highlighting
+  window.addEventListener('scroll', () => {
+    const headerHeight = header.offsetHeight;
+    const scrollPosition = window.scrollY + headerHeight;
+    
+    // Highlight active link
+    document.querySelectorAll('main section').forEach(section => {
+      if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('text-blue-600', 'dark:text-blue-400', 'font-bold');
+          if (`#${section.id}` === link.getAttribute('href')) {
+            link.classList.add('text-blue-600', 'dark:text-blue-400', 'font-bold');
+          }
+        });
+      }
+    });
   });
-});
-
-// ======================
-// Dark Mode Toggle
-// ======================
-const darkModeToggle = document.querySelector('.dark-mode-toggle');
-
-darkModeToggle.addEventListener('click', () => {
-  document.documentElement.classList.toggle('dark');
-  // Save theme in localStorage
-  if (document.documentElement.classList.contains('dark')) {
-    localStorage.setItem('theme', 'dark');
-  } else {
-    localStorage.setItem('theme', 'light');
-  }
-});
-
-// On page load, check localStorage
-if (localStorage.getItem('theme') === 'dark') {
-  document.documentElement.classList.add('dark');
-}
-
-// ======================
-// Scroll-to-Top Button
-// ======================
-const scrollTopBtn = document.createElement('button');
-scrollTopBtn.innerHTML = '↑';
-scrollTopBtn.className = 'fixed bottom-8 right-8 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all hidden';
-scrollTopBtn.setAttribute('aria-label', 'Scroll to top');
-document.body.appendChild(scrollTopBtn);
-
-window.addEventListener('scroll', () => {
-  scrollTopBtn.style.display = (window.scrollY > 300) ? 'block' : 'none';
-});
-
-scrollTopBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// ======================
-// Fade-in Sections on Scroll
-// ======================
-const faders = document.querySelectorAll('.fade-section');
-const options = {
-  threshold: 0.1,
-};
-
-const fadeInOnScroll = new IntersectionObserver((entries, fadeInOnScroll) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      // Remove initial opacity-0
-      entry.target.classList.remove('opacity-0');
-      // Add a Tailwind transition or your own custom class
-      entry.target.classList.add('transition-opacity', 'duration-700', 'opacity-100');
-      fadeInOnScroll.unobserve(entry.target);
-    }
+  
+  // Smooth scroll for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        const headerHeight = header.offsetHeight;
+        const targetPosition = targetSection.offsetTop - headerHeight;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
-}, options);
 
-faders.forEach(fadeSection => {
-  fadeInOnScroll.observe(fadeSection);
+  // ======================
+  // Dark Mode Toggle
+  // ======================
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const sunIcon = document.getElementById('sunIcon');
+  const moonIcon = document.getElementById('moonIcon');
+
+  const applyTheme = (theme) => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      sunIcon.classList.remove('hidden');
+      moonIcon.classList.add('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      sunIcon.classList.add('hidden');
+      moonIcon.classList.remove('hidden');
+    }
+  };
+
+  // On page load, check for saved theme
+  const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  applyTheme(savedTheme);
+
+  darkModeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    const newTheme = isDark ? 'dark' : 'light';
+    localStorage.setItem('theme', newTheme);
+    applyTheme(newTheme);
+  });
+
+  // ======================
+  // Scroll-to-Top Button
+  // ======================
+  const scrollTopBtn = document.createElement('button');
+  scrollTopBtn.innerHTML = '&#8593;'; // Up arrow character
+  scrollTopBtn.className = 'fixed bottom-5 right-5 w-12 h-12 bg-blue-600 text-white text-2xl rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hidden hover:scale-110';
+  scrollTopBtn.setAttribute('aria-label', 'Scroll to top');
+  document.body.appendChild(scrollTopBtn);
+
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.style.display = (window.scrollY > 300) ? 'block' : 'none';
+  });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ======================
+  // Fade-in Sections on Scroll
+  // ======================
+  const faders = document.querySelectorAll('.fade-in-section');
+  const faderOptions = {
+    threshold: 0.1,
+  };
+
+  const faderObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, faderOptions);
+
+  faders.forEach(fader => {
+    faderObserver.observe(fader);
+  });
 });
