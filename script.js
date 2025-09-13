@@ -1,34 +1,98 @@
-document.addEventListener('DOMContentLoaded', () => {
+// script.js
+(function () {
+  // ====== THEME ======
+  const STORAGE_KEY = 'theme';
+  const root = document.documentElement;
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
 
-  const header = document.querySelector('header');
-  const mobileMenuButton = document.getElementById('mobileMenuButton');
-  const mobileNav = document.getElementById('mobileNav');
-  const navLinks = document.querySelectorAll('nav a');
-  const mobileNavLinks = mobileNav.querySelectorAll('a');
+  const btn = document.getElementById('darkModeToggle');
+  const sunIcon = document.getElementById('sunIcon');
+  const moonIcon = document.getElementById('moonIcon');
 
-  mobileMenuButton.addEventListener('click', (e) => {
-    e.stopPropagation(); 
-    mobileNav.classList.toggle('hidden');
-  });
+  function getSaved() {
+    try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+  }
 
-  mobileNavLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileNav.classList.add('hidden');
-    });
-  });
+  function setSaved(value) {
+    try {
+      if (value === 'light' || value === 'dark') localStorage.setItem(STORAGE_KEY, value);
+      else localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {}
+  }
 
-  document.addEventListener('click', (e) => {
-    if (!mobileMenuButton.contains(e.target) && !mobileNav.contains(e.target)) {
-      mobileNav.classList.add('hidden');
+  function applyIcons() {
+    const isDark = root.classList.contains('dark');
+    if (sunIcon && moonIcon) {
+      // Show sun when in dark mode, moon when in light mode
+      sunIcon.classList.toggle('hidden', !isDark);
+      moonIcon.classList.toggle('hidden', isDark);
+    }
+  }
+
+  function applyFrom(saved) {
+    if (saved === 'dark') { root.classList.add('dark'); applyIcons(); return; }
+    if (saved === 'light') { root.classList.remove('dark'); applyIcons(); return; }
+    root.classList.toggle('dark', mq.matches); // follow system if no saved choice
+    applyIcons();
+  }
+
+  // Update when OS theme changes, but only if no explicit user choice
+  mq.addEventListener?.('change', () => {
+    if (!getSaved()) {
+      root.classList.toggle('dark', mq.matches);
+      applyIcons();
     }
   });
 
+  // Bind toggle
+  btn?.addEventListener('click', () => {
+    const isDark = root.classList.toggle('dark');
+    setSaved(isDark ? 'dark' : 'light');
+    applyIcons();
+  });
+
+  // Initialize after DOM ready (initial paint handled by inline script in <head>)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => applyFrom(getSaved()));
+  } else {
+    applyFrom(getSaved());
+  }
+
+  // ====== HEADER / NAV ======
+  const header = document.querySelector('header');
+  const mobileMenuButton = document.getElementById('mobileMenuButton');
+  const mobileNav = document.getElementById('mobileNav');
+
+  // Open/close mobile nav
+  mobileMenuButton?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    mobileNav?.classList.toggle('hidden');
+  });
+
+  // Close on link click
+  mobileNav?.querySelectorAll('a')?.forEach(link => {
+    link.addEventListener('click', () => mobileNav?.classList.add('hidden'));
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (mobileMenuButton && mobileNav) {
+      if (!mobileMenuButton.contains(e.target) && !mobileNav.contains(e.target)) {
+        mobileNav.classList.add('hidden');
+      }
+    }
+  });
+
+  // Scroll spy: highlight active link
+  const navLinks = document.querySelectorAll('nav a');
   window.addEventListener('scroll', () => {
-    const headerHeight = header.offsetHeight;
+    const headerHeight = header ? header.offsetHeight : 0;
     const scrollPosition = window.scrollY + headerHeight;
-    
-    document.querySelectorAll('main section').forEach(section => {
-      if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
+
+    document.querySelectorAll('main section[id]').forEach(section => {
+      const top = section.offsetTop;
+      const bottom = section.offsetTop + section.offsetHeight;
+      if (scrollPosition >= top && scrollPosition < bottom) {
         navLinks.forEach(link => {
           link.classList.remove('text-blue-600', 'dark:text-blue-400', 'font-bold');
           if (`#${section.id}` === link.getAttribute('href')) {
@@ -38,51 +102,24 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-  
+
+  // Smooth anchor scrolling with header offset
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
+    anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
       const targetSection = document.querySelector(targetId);
-      if (targetSection) {
-        const headerHeight = header.offsetHeight;
-        const targetPosition = targetSection.offsetTop - headerHeight;
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-      }
+      if (!targetSection) return;
+      e.preventDefault();
+      const headerHeight = header ? header.offsetHeight : 0;
+      const targetPosition = targetSection.offsetTop - headerHeight;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
     });
   });
 
-  const darkModeToggle = document.getElementById('darkModeToggle');
-  const sunIcon = document.getElementById('sunIcon');
-  const moonIcon = document.getElementById('moonIcon');
-
-  const applyTheme = (theme) => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-      sunIcon.classList.remove('hidden');
-      moonIcon.classList.add('hidden');
-    } else {
-      document.documentElement.classList.remove('dark');
-      sunIcon.classList.add('hidden');
-      moonIcon.classList.remove('hidden');
-    }
-  };
-  
-  const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  applyTheme(savedTheme);
-
-  darkModeToggle.addEventListener('click', () => {
-    const isDark = document.documentElement.classList.toggle('dark');
-    const newTheme = isDark ? 'dark' : 'light';
-    localStorage.setItem('theme', newTheme);
-    applyTheme(newTheme);
-  });
-
+  // ====== SCROLL TO TOP BUTTON ======
   const scrollTopBtn = document.createElement('button');
-  scrollTopBtn.innerHTML = '&#8593;';
+  scrollTopBtn.innerHTML = '↑';
   scrollTopBtn.className = 'fixed bottom-5 right-5 w-12 h-12 bg-blue-600 text-white text-2xl rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hidden hover:scale-110';
   scrollTopBtn.setAttribute('aria-label', 'Scroll to top');
   document.body.appendChild(scrollTopBtn);
@@ -95,21 +132,23 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  // ====== INTERSECTION OBSERVER ANIMATIONS ======
   const faders = document.querySelectorAll('.fade-in-section');
-  const faderOptions = {
-    threshold: 0.1,
-  };
+  const faderOptions = { threshold: 0.1 };
+  const faderObserver = 'IntersectionObserver' in window
+    ? new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, faderOptions)
+    : null;
 
-  const faderObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, faderOptions);
+  faders.forEach(fader => { faderObserver?.observe(fader); });
 
-  faders.forEach(fader => {
-    faderObserver.observe(fader);
-  });
-});
+  // Footer year
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+})();
