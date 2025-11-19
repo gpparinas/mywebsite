@@ -1,0 +1,90 @@
+/* ---------- OLED / lights-out dark mode ---------- */
+html.dark {
+  background-color: #000000;          /* pure black */
+  color: #e5e7eb;                     /* cool gray-200 for readability */
+}
+
+html.dark body {
+  background-color: #000000;
+}
+
+/* override Tailwind dark:bg-gray-xxx classes */
+html.dark .dark\:bg-gray-900   { background-color: #000000 !important; }
+html.dark .dark\:bg-gray-800   { background-color: #0a0a0a !important; } /* almost black */
+html.dark .dark\:bg-gray-700   { background-color: #141414 !important; }
+html.dark .dark\:bg-blue-900   { background-color: #0c2044 !important; } /* deeper blue */
+html.dark .dark\:bg-green-900  { background-color: #052e1c !important; }
+html.dark .dark\:bg-red-900    { background-color: #3b0c0c !important; }
+html.dark .dark\:bg-purple-900 { background-color: #1e0b3b !important; }
+html.dark .dark\:bg-orange-900 { background-color: #3b1900 !important; }
+
+/* borders */
+html.dark .dark\:border-gray-700 { border-color: #1f1f1f !important; }
+html.dark .dark\:border-gray-600 { border-color: #2a2a2a !important; }
+
+/* text contrast */
+html.dark .dark\:text-gray-100 { color: #f3f4f6 !important; }
+html.dark .dark\:text-gray-400 { color: #9ca3af !important; }
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Fade-in animation */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth scrolling */
+html.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Focus visible for better accessibility */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+}
