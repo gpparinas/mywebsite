@@ -1,294 +1,840 @@
-<!doctype html>
-<html lang="en" class="h-full">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Gabriel Philip Pariñas — IT Support Specialist</title>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriel Philip Pariñas — IT Support Engineer</title>
+  <meta name="description" content="IT Support Engineer with 5+ years experience in enterprise infrastructure, Azure AD, Windows Server, and network security. Proven track record reducing downtime by 40%.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Configure Tailwind to enable dark mode -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
+  
+  <!-- Skip to main content link for accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg">
+    Skip to main content
+  </a>
 
-    <meta name="color-scheme" content="dark light" />
-    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-
-    <script>
-      (function () {
-        const key = 'theme';
-        let saved = null;
-        try { saved = localStorage.getItem(key); } catch (e) {}
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const useDark = saved ? saved === 'dark' : prefersDark;
-        document.documentElement.classList.toggle('dark', !!useDark);
-      })();
-    </script>
-
-    <style>
-      .no-transitions * { transition: none !important; }
-      .fade-in-section { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
-      .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
-    </style>
-    <script>
-      document.documentElement.classList.add('no-transitions');
-      window.addEventListener('load', () => {
-        setTimeout(() => document.documentElement.classList.remove('no-transitions'), 0);
-      });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <style type="text/tailwindcss">
-      @custom-variant dark (&:where(.dark, .dark *));
-    </style>
-  </head>
-
-  <body class="h-full bg-white text-gray-900 dark:bg-black dark:text-gray-100 antialiased">
-    <div class="min-h-full flex flex-col">
-
-      <!-- Header -->
-      <header class="sticky top-0 z-40 border-b border-gray-200/70 bg-white/80 backdrop-blur dark:bg-black/60 dark:border-white/10">
-        <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          <a href="#home" class="font-semibold tracking-tight text-gray-900 dark:text-white">Gabriel Philip Pariñas</a>
-
-          <!-- Desktop nav -->
-          <nav class="hidden md:flex items-center gap-6">
-            <a href="#home" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Home</a>
-            <a href="#skills" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Skills</a>
-            <a href="#certs" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Certifications</a>
-            <a href="#experience" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Experience</a>
-            <a href="#education" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Education</a>
-            <a href="#contact" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Contact</a>
-          </nav>
-
-          <div class="flex items-center gap-2">
-            <!-- Theme toggle -->
-            <button id="darkModeToggle"
-                    type="button"
-                    aria-label="Toggle dark mode"
-                    class="inline-flex items-center gap-2 rounded-md border border-gray-300/80 bg-white px-3 py-2 text-sm text-gray-800 shadow-sm hover:bg-gray-50 active:scale-[0.98] dark:border-white/10 dark:bg-black dark:text-gray-100 dark:hover:bg-neutral-900">
-              <span id="sunIcon" class="hidden">☀️</span>
-              <span id="moonIcon" class="">🌙</span>
-              <span class="hidden sm:inline">Theme</span>
-            </button>
-
-            <!-- Mobile menu button -->
-            <button id="mobileMenuButton" class="md:hidden inline-flex items-center rounded-md border border-gray-300/80 bg-white p-2 text-gray-800 shadow-sm hover:bg-gray-50 dark:border-white/10 dark:bg-black dark:text-gray-100 dark:hover:bg-neutral-900" aria-label="Open menu">
-              ☰
-            </button>
-          </div>
-        </div>
-
-        <!-- Mobile nav -->
-        <div id="mobileNav" class="md:hidden hidden border-t border-gray-200 bg-white dark:border-white/10 dark:bg-black">
-          <nav class="mx-auto max-w-6xl px-4 py-3 flex flex-col gap-3">
-            <a href="#home" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Home</a>
-            <a href="#skills" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Skills</a>
-            <a href="#certs" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Certifications</a>
-            <a href="#experience" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Experience</a>
-            <a href="#education" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Education</a>
-            <a href="#contact" class="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">Contact</a>
-          </nav>
-        </div>
-      </header>
-
-      <main class="flex-1">
-        <section id="home" class="relative">
-          <div class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-            <div class="grid gap-8 sm:grid-cols-2 sm:items-center">
-              <div class="fade-in-section">
-                <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
-                  IT Support Specialist — 5+ Years
-                </h1>
-                <p class="mt-4 text-gray-600 dark:text-gray-300">
-                  Results-oriented IT professional experienced in network infrastructure and Windows Server, bridging back-end administration with front-end user needs and pursuing growth in cybersecurity.
-                </p>
-                <p class="mt-2 text-gray-600 dark:text-gray-300">
-                  Strong with Azure AD, security policy implementation, and remote helpdesk leadership to minimize downtime and improve user experience.
-                </p>
-                <div class="mt-6 flex gap-3">
-                  <a href="#contact" class="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-black dark:bg-white dark:text-black dark:hover:bg-gray-100">
-                    Contact
-                  </a>
-                  <a href="#experience" class="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50 dark:border-white/10 dark:text-gray-100 dark:hover:bg-neutral-900">
-                    Experience
-                  </a>
-                </div>
-              </div>
-              <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
-                <div class="grid grid-cols-2 gap-4 text-sm">
-                  <div class="rounded-lg border border-gray-200 p-4 dark:border-white/10 dark:bg-black">
-                    <div class="text-gray-500 dark:text-gray-400">Location</div>
-                    <div class="mt-1 font-semibold">Roxas City, Capiz, PH</div>
-                  </div>
-                  <div class="rounded-lg border border-gray-200 p-4 dark:border-white/10 dark:bg-black">
-                    <div class="text-gray-500 dark:text-gray-400">Focus</div>
-                    <div class="mt-1 font-semibold">IT Support, Network & System Administration</div>
-                  </div>
-                  <div class="rounded-lg border border-gray-200 p-4 dark:border-white/10 dark:bg-black">
-                    <div class="text-gray-500 dark:text-gray-400">Experience</div>
-                    <div class="mt-1 font-semibold">5+ years</div>
-                  </div>
-                  <div class="rounded-lg border border-gray-200 p-4 dark:border-white/10 dark:bg-black">
-                    <div class="text-gray-500 dark:text-gray-400">Availability</div>
-                    <div class="mt-1 font-semibold">Open to opportunities</div>
-                  </div>
-                </div>
-                <p class="mt-4 text-xs text-gray-500 dark:text-gray-400">
-                  OLED dark mode uses true black backgrounds to minimize power draw on compatible displays.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Skills -->
-        <section id="skills" class="border-t border-gray-200/70 dark:border-white/10">
-          <div class="mx-auto max-w-6xl px-4 py-14">
-            <h2 class="text-xl font-semibold">Core Competencies & Technical Skills</h2>
-            <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
-                <h3 class="font-medium">IT Support & Troubleshooting</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Windows, Microsoft 365, SaaS platforms.</p>
-              </article>
-              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
-                <h3 class="font-medium">Networking & Security</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Cisco, Fortinet, Unifi AP, VLANs, VPNs, DNS, TCP/IP, DHCP.</p>
-              </article>
-              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
-                <h3 class="font-medium">Cloud & System Administration</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Azure AD, Windows Server, Active Directory, Virtualization.</p>
-              </article>
-              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
-                <h3 class="font-medium">Helpdesk & Remote Support</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">AnyDesk, TeamViewer, Freshdesk.</p>
-              </article>
-              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
-                <h3 class="font-medium">Security & Monitoring</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Best practices, vulnerability analysis, Nagios.</p>
-              </article>
-              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
-                <h3 class="font-medium">Automation & Scripting</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Basic Python, Shell/Batch, FOG Project (network boot).</p>
-              </article>
-              <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-black fade-in-section">
-                <h3 class="font-medium">Documentation & Processes</h3>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">IT manuals, SOPs, Knowledge Base creation.</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <!-- Certifications -->
-        <section id="certs" class="border-t border-gray-200/70 dark:border-white/10">
-          <div class="mx-auto max-w-6xl px-4 py-14">
-            <h2 class="text-xl font-semibold">Certifications & Training</h2>
-            <ul class="mt-4 list-disc pl-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
-              <li>Google IT Support Professional Certification.</li>
-              <li>CompTIA a+ Network.</li>
-              <li>Microsoft Azure Fundamentals (Exam Prep).</li>
-              <li>Microsoft Certified: Endpoint Administrator (Self-Study).</li>
-              <li>CCNA (Self-Study).</li>
-              <li>ITIL v4 Foundation (Self-Study).</li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- Experience -->
-        <section id="experience" class="border-t border-gray-200/70 dark:border-white/10">
-          <div class="mx-auto max-w-6xl px-4 py-14">
-            <h2 class="text-xl font-semibold">Experience</h2>
-            <ol class="mt-6 space-y-6">
-              <li class="relative pl-6 fade-in-section">
-                <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-gray-900 ring-2 ring-white dark:bg-white dark:ring-black"></span>
-                <div class="rounded-lg border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-black">
-                  <div class="flex items-center justify-between">
-                    <h3 class="font-medium">ICT Support — Rubixcare Ltd. (Remote, UK)</h3>
-                    <span class="text-xs text-gray-500 dark:text-gray-400">Mar 2025 – Aug 2025</span>
-                  </div>
-                  <ul class="mt-2 list-disc pl-5 space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                    <li>Designed a new company logo and standardized document templates with Canva for brand consistency.</li>
-                    <li>Primary contact for support, resolving connectivity and software issues to minimize downtime.</li>
-                    <li>Revamped WordPress site, handled backups, performance optimizations, and security updates.</li>
-                    <li>Managed user lifecycle and audits in Google Admin Console and Google Drive.</li>
-                    <li>Contributed in team sessions, recommending tooling such as RotaCloud for process improvements.</li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="relative pl-6 fade-in-section">
-                <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-gray-900 ring-2 ring-white dark:bg-white dark:ring-black"></span>
-                <div class="rounded-lg border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-black">
-                  <div class="flex items-center justify-between">
-                    <h3 class="font-medium">IT Support Specialist — Nearsol Philippines Inc.</h3>
-                    <span class="text-xs text-gray-500 dark:text-gray-400">Apr 2022 – Sep 2024</span>
-                  </div>
-                  <ul class="mt-2 list-disc pl-5 space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                    <li>Handled 200+ tickets/month in Freshdesk with 90% SLA compliance.</li>
-                    <li>Provided remote/on-site support for Windows, Microsoft 365, and SaaS apps.</li>
-                    <li>Configured and maintained Windows Servers, AD/Azure AD, Fortinet, and Cisco.</li>
-                    <li>Led procurement and vendor negotiation to reduce IT costs.</li>
-                    <li>Built Python-based network monitoring for uptime and diagnostics.</li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="relative pl-6 fade-in-section">
-                <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-gray-900 ring-2 ring-white dark:bg-white dark:ring-black"></span>
-                <div class="rounded-lg border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-black">
-                  <div class="flex items-center justify-between">
-                    <h3 class="font-medium">IT Admin/Support — World Source Pettigrew Philippines Inc.</h3>
-                    <span class="text-xs text-gray-500 dark:text-gray-400">Dec 2019 – Feb 2021</span>
-                  </div>
-                  <ul class="mt-2 list-disc pl-5 space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                    <li>Maintained Windows Terminal Servers, AD, CCTV, and SonicWall Firewall.</li>
-                    <li>Deployed Windows Server environments with performance and security compliance.</li>
-                    <li>Provided technical support for telecom and enterprise applications.</li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="relative pl-6 fade-in-section">
-                <span class="absolute left-0 top-1.5 h-3 w-3 rounded-full bg-gray-900 ring-2 ring-white dark:bg-white dark:ring-black"></span>
-                <div class="rounded-lg border border-gray-200 bg-white p-4 dark:border-white/10 dark:bg-black">
-                  <div class="flex items-center justify-between">
-                    <h3 class="font-medium">IT Intern — PLDT Site Office (La Paz Branch)</h3>
-                    <span class="text-xs text-gray-500 dark:text-gray-400">Nov 2018 – Mar 2019</span>
-                  </div>
-                  <ul class="mt-2 list-disc pl-5 space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                    <li>Assisted with cable testing, system upgrades, and infrastructure troubleshooting.</li>
-                    <li>Gained familiarity with network hardware, telecom, and structured cabling.</li>
-                  </ul>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </section>
-
-        <!-- Education -->
-        <section id="education" class="border-t border-gray-200/70 dark:border-white/10">
-          <div class="mx-auto max-w-6xl px-4 py-14">
-            <h2 class="text-xl font-semibold">Education</h2>
-            <p class="mt-4 text-sm text-gray-700 dark:text-gray-300">
-              Bachelor of Science in Information Technology — University of San Agustin, Iloilo (2014–2018).
-            </p>
-          </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="border-t border-gray-200/70 dark:border-white/10">
-          <div class="mx-auto max-w-6xl px-4 py-14">
-            <h2 class="text-xl font-semibold">Contact</h2>
-            <div class="mt-6 flex flex-wrap items-center gap-3">
-              <a href="mailto:gabriielpparinas@gmail.com" class="rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-800 hover:bg-gray-50 dark:border-white/10 dark:text-gray-100 dark:hover:bg-neutral-900">Email</a>
-              <a href="https://x.com/gpparinas" class="rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-800 hover:bg-gray-50 dark:border-white/10 dark:text-gray-100 dark:hover:bg-neutral-900">Twitter/X</a>
-              <a href="https://github.com/gpparinas" class="rounded-md border border-gray-300 px-4 py-2 text-sm text-gray-800 hover:bg-gray-50 dark:border-white/10 dark:text-gray-100 dark:hover:bg-neutral-900">GitHub</a>
-            </div>
-          </div>
-        </section>	  
-      </main>
-
-      <footer class="border-t border-gray-200/70 bg-white py-6 text-center text-sm text-gray-600 dark:border-white/10 dark:bg-black dark:text-gray-400">
-        © <span id="year"></span> Gabriel Philip Pariñas. All rights reserved.
-      </footer>
+  <!-- ===== HEADER / NAVIGATION ===== -->
+  <header class="fixed top-0 inset-x-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 z-50 print:hidden shadow-sm">
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between" role="navigation" aria-label="Main navigation">
+      <a href="#home" class="font-bold text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded">GPP</a>
+      
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#home" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded transition-colors">Home</a>
+        <a href="#competencies" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded transition-colors">Skills</a>
+        <a href="#case-studies" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded transition-colors">Case Studies</a>
+        <a href="#tools" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded transition-colors">Tools</a>
+        <a href="#experience" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded transition-colors">Experience</a>
+        <a href="#certifications" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded transition-colors">Certs</a>
+        <a href="#contact" class="nav-link hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded transition-colors">Contact</a>
+        
+        <!-- Resume Download -->
+        <a href="resume.pdf" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors" download aria-label="Download resume PDF">
+          <i class="fas fa-download mr-2" aria-hidden="true"></i>Resume
+        </a>
+        
+        <!-- Dark Mode Toggle -->
+        <button id="darkModeToggle" aria-label="Toggle dark mode" aria-pressed="false" class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
+          <i id="sunIcon" class="fas fa-sun hidden" aria-hidden="true"></i>
+          <i id="moonIcon" class="fas fa-moon" aria-hidden="true"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuButton" class="md:hidden p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg transition-colors" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileNav">
+        <i id="mobileMenuIcon" class="fas fa-bars text-xl" aria-hidden="true"></i>
+      </button>
+    </nav>
+    
+    <!-- Mobile Nav -->
+    <div id="mobileNav" class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700" role="menu">
+      <div class="px-6 py-4 flex flex-col gap-4">
+        <a href="#home" class="nav-link py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded transition-colors" role="menuitem">Home</a>
+        <a href="#competencies" class="nav-link py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded transition-colors" role="menuitem">Skills</a>
+        <a href="#case-studies" class="nav-link py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded transition-colors" role="menuitem">Case Studies</a>
+        <a href="#tools" class="nav-link py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded transition-colors" role="menuitem">Tools</a>
+        <a href="#experience" class="nav-link py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded transition-colors" role="menuitem">Experience</a>
+        <a href="#certifications" class="nav-link py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded transition-colors" role="menuitem">Certs</a>
+        <a href="#contact" class="nav-link py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded transition-colors" role="menuitem">Contact</a>
+        <a href="/resume.pdf" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors" download aria-label="Download resume PDF" role="menuitem">
+          <i class="fas fa-download mr-2" aria-hidden="true"></i>Resume
+        </a>
+      </div>
     </div>
+  </header>
 
-    <script src="script.js"></script>
-  </body>
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content" class="max-w-6xl mx-auto px-6 pt-24 pb-12">
+    
+    <!-- HERO SECTION -->
+    <section id="home" class="fade-in-section mb-16 text-center">
+      <!-- Professional Photo -->
+      <div class="mb-6">
+        <div class="w-32 h-32 mx-auto rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden flex items-center justify-center">
+          <img src="photo.png" alt="Gabriel Philip Pariñas professional headshot" class="w-full h-full object-cover" loading="eager" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-user text-4xl text-gray-500\' aria-hidden=\'true\'></i>'">
+        </div>
+        <p class="text-sm text-gray-500 mt-2">Professional Photo</p>
+      </div>
+      
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Gabriel Philip Pariñas</h1>
+      <p class="text-xl md:text-2xl text-blue-600 dark:text-blue-400 mb-4">IT Support Engineer</p>
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
+        Proactive and results-oriented IT Support Engineer with 5+ years of experience designing, implementing, and managing robust enterprise infrastructure. Specialized in server administration, network engineering, and cloud technologies with proven expertise in Active Directory, Azure Entra ID, and cybersecurity. Adept at leading projects, optimizing systems, and ensuring high availability across multi-site environments.
+      </p>
+      
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <span class="bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full text-sm">
+          <i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>Roxas City, Capiz, PH
+        </span>
+        <span class="bg-blue-100 dark:bg-blue-900 px-4 py-2 rounded-full text-sm font-medium">
+          <i class="fas fa-bullseye mr-2" aria-hidden="true"></i>Open to Opportunities
+        </span>
+        <span class="bg-green-100 dark:bg-green-900 px-4 py-2 rounded-full text-sm font-medium">
+          <i class="fas fa-check-circle mr-2" aria-hidden="true"></i>5+ Years Experience
+        </span>
+      </div>
+      
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+          <i class="fas fa-envelope mr-2" aria-hidden="true"></i>Get In Touch
+        </a>
+        <a href="https://linkedin.com/in/gpparinas" target="_blank" rel="noopener noreferrer" class="border border-gray-300 dark:border-gray-600 px-6 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+          <i class="fab fa-linkedin mr-2" aria-hidden="true"></i>LinkedIn
+        </a>
+      </div>
+    </section>
+
+    <!-- CORE COMPETENCIES -->
+    <section id="competencies" class="fade-in-section mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-center">Core Competencies & Technical Skills</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Skill Card 1 -->
+        <article class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center mb-3">
+            <i class="fas fa-server text-blue-600 dark:text-blue-400 text-xl mr-3" aria-hidden="true"></i>
+            <h3 class="font-semibold">System & Server Administration</h3>
+          </div>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Windows Server (2008-2022)</span>
+              <span class="text-xs bg-green-600 text-white px-2 py-1 rounded" role="status" aria-label="Expert level">Expert</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Active Directory</span>
+              <span class="text-xs bg-green-600 text-white px-2 py-1 rounded" role="status" aria-label="Expert level">Expert</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Group Policy</span>
+              <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded" role="status" aria-label="Advanced level">Advanced</span>
+            </div>
+            <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">5+ years managing multi-site enterprise environments</p>
+          </div>
+        </article>
+
+        <!-- Skill Card 2 -->
+        <article class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center mb-3">
+            <i class="fas fa-cloud text-blue-600 dark:text-blue-400 text-xl mr-3" aria-hidden="true"></i>
+            <h3 class="font-semibold">Cloud & Virtualization</h3>
+          </div>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Azure Entra ID</span>
+              <span class="text-xs bg-green-600 text-white px-2 py-1 rounded" role="status" aria-label="Expert level">Expert</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Microsoft Azure</span>
+              <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded" role="status" aria-label="Advanced level">Advanced</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">VMware & Hyper-V</span>
+              <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded" role="status" aria-label="Advanced level">Advanced</span>
+            </div>
+            <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">Maintained and proactive mitigate infrastructure degrade</p>
+          </div>
+        </article>
+
+        <!-- Skill Card 3 -->
+        <article class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center mb-3">
+            <i class="fas fa-network-wired text-blue-600 dark:text-blue-400 text-xl mr-3" aria-hidden="true"></i>
+            <h3 class="font-semibold">Networking & Security</h3>
+          </div>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Cisco & Fortinet</span>
+              <span class="text-xs bg-green-600 text-white px-2 py-1 rounded" role="status" aria-label="Expert level">Expert</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">VLANs & VPNs</span>
+              <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded" role="status" aria-label="Advanced level">Advanced</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">CCTV Systems</span>
+              <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded" role="status" aria-label="Advanced level">Advanced</span>
+            </div>
+            <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">Configured & managed enterprise networks</p>
+          </div>
+        </article>
+
+        <!-- Skill Card 4 -->
+        <article class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center mb-3">
+            <i class="fas fa-headset text-blue-600 dark:text-blue-400 text-xl mr-3" aria-hidden="true"></i>
+            <h3 class="font-semibold">IT Support & Helpdesk</h3>
+          </div>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Freshdesk</span>
+              <span class="text-xs bg-green-600 text-white px-2 py-1 rounded" role="status" aria-label="Expert level">Expert</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Remote Tools (AnyDesk, TeamViewer)</span>
+              <span class="text-xs bg-green-600 text-white px-2 py-1 rounded" role="status" aria-label="Expert level">Expert</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Microsoft 365</span>
+              <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded" role="status" aria-label="Advanced level">Advanced</span>
+            </div>
+            <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">200+ tickets/month with 95% SLA compliance</p>
+          </div>
+        </article>
+
+        <!-- Skill Card 5 -->
+        <article class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center mb-3">
+            <i class="fas fa-code text-blue-600 dark:text-blue-400 text-xl mr-3" aria-hidden="true"></i>
+            <h3 class="font-semibold">Automation & Scripting</h3>
+          </div>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm">PowerShell</span>
+              <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded" role="status" aria-label="Advanced level">Advanced</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Python</span>
+              <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded" role="status" aria-label="Advanced level">Advanced</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Batch/Shell</span>
+              <span class="text-xs bg-yellow-600 text-white px-2 py-1 rounded" role="status" aria-label="Intermediate level">Intermediate</span>
+            </div>
+            <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">Built network monitoring scripts, automated user provisioning</p>
+          </div>
+        </article>
+
+        <!-- Skill Card 6 -->
+        <article class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+          <div class="flex items-center mb-3">
+            <i class="fas fa-globe text-blue-600 dark:text-blue-400 text-xl mr-3" aria-hidden="true"></i>
+            <h3 class="font-semibold">Web & Domain Management</h3>
+          </div>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm">DNS Management</span>
+              <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded" role="status" aria-label="Advanced level">Advanced</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">WordPress</span>
+              <span class="text-xs bg-blue-600 text-white px-2 py-1 rounded" role="status" aria-label="Advanced level">Advanced</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">SSL/HTTPS</span>
+              <span class="text-xs bg-green-600 text-white px-2 py-1 rounded" role="status" aria-label="Expert level">Expert</span>
+            </div>
+            <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">Led full domain migrations and website redesigns</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section id="case-studies" class="fade-in-section mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-center">Featured Case Studies</h2>
+      
+      <div class="grid lg:grid-cols-2 gap-6">
+        
+        <!-- Case Study 1: 2FA / Sentinel driver conflict -->
+<article class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow">
+  <div class="flex items-start mb-4">
+    <div class="bg-orange-100 dark:bg-orange-900 p-3 rounded-lg mr-4">
+      <i class="fas fa-fingerprint text-orange-600 dark:text-orange-400 text-2xl" aria-hidden="true"></i>
+    </div>
+    <div>
+      <h3 class="text-xl font-semibold mb-1">2FA Roll-out Blocked by Endpoint-Security</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Nearsol Philippines • 2023</p>
+    </div>
+  </div>
+
+  <div class="space-y-3 text-sm">
+    <div>
+      <strong class="text-red-600 dark:text-red-400">Problem:</strong>
+      <p>500 endpoints stuck at Windows log-in after new 2FA agent deployment; keyboards/mice unresponsive, preventing supervisor-approval flow.</p>
+    </div>
+    <div>
+      <strong class="text-blue-600 dark:text-blue-400">Action:</strong>
+      <ul class="list-disc ml-5 space-y-1">
+        <li>Reconfig PowerShell script provided to remove broken 2FA agent remotely & added domain GPO for PH region.</li>
+        <li>Joined vendor + security bridge call; live-demoed root-cause (Sentinel deleting keyboard-driver signature bound to 2FA agent).</li>
+        <li>Co-ordinated whitelist update in Sentinel while vendor patched agent.</li>
+      </ul>
+    </div>
+    <div>
+      <strong class="text-green-600 dark:text-green-400">Result:</strong>
+      <p>Reduced affected devices from 500 → 0 in 36 h; prevented re-occurrence by pushing updated agent + driver allow-list to 1400 endpoints.</p>
+    </div>
+  </div>
+
+  <div class="mt-4 flex flex-wrap gap-2" role="list" aria-label="Technologies used">
+    <span class="bg-orange-50 dark:bg-orange-900 px-2 py-1 rounded text-xs" role="listitem">PowerShell</span>
+    <span class="bg-orange-50 dark:bg-orange-900 px-2 py-1 rounded text-xs" role="listitem">Group Policy</span>
+    <span class="bg-orange-50 dark:bg-orange-900 px-2 py-1 rounded text-xs" role="listitem">Sentinel One</span>
+    <span class="bg-orange-50 dark:bg-orange-900 px-2 py-1 rounded text-xs" role="listitem">2FA Agent</span>
+  </div>
+</article>
+        <!-- Case Study 2: Server Upgrade -->
+        <article class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-start mb-4">
+            <div class="bg-red-100 dark:bg-red-900 p-3 rounded-lg mr-4">
+              <i class="fas fa-server text-red-600 dark:text-red-400 text-2xl" aria-hidden="true"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold mb-1">Critical Server Upgrade Initiative</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">World Source Pettigrew • 2020</p>
+            </div>
+          </div>
+          
+          <div class="space-y-3 text-sm">
+            <div>
+              <strong class="text-red-600 dark:text-red-400">Challenge:</strong>
+              <p>Windows Server 2008 R2 reached end-of-support, creating critical security vulnerabilities for multi-site operations</p>
+            </div>
+            <div>
+              <strong class="text-blue-600 dark:text-blue-400">Action:</strong>
+              <p>Proposed and led migration to Server 2019, conducted vulnerability assessment, planned rollout, and executed zero-downtime upgrade across 3 locations</p>
+            </div>
+            <div>
+              <strong class="text-green-600 dark:text-green-400">Result:</strong>
+              <p>Eliminated security risks, achieved compliance, and improved system performance by 35% with modern infrastructure</p>
+            </div>
+          </div>
+          
+          <div class="mt-4 flex flex-wrap gap-2" role="list" aria-label="Technologies used">
+            <span class="bg-red-50 dark:bg-red-900 px-2 py-1 rounded text-xs" role="listitem">Windows Server</span>
+            <span class="bg-red-50 dark:bg-red-900 px-2 py-1 rounded text-xs" role="listitem">Risk Assessment</span>
+            <span class="bg-red-50 dark:bg-red-900 px-2 py-1 rounded text-xs" role="listitem">Migration</span>
+            <span class="bg-red-50 dark:bg-red-900 px-2 py-1 rounded text-xs" role="listitem">Vulnerability Management</span>
+          </div>
+        </article>
+		<!-- Training / OJT card -->
+<article class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow">
+  <div class="flex items-start mb-4">
+    <div class="bg-purple-100 dark:bg-purple-900 p-3 rounded-lg mr-4">
+      <i class="fas fa-chalkboard-teacher text-purple-600 dark:text-purple-400 text-2xl" aria-hidden="true"></i>
+    </div>
+    <div>
+      <h3 class="text-xl font-semibold mb-1">Intern Training & Career Mentorship</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Nearsol Philippines • 2023-2024</p>
+    </div>
+  </div>
+
+  <div class="space-y-3 text-sm">
+    <div>
+      <strong class="text-red-600 dark:text-red-400">Need:</strong>
+      <p>300-hour OJT program required scalable onboarding for 4-8 new interns per quarter without draining senior support engineers.</p>
+    </div>
+    <div>
+      <strong class="text-blue-600 dark:text-blue-400">Action:</strong>
+      <ul class="list-disc ml-5 space-y-1">
+        <li>Designed 4-week curriculum: AD / M365 / Freshdesk / network basics + hands-on labs.</li>
+        <li>Built test labs; instituted weekly demo + feedback loop.</li>
+        <li>Provide mentorship to help them create a roadmap of their target roles.</li>
+      </ul>
+    </div>
+    <div>
+      <strong class="text-green-600 dark:text-green-400">Result:</strong>
+      <p>Interns handled Tier-1 tickets independently after 3 weeks; reduced support teams shadow time by 70%</p>
+    </div>
+  </div>
+
+  <div class="mt-4 flex flex-wrap gap-2" role="list" aria-label="Technologies used">
+    <span class="bg-purple-50 dark:bg-purple-900 px-2 py-1 rounded text-xs" role="listitem">Curriculum Design</span>
+    <span class="bg-purple-50 dark:bg-purple-900 px-2 py-1 rounded text-xs" role="listitem">Career Mentorship</span>
+    <span class="bg-purple-50 dark:bg-purple-900 px-2 py-1 rounded text-xs" role="listitem">Freshdesk Analytics</span>
+  </div>
+</article>
+      </div>
+    </section>
+
+    <!-- TOOLS DASHBOARD -->
+    <section id="tools" class="fade-in-section mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-center">Technical Tool Stack</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Ticketing -->
+        <article class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+          <h3 class="font-semibold mb-3 text-sm flex items-center">
+            <i class="fas fa-ticket-alt text-blue-600 mr-2" aria-hidden="true"></i>Ticketing
+          </h3>
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Freshdesk</span>
+              <div class="flex gap-1" role="img" aria-label="5 out of 5 skill rating">
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Networking -->
+        <article class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+          <h3 class="font-semibold mb-3 text-sm flex items-center">
+            <i class="fas fa-network-wired text-blue-600 mr-2" aria-hidden="true"></i>Networking
+          </h3>
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Cisco IOS</span>
+              <div class="flex gap-1" role="img" aria-label="4 out of 5 skill rating">
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Fortinet</span>
+              <div class="flex gap-1" role="img" aria-label="4 out of 5 skill rating">
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Cloud -->
+        <article class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+          <h3 class="font-semibold mb-3 text-sm flex items-center">
+            <i class="fas fa-cloud text-blue-600 mr-2" aria-hidden="true"></i>Cloud
+          </h3>
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Azure Entra ID</span>
+              <div class="flex gap-1" role="img" aria-label="5 out of 5 skill rating">
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Microsoft Azure</span>
+              <div class="flex gap-1" role="img" aria-label="4 out of 5 skill rating">
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Scripting -->
+        <article class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+          <h3 class="font-semibold mb-3 text-sm flex items-center">
+            <i class="fas fa-code text-blue-600 mr-2" aria-hidden="true"></i>Scripting
+          </h3>
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-sm">PowerShell</span>
+              <div class="flex gap-1" role="img" aria-label="4 out of 5 skill rating">
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm">Python</span>
+              <div class="flex gap-1" role="img" aria-label="4 out of 5 skill rating">
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="fade-in-section mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-center">Professional Experience</h2>
+      
+      <div class="space-y-8">
+        
+        <!-- Job 1: Rubixcare -->
+        <article class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex flex-wrap justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-semibold">IT Support</h3>
+              <p class="text-blue-600 dark:text-blue-400">Rubixcare Ltd. (Remote, UK)</p>
+            </div>
+            <time datetime="2025-03/2025-08" class="text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">March 2025 – August 2025</time>
+          </div>
+          
+          <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Led technical execution of full company rebranding</strong>, including new email domain setup and reconstruction of email infrastructure for 35+ users</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Managed end-to-end WordPress migration</strong> and redesign, including DNS configuration and SSL certificate implementation for HTTPS enforcement</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Primary point of contact for technical support</strong>, resolving network connectivity, website access, and software issues with average resolution time under 2 hours</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Designed and deployed standardized email signatures</strong> across organization, ensuring brand consistency</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Job 2: Nearsol -->
+        <article class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex flex-wrap justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-semibold">IT Support Specialist</h3>
+              <p class="text-blue-600 dark:text-blue-400">Nearsol Philippines Inc.</p>
+            </div>
+            <time datetime="2022-04/2024-09" class="text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">April 2022 – September 2024</time>
+          </div>
+          
+          <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Spearheaded migration of local Active Directory to Azure Entra ID</strong>, unifying user management across Guatemala, Manila, and Iloilo operations (200+ users)</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Managed 200+ support tickets/month using Freshdesk</strong>, ensuring 95% SLA compliance and maintaining high user satisfaction</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Installed, configured, and maintained Cisco & Fortinet network devices</strong>, optimizing network performance and security across multiple sites</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Led network optimization projects</strong> that improved connectivity and reduced latency for distributed teams</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Provided comprehensive technical support</strong> for Windows, Microsoft 365, and SaaS platforms</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Job 3: World Source -->
+        <article class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex flex-wrap justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-semibold">IT Admin/Support</h3>
+              <p class="text-blue-600 dark:text-blue-400">World Source Pettigrew Philippines Inc.</p>
+            </div>
+            <time datetime="2019-12/2021-02" class="text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">December 2019 – February 2021</time>
+          </div>
+          
+          <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Managed site environment with 3 Windows Server 2008 R2 terminal servers</strong> and administered Active Directory across Manila, Iloilo, and US locations</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Proactively initiated critical server upgrade project</strong> from Windows Server 2008 R2 to 2016/2019, highlighting security risks to management</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Managed and maintained company's CCTV system</strong>, including troubleshooting, maintenance, and security assessments</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Conducted vulnerability assessments and security risk analysis</strong>, strengthening overall IT security posture</span>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Job 4: PLDT Intern -->
+        <article class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <div class="flex flex-wrap justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-semibold">IT Intern</h3>
+              <p class="text-blue-600 dark:text-blue-400">PLDT Site Office - La Paz Branch</p>
+            </div>
+            <time datetime="2018-11/2019-03" class="text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">November 2018 – March 2019</time>
+          </div>
+          
+          <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Assisted in network cable testing, system upgrades, and troubleshooting</strong> of IT infrastructure for telecom operations</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <span><strong>Developed hands-on familiarity with networking hardware, telecommunications, and structured cabling standards</strong></span>
+            </li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="fade-in-section mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-center">Certifications & Training</h2>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- Completed -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4 flex items-center">
+            <i class="fas fa-certificate text-green-600 mr-2" aria-hidden="true"></i>✅ Completed
+          </h3>
+          <div class="space-y-3">
+            <article class="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-800 p-4 rounded-lg">
+              <h4 class="font-medium">Google IT Support Professional Certificate</h4>
+			  <a href="https://www.credly.com/badges/95ebce15-c2f6-400b-b5e6-38e9d2bca5fd/public_url" target="_blank" rel="noopener">
+              <p class="text-sm text-gray-600 dark:text-gray-400">Google • Credential ID: 95ebce15-c2f6-400b-b5e6-38e9d2bca5fd</p>
+			  </a>
+            </article>
+            <article class="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-800 p-4 rounded-lg">
+              <h4 class="font-medium">Google Cybersecurity Professional Certificate</h4>
+			  <a href="https://www.credly.com/badges/c87fa725-dc87-40db-a001-bb7aaf8d7a9a/public_url" target="_blank" rel="noopener">
+              <p class="text-sm text-gray-600 dark:text-gray-400">Google • Credential ID: c87fa725-dc87-40db-a001-bb7aaf8d7a9a</p>
+			  </a>
+            </article>
+			<article class="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-800 p-4 rounded-lg">
+              <h4 class="font-medium">Network Technician Career Path</h4>
+			  <a href="https://www.credly.com/badges/42430fe3-65b2-4432-b512-94fb41e7809b/public_url" target="_blank" rel="noopener">
+              <p class="text-sm text-gray-600 dark:text-gray-400">Cisco • Credential ID: 42430fe3-65b2-4432-b512-94fb41e7809b</p>
+			  </a>
+            </article>
+			<article class="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-800 p-4 rounded-lg">
+              <h4 class="font-medium">COMPTIA a+ Network</h4>
+			  <a href="https://coursera.org/verify/L04YSR7S4PM7" target="_blank" rel="noopener">
+              <p class="text-sm text-gray-600 dark:text-gray-400">COMPTIA • Credential ID: L04YSR7S4PM7</p>
+			  </a>
+            </article>
+          </div>
+        </div>
+
+        <!-- In Progress -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4 flex items-center">
+            <i class="fas fa-book-open text-blue-600 mr-2" aria-hidden="true"></i>📚 In Progress / Planned
+          </h3>
+          <div class="space-y-3">
+            <article class="bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-800 p-4 rounded-lg">
+              <h4 class="font-medium">Microsoft Certified: Azure Administrator Associate</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Preparation ongoing</p>
+            </article>
+            <article class="bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-800 p-4 rounded-lg">
+              <h4 class="font-medium">Microsoft 365 Certified: Endpoint Administrator Associate</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Preparation ongoing</p>
+            </article>
+            <article class="bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 p-4 rounded-lg">
+              <h4 class="font-medium">CCNA (Self-Study)</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Target: Early-2026 completion</p>
+            </article>
+            <article class="bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 p-4 rounded-lg">
+              <h4 class="font-medium">ITIL v4 Foundation (Self-Study)</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">Target: Q2 2026 completion</p>
+            </article>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="fade-in-section mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-center">Education</h2>
+      
+      <article class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+        <div class="flex flex-wrap justify-between items-start">
+          <div>
+            <h3 class="text-xl font-semibold">Bachelor of Science in Information Technology</h3>
+            <p class="text-blue-600 dark:text-blue-400">University of San Agustin, Iloilo</p>
+          </div>
+          <time datetime="2014/2018" class="text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">2014 – 2018</time>
+        </div>
+      </article>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="fade-in-section mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-center">Contact & Connect</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- Contact Form -->
+        <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+          <h3 class="text-xl font-semibold mb-4">Send a Message</h3>
+          <form id="contactForm" class="space-y-4" novalidate>
+            <div>
+              <label for="name" class="block text-sm font-medium mb-2">Name <span class="text-red-500" aria-label="required">*</span></label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:outline-none transition-colors"
+                aria-required="true"
+                aria-invalid="false"
+              >
+              <span id="nameError" class="text-red-500 text-xs mt-1 hidden" role="alert"></span>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium mb-2">Email <span class="text-red-500" aria-label="required">*</span></label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:outline-none transition-colors"
+                aria-required="true"
+                aria-invalid="false"
+              >
+              <span id="emailError" class="text-red-500 text-xs mt-1 hidden" role="alert"></span>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium mb-2">Message <span class="text-red-500" aria-label="required">*</span></label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="4" 
+                required 
+                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:outline-none transition-colors resize-vertical"
+                aria-required="true"
+                aria-invalid="false"
+              ></textarea>
+              <span id="messageError" class="text-red-500 text-xs mt-1 hidden" role="alert"></span>
+            </div>
+            <button 
+              type="submit" 
+              class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              id="submitButton"
+            >
+              <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i><span id="submitText">Send Message</span>
+            </button>
+            <div id="formStatus" class="text-center text-sm mt-2 hidden" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="space-y-6">
+          <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-semibold mb-4">Professional Links</h3>
+            <div class="space-y-4">
+              
+              <a href="mailto:gabriielpparinas@gmail.com" class="flex items-center p-3 bg-white dark:bg-gray-700 rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow">
+                <i class="fas fa-envelope text-blue-600 dark:text-blue-400 text-xl mr-3" aria-hidden="true"></i>
+                <div>
+                  <p class="font-medium">gabriielpparinas@gmail.com</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Professional Email</p>
+                </div>
+              </a>
+              
+              <a href="tel:+639474701821" class="flex items-center p-3 bg-white dark:bg-gray-700 rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow">
+                <i class="fas fa-phone text-blue-600 dark:text-blue-400 text-xl mr-3" aria-hidden="true"></i>
+                <div>
+                  <p class="font-medium">+63 947 470 1821</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">Mobile (Philippines)</p>
+                </div>
+              </a>
+              
+              <a href="https://linkedin.com/in/gpparinas" target="_blank" rel="noopener noreferrer" class="flex items-center p-3 bg-white dark:bg-gray-700 rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow">
+                <i class="fab fa-linkedin text-blue-600 dark:text-blue-400 text-xl mr-3" aria-hidden="true"></i>
+                <div>
+                  <p class="font-medium">linkedin.com/in/gpparinas</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">LinkedIn Profile</p>
+                </div>
+              </a>
+              
+              <a href="https://github.com/gpparinas" target="_blank" rel="noopener noreferrer" class="flex items-center p-3 bg-white dark:bg-gray-700 rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow">
+                <i class="fab fa-github text-blue-600 dark:text-blue-400 text-xl mr-3" aria-hidden="true"></i>
+                <div>
+                  <p class="font-medium">github.com/gpparinas</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">GitHub Projects</p>
+                </div>
+              </a>
+              
+              <a href="https://x.com/gpparinas" target="_blank" rel="noopener noreferrer" class="flex items-center p-3 bg-white dark:bg-gray-700 rounded-lg hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow">
+                <i class="fab fa-twitter text-blue-600 dark:text-blue-400 text-xl mr-3" aria-hidden="true"></i>
+                <div>
+                  <p class="font-medium">@gpparinas</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">X/Twitter</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <aside class="bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-800 p-6 rounded-lg">
+            <h4 class="font-semibold mb-2 flex items-center">
+              <i class="fas fa-info-circle mr-2" aria-hidden="true"></i>Availability
+            </h4>
+            <p class="text-sm">Currently open to full-time IT Support Engineer and System Administrator opportunities. Available for remote or hybrid roles worldwide. Willing to relocate for the right position.</p>
+          </aside>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 print:hidden">
+    <div class="max-w-6xl mx-auto px-6 text-center text-sm text-gray-600 dark:text-gray-400">
+      <p>&copy; <span id="currentYear"></span> Gabriel Philip Pariñas. All rights reserved.</p>
+      <p class="mt-2">Built with <i class="fas fa-code text-blue-500"></i> and <i class="fas fa-heart text-red-500"></i> for IT Professionals</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
 </html>
