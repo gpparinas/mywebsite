@@ -16,9 +16,10 @@ A single-page portfolio website for Gabriel Philip Pariñas, showcasing IT infra
 
 ## Features
 
-- Custom responsive single-page portfolio
+- Dashboard-style layout: sticky profile sidebar, bold headline, scrolling tools strip, and a bento grid of cards linking to each section
+- Custom responsive single-page portfolio (sidebar becomes a slide-out drawer on mobile)
 - Light and dark mode
-- Sticky navigation with active section highlighting
+- Sidebar navigation with active section highlighting
 - Smooth scrolling and fade-in reveal animations
 - Skills, tools, experience timeline, certifications, and contact sections
 - Resume download and external profile links

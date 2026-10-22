@@ -43,40 +43,30 @@ function updateThemeIcon(theme) {
   }
 }
 
-// ── 2. MOBILE MENU ───────────────────────────────────────────
+// ── 2. MOBILE MENU (slide-out sidebar) ───────────────────────
 const mobileBtn = document.getElementById('mobileMenuButton');
 const mobileNav = document.getElementById('mobileNav');
 const menuIcon  = document.getElementById('mobileMenuIcon');
+const backdrop  = document.getElementById('sidebarBackdrop');
 
-mobileBtn && mobileBtn.addEventListener('click', () => {
-  const open = mobileNav.classList.toggle('open');
-  mobileBtn.setAttribute('aria-expanded', open);
+function setMenu(open) {
+  if (!mobileNav) return;
+  mobileNav.classList.toggle('open', open);
+  mobileBtn && mobileBtn.setAttribute('aria-expanded', open);
+  if (backdrop) backdrop.hidden = !open;
   if (menuIcon) {
     menuIcon.classList.toggle('fa-bars', !open);
     menuIcon.classList.toggle('fa-times', open);
   }
-});
+}
 
-document.addEventListener('click', (e) => {
-  if (mobileNav && !mobileNav.contains(e.target) && !mobileBtn?.contains(e.target)) {
-    mobileNav.classList.remove('open');
-    mobileBtn && mobileBtn.setAttribute('aria-expanded', 'false');
-    if (menuIcon) {
-      menuIcon.classList.add('fa-bars');
-      menuIcon.classList.remove('fa-times');
-    }
-  }
+mobileBtn && mobileBtn.addEventListener('click', () => {
+  setMenu(!mobileNav.classList.contains('open'));
 });
-
-mobileNav && mobileNav.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    mobileNav.classList.remove('open');
-    mobileBtn && mobileBtn.setAttribute('aria-expanded', 'false');
-    if (menuIcon) {
-      menuIcon.classList.add('fa-bars');
-      menuIcon.classList.remove('fa-times');
-    }
-  });
+backdrop && backdrop.addEventListener('click', () => setMenu(false));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+mobileNav && mobileNav.querySelectorAll('.side-nav a').forEach(link => {
+  link.addEventListener('click', () => setMenu(false));
 });
 
 // ── 3. SMOOTH SCROLL ─────────────────────────────────────────
@@ -87,7 +77,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(id);
     if (!target) return;
     e.preventDefault();
-    const offset = document.querySelector('header')?.offsetHeight || 80;
+    const offset = (document.querySelector('.topbar')?.offsetHeight || 0) + 16;
     const top = target.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top, behavior: 'smooth' });
     history.pushState(null, null, id);
@@ -125,17 +115,3 @@ const fadeObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 
 document.querySelectorAll('.fade-in-section').forEach(el => fadeObserver.observe(el));
-
-// ── 6. SKILL PROGRESS BARS ANIMATE ON SCROLL ─────────────────
-const barObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('[data-width]').forEach(bar => {
-        bar.style.width = bar.getAttribute('data-width');
-      });
-      barObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-document.querySelectorAll('.skill-bar-group').forEach(el => barObserver.observe(el));

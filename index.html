@@ -13,7 +13,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
   <!-- Icons (Font Awesome) -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -27,423 +27,531 @@
   <!-- Skip link -->
   <a href="#main-content" class="sr-only">Skip to main content</a>
 
-  <!-- ===== HEADER ===== -->
-  <header>
-    <div class="container">
-      <div class="nav-inner">
-        <!-- Brand / Logo -->
-        <a href="#home" class="brand" aria-label="Gabriel Pariñas — home">
-          <span class="logo-mark" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
-            </svg>
-          </span>
-          <span>Gabriel Pariñas</span>
-        </a>
+  <!-- ===== MOBILE TOP BAR ===== -->
+  <div class="topbar">
+    <a href="#home" class="topbar-brand" aria-label="Gabriel Pariñas — home">
+      <img src="photo.png" alt="" width="36" height="36">
+      <span>Gabriel Pariñas</span>
+    </a>
+    <button id="mobileMenuButton" class="mobile-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNav">
+      <i id="mobileMenuIcon" class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
 
-        <!-- Desktop nav -->
-        <nav class="nav-links" aria-label="Main navigation">
-          <a href="#home"           class="nav-link">Home</a>
-          <a href="#competencies"   class="nav-link">Skills</a>
-          <a href="#case-studies"   class="nav-link">Case Studies</a>
-          <a href="#tools"          class="nav-link">Tools</a>
-          <a href="#experience"     class="nav-link">Experience</a>
-          <a href="#certifications" class="nav-link">Certs</a>
-          <a href="#contact"        class="nav-link">Contact</a>
-          <a href="resume.pdf" class="btn-resume" download aria-label="Download resume PDF">
-            <i class="fas fa-download" aria-hidden="true"></i> Resume
-          </a>
+  <div class="app">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="mobileNav" aria-label="Profile and navigation">
+      <div class="profile">
+        <div class="avatar">
+          <img src="photo.png" alt="Gabriel Philip Pariñas — professional headshot" width="96" height="96"
+               onerror="this.style.display='none'">
+        </div>
+        <h2 class="profile-name">Gabriel Pariñas</h2>
+        <p class="profile-handle">@gpparinas</p>
+        <p class="profile-status"><span class="status-dot" aria-hidden="true"></span> Open to opportunities</p>
+        <div class="socials">
+          <a href="https://linkedin.com/in/gpparinas" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+          <a href="https://github.com/gpparinas" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+          <a href="mailto:gabriielpparinas@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
           <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-            <i id="sunIcon"  class="fas fa-sun  hidden" aria-hidden="true"></i>
-            <i id="moonIcon" class="fas fa-moon"        aria-hidden="true"></i>
+            <i id="sunIcon"  class="fas fa-sun hidden" aria-hidden="true"></i>
+            <i id="moonIcon" class="fas fa-moon"       aria-hidden="true"></i>
           </button>
-        </nav>
-
-        <!-- Mobile toggle -->
-        <button id="mobileMenuButton" class="mobile-btn" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileNav">
-          <i id="mobileMenuIcon" class="fas fa-bars" aria-hidden="true"></i>
-        </button>
+        </div>
       </div>
 
-      <!-- Mobile nav -->
-      <nav id="mobileNav" aria-label="Mobile navigation">
-        <a href="#home"           class="nav-link">Home</a>
-        <a href="#competencies"   class="nav-link">Skills</a>
-        <a href="#case-studies"   class="nav-link">Case Studies</a>
-        <a href="#tools"          class="nav-link">Tools</a>
-        <a href="#experience"     class="nav-link">Experience</a>
-        <a href="#certifications" class="nav-link">Certifications</a>
-        <a href="#contact"        class="nav-link">Contact</a>
-        <a href="resume.pdf" class="btn-resume" style="width:fit-content" download>
-          <i class="fas fa-download" aria-hidden="true"></i> Download Resume
-        </a>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a href="#home"           class="nav-link active"><i class="fas fa-house" aria-hidden="true"></i> Home</a>
+        <a href="#case-studies"   class="nav-link"><i class="far fa-folder" aria-hidden="true"></i> Projects</a>
+        <a href="#competencies"   class="nav-link"><i class="fas fa-layer-group" aria-hidden="true"></i> Skills</a>
+        <a href="#tools"          class="nav-link"><i class="fas fa-toolbox" aria-hidden="true"></i> Tools</a>
+        <a href="#experience"     class="nav-link"><i class="far fa-star" aria-hidden="true"></i> Experience</a>
+        <a href="#certifications" class="nav-link"><i class="fas fa-award" aria-hidden="true"></i> Credentials</a>
+        <a href="#contact"        class="nav-link"><i class="far fa-circle-user" aria-hidden="true"></i> Contact</a>
       </nav>
-    </div>
-  </header>
 
-  <!-- ===== MAIN ===== -->
-  <main id="main-content" class="container">
+      <a href="resume.pdf" class="btn-resume" download aria-label="Download resume PDF">
+        <i class="fas fa-download" aria-hidden="true"></i> Download Resume
+      </a>
 
-    <!-- HERO -->
-    <section id="home" class="fade-in-section">
-      <div class="hero-content">
-        <span class="section-label">
-          <i class="fas fa-server fa-xs" aria-hidden="true"></i>
-          IT Infrastructure &amp; Support Operations
-        </span>
-        <h1 class="hero-name">Gabriel Philip<br><em>Pariñas</em></h1>
-        <p class="hero-role">System Administrator &middot; Junior Systems Engineer &middot; Network Administrator</p>
-        <p class="hero-summary">
+      <div class="sidebar-foot">
+        <span class="logo-mark" aria-hidden="true"><i class="fas fa-server"></i></span>
+        <span>&copy; 2026<br>Gabriel Philip Pariñas. All rights reserved.</span>
+      </div>
+    </aside>
+
+    <!-- ===== MAIN ===== -->
+    <main id="main-content">
+
+      <!-- HOME / DASHBOARD -->
+      <section id="home">
+        <div class="home-head">
+          <div>
+            <h1 class="headline">Keep it running. Keep it secure.</h1>
+            <p class="subhead">
+              Six years of networks, servers, and endpoints that stay online. The tickets get closed,
+              the patches go out on schedule, and the users stop noticing IT — because nothing breaks.
+            </p>
+          </div>
+          <a class="btn-dark" href="#contact">Get in touch <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+
+        <!-- Tools strip -->
+        <div class="tools-strip">
+          <div class="strip-label">
+            <span>Daily drivers</span>
+            <strong>Tools I work with</strong>
+          </div>
+          <div class="marquee">
+            <div class="marquee-track">
+              <ul class="marquee-list" role="list">
+                <li><i class="fab fa-windows" aria-hidden="true"></i> Windows Server</li>
+                <li><i class="fab fa-microsoft" aria-hidden="true"></i> Microsoft 365</li>
+                <li><i class="fas fa-users-gear" aria-hidden="true"></i> Azure AD</li>
+                <li><i class="fas fa-desktop" aria-hidden="true"></i> Datto RMM</li>
+                <li><i class="fas fa-ticket" aria-hidden="true"></i> Autotask PSA</li>
+                <li><i class="fas fa-fire-flame-curved" aria-hidden="true"></i> Fortinet</li>
+                <li><i class="fas fa-network-wired" aria-hidden="true"></i> Cisco IOS</li>
+                <li><i class="fas fa-chart-line" aria-hidden="true"></i> Zabbix</li>
+                <li><i class="fas fa-book" aria-hidden="true"></i> ITGlue</li>
+                <li><i class="fas fa-robot" aria-hidden="true"></i> Ollama</li>
+              </ul>
+              <ul class="marquee-list" role="list" aria-hidden="true">
+                <li><i class="fab fa-windows"></i> Windows Server</li>
+                <li><i class="fab fa-microsoft"></i> Microsoft 365</li>
+                <li><i class="fas fa-users-gear"></i> Azure AD</li>
+                <li><i class="fas fa-desktop"></i> Datto RMM</li>
+                <li><i class="fas fa-ticket"></i> Autotask PSA</li>
+                <li><i class="fas fa-fire-flame-curved"></i> Fortinet</li>
+                <li><i class="fas fa-network-wired"></i> Cisco IOS</li>
+                <li><i class="fas fa-chart-line"></i> Zabbix</li>
+                <li><i class="fas fa-book"></i> ITGlue</li>
+                <li><i class="fas fa-robot"></i> Ollama</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento grid -->
+        <div class="bento-frame">
+          <div class="bento">
+
+            <a class="bento-card span-2" href="#case-studies">
+              <div class="bento-head">
+                <span class="bento-icon"><i class="far fa-folder" aria-hidden="true"></i></span>
+                <h3>Projects</h3>
+              </div>
+              <p class="bento-desc">Infrastructure work and lab builds that solve real problems.</p>
+              <div class="preview-window" aria-hidden="true">
+                <div class="window-bar"><span></span><span></span><span></span><em>gp@homelab ~</em></div>
+                <div class="window-body">
+                  <p class="window-quote">Six years of keeping<br>systems <em>online.</em></p>
+                  <ul class="window-stats">
+                    <li><b>200+</b> requests / month</li>
+                    <li><b>90%</b> SLA compliance</li>
+                    <li><b>6+</b> years in IT</li>
+                  </ul>
+                </div>
+              </div>
+            </a>
+
+            <a class="bento-card" href="#contact">
+              <div class="bento-head">
+                <span class="bento-icon"><i class="far fa-user" aria-hidden="true"></i></span>
+                <h3>About</h3>
+              </div>
+              <p class="bento-desc">Who I am and how I work.</p>
+              <div class="photo-stack" aria-hidden="true">
+                <span class="stack-back"></span>
+                <span class="stack-mid"></span>
+                <img src="photo.png" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
+              </div>
+            </a>
+
+            <a class="bento-card" href="#case-studies">
+              <div class="bento-head">
+                <span class="bento-icon"><i class="fas fa-flask" aria-hidden="true"></i></span>
+                <h3>Homelab &amp; AI</h3>
+              </div>
+              <p class="bento-desc">The self-hosted lab and the AI tools I run on it.</p>
+              <div class="pill-cloud" aria-hidden="true">
+                <span>Ollama + RAG</span>
+                <span>Zabbix</span>
+                <span>Rocky Linux</span>
+                <span>Windows AD</span>
+                <span>Jellyfin</span>
+              </div>
+            </a>
+
+            <a class="bento-card" href="#certifications">
+              <div class="bento-head">
+                <span class="bento-icon"><i class="fas fa-award" aria-hidden="true"></i></span>
+                <h3>Credentials</h3>
+              </div>
+              <p class="bento-desc">Kaseya, Google, Cisco, and CompTIA certified.</p>
+              <div class="badge" aria-hidden="true">
+                <span class="badge-medal"><b>9</b></span>
+                <span class="badge-pill"><i class="fas fa-circle-check"></i> Kaseya Certified</span>
+              </div>
+            </a>
+
+            <a class="bento-card" href="#competencies">
+              <div class="bento-head">
+                <span class="bento-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></span>
+                <h3>Skills</h3>
+              </div>
+              <p class="bento-desc">What I handle day to day.</p>
+              <ol class="mini-list" role="list">
+                <li><i class="fas fa-server" aria-hidden="true"></i> SysAdmin &amp; Cloud <span>01</span></li>
+                <li><i class="fas fa-network-wired" aria-hidden="true"></i> Networking <span>02</span></li>
+                <li><i class="fas fa-desktop" aria-hidden="true"></i> RMM &amp; Monitoring <span>03</span></li>
+                <li><i class="fas fa-shield-halved" aria-hidden="true"></i> Endpoint Security <span>04</span></li>
+                <li><i class="fas fa-robot" aria-hidden="true"></i> AI &amp; Scripting <span>05</span></li>
+              </ol>
+            </a>
+
+            <a class="bento-card span-2" href="#experience">
+              <div class="bento-split">
+                <div>
+                  <div class="bento-head">
+                    <span class="bento-icon"><i class="far fa-star" aria-hidden="true"></i></span>
+                    <h3>Experience</h3>
+                  </div>
+                  <p class="bento-desc">Where I've kept systems running — MSP, BPO, and remote roles.</p>
+                </div>
+                <ul class="exp-stack" role="list">
+                  <li>
+                    <strong><i class="fas fa-circle" aria-hidden="true"></i> Klik Solutions (via Premium Care)</strong>
+                    <span>Technical Support Analyst · 2026 — Present</span>
+                    <em>M365 · Datto RMM · Auvik</em>
+                  </li>
+                  <li>
+                    <strong><i class="fas fa-circle" aria-hidden="true"></i> Rubixcare Ltd. · UK Remote</strong>
+                    <span>IT Support · 2025</span>
+                    <em>Google Admin · Backups · Remote support</em>
+                  </li>
+                  <li>
+                    <strong><i class="fas fa-circle" aria-hidden="true"></i> Nearsol Philippines</strong>
+                    <span>IT Support Specialist · 2022 — 2024</span>
+                    <em>Fortinet · Cisco · Active Directory</em>
+                  </li>
+                </ul>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CASE STUDIES -->
+      <section id="case-studies" class="fade-in-section">
+        <span class="section-label"><i class="fas fa-briefcase fa-xs" aria-hidden="true"></i> Case Studies</span>
+        <h2 class="section-title">Key Projects &amp; Achievements</h2>
+        <p class="section-desc">Real-world infrastructure challenges solved across MSP, enterprise, and remote environments.</p>
+        <div class="skills-grid">
+
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fas fa-cloud" aria-hidden="true"></i></div>
+            <h3>Microsoft 365 Tenant Administration</h3>
+            <p class="card-text">
+              Managed Microsoft 365 environments for multiple client tenants under the Klik Solutions MSP account,
+              handling user provisioning, Exchange configuration, license management, and conditional access policies.
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fas fa-fire-alt" aria-hidden="true"></i></div>
+            <h3>Fortinet &amp; Cisco Infrastructure Management</h3>
+            <p class="card-text">
+              Administered and maintained Fortinet firewall and Cisco routing/switching infrastructure at Nearsol Philippines,
+              providing technical support to 200+ users and consistently recognized for quick response times, clear communication,
+              and a reassuring approach during technical disruptions.
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fas fa-tasks" aria-hidden="true"></i></div>
+            <h3>Endpoint Lifecycle &amp; Asset Management</h3>
+            <p class="card-text">
+              Managed the full IT asset lifecycle at Nearsol Philippines — from procurement and vendor coordination through deployment,
+              maintenance, and retirement — while supporting cost optimization across multiple sites.
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
+            <h3>Network Monitoring &amp; Incident Response</h3>
+            <p class="card-text">
+              Utilized Auvik for network health visibility and Kaseya Autotask for ticket and workflow management, coordinating with NOC, SOC,
+              and Engineering teams to escalate and resolve infrastructure incidents for MSP clients.
+            </p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fas fa-flask" aria-hidden="true"></i></div>
+            <h3>Homelab — Home Infrastructure Lab</h3>
+            <p class="card-text">
+              Maintain a self-built home lab environment running Rocky Linux, Windows Server, and Active Directory,
+              with hands-on deployment of enterprise monitoring via Zabbix, AI inference using Ollama with RAG (Retrieval-Augmented Generation),
+              and media server hosting via Jellyfin — used for continuous self-directed study in systems administration, Linux infrastructure,
+              and applied AI integration.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- CORE COMPETENCIES -->
+      <section id="competencies" class="fade-in-section">
+        <span class="section-label"><i class="fas fa-microchip fa-xs" aria-hidden="true"></i> Technical Skills</span>
+        <h2 class="section-title">Core Competencies</h2>
+        <p class="section-desc">Grouped by operational domain — infrastructure, cloud, networking, monitoring, security, and AI-assisted operations.</p>
+        <div class="skills-grid">
+
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
+            <h3>System Administration &amp; Cloud</h3>
+            <div class="tag-group">
+              <span class="tag">Windows Server</span><span class="tag">Active Directory</span>
+              <span class="tag">Azure AD</span><span class="tag">Microsoft 365</span>
+              <span class="tag">Exchange Admin</span><span class="tag">Virtualization</span>
+              <span class="tag">Group Policy</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
+            <h3>Networking &amp; Infrastructure</h3>
+            <div class="tag-group">
+              <span class="tag">Cisco</span><span class="tag">Fortinet</span>
+              <span class="tag">SonicWall</span><span class="tag">UniFi AP</span>
+              <span class="tag">VLANs</span><span class="tag">VPNs</span>
+              <span class="tag">DNS</span><span class="tag">TCP/IP</span><span class="tag">DHCP</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fas fa-desktop" aria-hidden="true"></i></div>
+            <h3>Remote Management &amp; Monitoring</h3>
+            <div class="tag-group">
+              <span class="tag">Datto RMM</span><span class="tag">Kaseya Autotask</span>
+              <span class="tag">Auvik</span><span class="tag">Zabbix</span>
+              <span class="tag">ITGlue</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+            <h3>Security &amp; Endpoint Protection</h3>
+            <div class="tag-group">
+              <span class="tag">Access Control</span><span class="tag">Vulnerability Analysis</span>
+              <span class="tag">Sentinel</span><span class="tag">Sophos</span>
+              <span class="tag">Endpoint Lifecycle</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
+            <h3>AI &amp; Scripting</h3>
+            <div class="tag-group">
+              <span class="tag">Shell/Batch Scripting</span><span class="tag">Copilot AI Agent</span>
+              <span class="tag">Ollama</span><span class="tag">Openclaw</span><span class="tag">Python</span>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- TOOLS -->
+      <section id="tools" class="fade-in-section">
+        <span class="section-label"><i class="fas fa-toolbox fa-xs" aria-hidden="true"></i> Toolstack</span>
+        <h2 class="section-title">Tools &amp; Platforms</h2>
+        <p class="section-desc">The full stack of tools I work with daily across infrastructure, cloud, monitoring, and security.</p>
+        <div class="tools-grid">
+          <div class="tool-chip">Windows Server</div>
+          <div class="tool-chip">Azure AD</div>
+          <div class="tool-chip">Microsoft 365</div>
+          <div class="tool-chip">Exchange Admin</div>
+          <div class="tool-chip">Datto RMM</div>
+          <div class="tool-chip">Kaseya Autotask</div>
+          <div class="tool-chip">Auvik</div>
+          <div class="tool-chip">Zabbix</div>
+          <div class="tool-chip">ITGlue</div>
+          <div class="tool-chip">RocketCyber</div>
+          <div class="tool-chip">Fortinet</div>
+          <div class="tool-chip">Sophos</div>
+          <div class="tool-chip">Cisco IOS</div>
+          <div class="tool-chip">UniFi AP</div>
+          <div class="tool-chip">Active Directory</div>
+          <div class="tool-chip">Group Policy</div>
+          <div class="tool-chip">Freshdesk</div>
+          <div class="tool-chip">Google Admin</div>
+          <div class="tool-chip">Copilot AI</div>
+          <div class="tool-chip">Ollama</div>
+          <div class="tool-chip">PowerShell</div>
+          <div class="tool-chip">Batch Scripting</div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="fade-in-section">
+        <span class="section-label"><i class="fas fa-history fa-xs" aria-hidden="true"></i> Work History</span>
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-desc">6+ years across MSP, enterprise BPO, UK remote, and infrastructure support roles.</p>
+        <div class="timeline">
+
+          <article class="job-card">
+            <div class="job-meta">
+              <div class="job-period">Feb 2026 — Present</div>
+              <div class="job-company">Premium Care Solutions Philippines Inc.<br>(Client: Klik Solutions LLC)</div>
+            </div>
+            <div>
+              <h3 class="job-title">Technical Support Analyst</h3>
+              <ul class="job-points">
+                <li>Administer client networks and endpoints using Datto RMM — resolving infrastructure tickets involving remote access, software deployments, and automated patching.</li>
+                <li>Manage Microsoft 365 environments including user provisioning, Exchange configuration, license management, and conditional access policies.</li>
+                <li>Monitor network health with Auvik and Kaseya Autotask for proactive issue resolution.</li>
+                <li>Collaborate with NOC, SOC, and Engineering teams to resolve endpoint security and infrastructure alerts.</li>
+                <li>Maintain comprehensive technical documentation and network diagrams in ITGlue for SLA compliance.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job-card">
+            <div class="job-meta">
+              <div class="job-period">Mar 2025 — Aug 2025</div>
+              <div class="job-company">Rubixcare Ltd.<br>London, UK · Remote</div>
+            </div>
+            <div>
+              <h3 class="job-title">IT Support</h3>
+              <ul class="job-points">
+                <li>Managed complete user lifecycle in Google Admin Console with regular Google Drive security audits.</li>
+                <li>Performed scheduled maintenance, security updates, and automated backups of company web platforms.</li>
+                <li>Handled network connectivity diagnostics and application troubleshooting for remote workforce.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job-card">
+            <div class="job-meta">
+              <div class="job-period">Apr 2022 — Sep 2024</div>
+              <div class="job-company">Nearsol Philippines Inc.<br>Iloilo Business Park</div>
+            </div>
+            <div>
+              <h3 class="job-title">IT Support Specialist</h3>
+              <ul class="job-points">
+                <li>Configured and maintained Windows Servers, Active Directory/Azure AD, Fortinet firewalls, and Cisco routing/switching for large-scale BPO operations.</li>
+                <li>Supported 200+ monthly infrastructure requests via Freshdesk, maintaining 90% SLA compliance.</li>
+                <li>Led IT asset procurement and vendor negotiations to reduce infrastructure costs.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job-card">
+            <div class="job-meta">
+              <div class="job-period">Dec 2019 — Feb 2021</div>
+              <div class="job-company">World Source Pettigrew Philippines Inc.<br>Iloilo City</div>
+            </div>
+            <div>
+              <h3 class="job-title">IT Admin / Support</h3>
+              <ul class="job-points">
+                <li>Architected and maintained Windows Terminal Servers, Active Directory, and CCTV physical security systems.</li>
+                <li>Maintained SonicWall firewalls and enforced network security compliance.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="job-card">
+            <div class="job-meta">
+              <div class="job-period">Nov 2018 — Mar 2019</div>
+              <div class="job-company">PLDT Site Office<br>La Paz, Iloilo City</div>
+            </div>
+            <div>
+              <h3 class="job-title">IT Intern</h3>
+              <ul class="job-points">
+                <li>Assisted enterprise engineers in structured cabling, network hardware testing, and infrastructure troubleshooting.</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS -->
+      <section id="certifications" class="fade-in-section">
+        <span class="section-label"><i class="fas fa-certificate fa-xs" aria-hidden="true"></i> Credentials</span>
+        <h2 class="section-title">Certifications</h2>
+        <p class="section-desc">9 verified certifications spanning MSP tooling, cybersecurity, AI, networking, and foundational IT support.</p>
+        <div class="cert-grid">
+          <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Kaseya Certified Technician — RocketCyber</div><div class="cert-issuer">Kaseya · Feb 2026</div></div></div>
+          <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Kaseya Certified Technician — IT Glue</div><div class="cert-issuer">Kaseya · Feb 2026</div></div></div>
+          <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Kaseya Certified Technician — Datto RMM</div><div class="cert-issuer">Kaseya · Feb 2026</div></div></div>
+          <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Kaseya Certified Technician — Autotask PSA</div><div class="cert-issuer">Kaseya · Feb 2026</div></div></div>
+          <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Google AI Essentials</div><div class="cert-issuer">Coursera · Dec 2025</div></div></div>
+          <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Google Cybersecurity Professional Certificate</div><div class="cert-issuer">Coursera · Oct 2025</div></div></div>
+          <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Google IT Support Professional Certificate</div><div class="cert-issuer">Coursera · Oct 2025</div></div></div>
+          <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Network Technician Career Path</div><div class="cert-issuer">Cisco · Oct 2025</div></div></div>
+          <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">CompTIA A+ Network</div><div class="cert-issuer">CompTIA · Oct 2024</div></div></div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="fade-in-section">
+        <span class="section-label"><i class="fas fa-paper-plane fa-xs" aria-hidden="true"></i> Contact</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-desc">
           Results-oriented IT professional with over 6 years of experience architecting and maintaining
-          network infrastructure, Windows Server environments, and cloud platforms. Proven track record
-          in endpoint lifecycle management, advanced network troubleshooting, and managed services operations.
+          network infrastructure, Windows Server environments, and cloud platforms. Open to Systems Engineer,
+          Network Administrator, and Technical Support Analyst roles — feel free to reach out.
         </p>
-        <div class="hero-actions">
-          <a class="btn-primary" href="#contact">
-            <i class="fas fa-envelope" aria-hidden="true"></i> Get In Touch
-          </a>
-          <a class="btn-outline" href="https://linkedin.com/in/gpparinas" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
-          </a>
-          <a class="btn-outline" href="https://github.com/gpparinas" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-github" aria-hidden="true"></i> GitHub
-          </a>
-        </div>
-        <div class="hero-chips">
-          <span class="chip"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Roxas City, Capiz, PH</span>
-          <span class="chip" style="color:var(--primary);border-color:var(--primary);">Open to Opportunities</span>
-          <span class="chip">6+ Years Experience</span>
-        </div>
-      </div>
-
-      <aside class="hero-card">
-        <div class="hero-photo">
-          <img src="photo.png"
-               alt="Gabriel Philip Pariñas — professional headshot"
-               width="400" height="470" loading="eager"
-               onerror="this.style.display='none';this.parentElement.style.background='var(--surface-2)'">
-        </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-num">6+</span>
-            <span class="stat-label">Years in IT</span>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Direct Contact</h3>
+            <a class="contact-item" href="mailto:gabriielpparinas@gmail.com">
+              <strong><i class="fas fa-envelope" aria-hidden="true"></i> Email</strong>
+              <span>gabriielpparinas@gmail.com</span>
+            </a>
+            <a class="contact-item" href="https://linkedin.com/in/gpparinas" target="_blank" rel="noopener noreferrer">
+              <strong><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</strong>
+              <span>linkedin.com/in/gpparinas</span>
+            </a>
+            <a class="contact-item" href="https://github.com/gpparinas" target="_blank" rel="noopener noreferrer">
+              <strong><i class="fab fa-github" aria-hidden="true"></i> GitHub</strong>
+              <span>github.com/gpparinas</span>
+            </a>
+            <a class="contact-item" href="resume.pdf" download>
+              <strong><i class="fas fa-file-pdf" aria-hidden="true"></i> Resume PDF</strong>
+              <span>Download the latest version</span>
+            </a>
           </div>
-          <div class="stat">
-            <span class="stat-num">9</span>
-            <span class="stat-label">Certifications</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">200+</span>
-            <span class="stat-label">Monthly requests</span>
+          <div class="contact-card">
+            <h3>Education &amp; Location</h3>
+            <div class="contact-item static">
+              <strong><i class="fas fa-graduation-cap" aria-hidden="true"></i> BS Information Technology</strong>
+              <span>University of San Agustin, Iloilo · 2014 — 2018</span>
+            </div>
+            <div class="contact-item static">
+              <strong><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Location</strong>
+              <span>Brgy. Cagay, Roxas City, Capiz, Philippines</span>
+            </div>
+            <div class="contact-item static">
+              <strong><i class="fas fa-bullseye" aria-hidden="true"></i> Target Roles</strong>
+              <span>System Administrator · Network Administrator · Technical Support Analyst · Junior Systems Engineer</span>
+            </div>
           </div>
         </div>
-      </aside>
-    </section>
+      </section>
 
-    <!-- CORE COMPETENCIES -->
-    <section id="competencies" class="fade-in-section">
-      <span class="section-label"><i class="fas fa-microchip fa-xs" aria-hidden="true"></i> Technical Skills</span>
-      <h2 class="section-title">Core Competencies</h2>
-      <p class="section-desc">Grouped by operational domain — infrastructure, cloud, networking, monitoring, security, and AI-assisted operations.</p>
-      <br>
-      <div class="skills-grid">
+      <!-- ===== FOOTER ===== -->
+      <footer>
+        <span>&copy; 2026 Gabriel Philip Pariñas. All rights reserved.</span>
+        <span>Roxas City, Capiz, Philippines</span>
+      </footer>
 
-        <article class="skill-card">
-          <div class="skill-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
-          <h3>System Administration &amp; Cloud</h3>
-          <div class="tag-group">
-            <span class="tag">Windows Server</span><span class="tag">Active Directory</span>
-            <span class="tag">Azure AD</span><span class="tag">Microsoft 365</span>
-            <span class="tag">Exchange Admin</span><span class="tag">Virtualization</span>
-            <span class="tag">Group Policy</span>
-          </div>
-        </article>
-
-        <article class="skill-card">
-          <div class="skill-icon"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
-          <h3>Networking &amp; Infrastructure</h3>
-          <div class="tag-group">
-            <span class="tag">Cisco</span><span class="tag">Fortinet</span>
-            <span class="tag">SonicWall</span><span class="tag">UniFi AP</span>
-            <span class="tag">VLANs</span><span class="tag">VPNs</span>
-            <span class="tag">DNS</span><span class="tag">TCP/IP</span><span class="tag">DHCP</span>
-          </div>
-        </article>
-
-        <article class="skill-card">
-          <div class="skill-icon"><i class="fas fa-desktop" aria-hidden="true"></i></div>
-          <h3>Remote Management &amp; Monitoring</h3>
-          <div class="tag-group">
-            <span class="tag">Datto RMM</span><span class="tag">Kaseya Autotask</span>
-            <span class="tag">Auvik</span><span class="tag">Zabbix</span>
-            <span class="tag">ITGlue</span>
-          </div>
-        </article>
-
-        <article class="skill-card">
-          <div class="skill-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
-          <h3>Security &amp; Endpoint Protection</h3>
-          <div class="tag-group">
-            <span class="tag">Access Control</span><span class="tag">Vulnerability Analysis</span>
-            <span class="tag">Sentinel</span><span class="tag">Sophos</span>
-            <span class="tag">Endpoint Lifecycle</span>
-          </div>
-        </article>
-
-        <article class="skill-card">
-          <div class="skill-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
-          <h3>AI &amp; Scripting</h3>
-          <div class="tag-group">
-            <span class="tag">Shell/Batch Scripting</span><span class="tag">Copilot AI Agent</span>
-            <span class="tag">Ollama</span><span class="tag">Openclaw</span><span class="tag">Python</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- CASE STUDIES -->
-    <section id="case-studies" class="fade-in-section">
-      <span class="section-label"><i class="fas fa-briefcase fa-xs" aria-hidden="true"></i> Case Studies</span>
-      <h2 class="section-title">Key Projects &amp; Achievements</h2>
-      <p class="section-desc">Real-world infrastructure challenges solved across MSP, enterprise, and remote environments.</p>
-      <br>
-      <div class="skills-grid">
-
-        <article class="skill-card">
-          <div class="skill-icon"><i class="fas fa-cloud" aria-hidden="true"></i></div>
-          <h3>Microsoft 365 Tenant Administration</h3>
-          <p style="font-size:var(--text-sm);color:var(--muted);margin-top:.5rem">
-            Managed Microsoft 365 environments for multiple client tenants under the Klik Solutions MSP account, 
-            handling user provisioning, Exchange configuration, license management, and conditional access policies.
-          </p>
-        </article>
-
-        <article class="skill-card">
-          <div class="skill-icon"><i class="fas fa-fire-alt" aria-hidden="true"></i></div>
-          <h3>Fortinet &amp; Cisco Infrastructure Management</h3>
-          <p style="font-size:var(--text-sm);color:var(--muted);margin-top:.5rem">
-            Administered and maintained Fortinet firewall and Cisco routing/switching infrastructure at Nearsol Philippines, 
-            providing technical support to 200+ users and consistently recognized for quick response times, clear communication, 
-            and a reassuring approach during technical disruptions.
-          </p>
-        </article>
-
-        <article class="skill-card">
-          <div class="skill-icon"><i class="fas fa-tasks" aria-hidden="true"></i></div>
-          <h3>Endpoint Lifecycle &amp; Asset Management</h3>
-          <p style="font-size:var(--text-sm);color:var(--muted);margin-top:.5rem">
-            Managed the full IT asset lifecycle at Nearsol Philippines — from procurement and vendor coordination through deployment, 
-            maintenance, and retirement — while supporting cost optimization across multiple sites.
-          </p>
-        </article>
-
-        <article class="skill-card">
-          <div class="skill-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
-          <h3>Network Monitoring &amp; Incident Response</h3>
-          <p style="font-size:var(--text-sm);color:var(--muted);margin-top:.5rem">
-            Utilized Auvik for network health visibility and Kaseya Autotask for ticket and workflow management, coordinating with NOC, SOC, 
-            and Engineering teams to escalate and resolve infrastructure incidents for MSP clients.
-          </p>
-        </article>
-
-        <article class="skill-card">
-          <div class="skill-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
-          <h3>Homelab — Home Infrastructure Lab</h3>
-          <p style="font-size:var(--text-sm);color:var(--muted);margin-top:.5rem">
-            Maintain a self-built home lab environment running Rocky Linux, Windows Server, and Active Directory, 
-            with hands-on deployment of enterprise monitoring via Zabbix, AI inference using Ollama with RAG (Retrieval-Augmented Generation), 
-            and media server hosting via Jellyfin — used for continuous self-directed study in systems administration, Linux infrastructure, 
-            and applied AI integration.
-          </p>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- TOOLS -->
-    <section id="tools" class="fade-in-section">
-      <span class="section-label"><i class="fas fa-toolbox fa-xs" aria-hidden="true"></i> Toolstack</span>
-      <h2 class="section-title">Tools &amp; Platforms</h2>
-      <p class="section-desc">The full stack of tools I work with daily across infrastructure, cloud, monitoring, and security.</p>
-      <br>
-      <div class="tools-grid">
-        <div class="tool-chip">Windows Server</div>
-        <div class="tool-chip">Azure AD</div>
-        <div class="tool-chip">Microsoft 365</div>
-        <div class="tool-chip">Exchange Admin</div>
-        <div class="tool-chip">Datto RMM</div>
-        <div class="tool-chip">Kaseya Autotask</div>
-        <div class="tool-chip">Auvik</div>
-        <div class="tool-chip">Zabbix</div>
-        <div class="tool-chip">ITGlue</div>
-        <div class="tool-chip">RocketCyber</div>
-        <div class="tool-chip">Fortinet</div>
-        <div class="tool-chip">Sophos</div>
-        <div class="tool-chip">Cisco IOS</div>
-        <div class="tool-chip">UniFi AP</div>
-        <div class="tool-chip">Active Directory</div>
-        <div class="tool-chip">Group Policy</div>
-        <div class="tool-chip">Freshdesk</div>
-        <div class="tool-chip">Google Admin</div>
-        <div class="tool-chip">Copilot AI</div>
-        <div class="tool-chip">Ollama</div>
-        <div class="tool-chip">PowerShell</div>
-        <div class="tool-chip">Batch Scripting</div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="fade-in-section">
-      <span class="section-label"><i class="fas fa-history fa-xs" aria-hidden="true"></i> Work History</span>
-      <h2 class="section-title">Professional Experience</h2>
-      <p class="section-desc">6+ years across MSP, enterprise BPO, UK remote, and infrastructure support roles.</p>
-      <br>
-      <div class="timeline">
-
-        <article class="job-card">
-          <div class="job-meta">
-            <div class="job-period">Feb 2026 — Present</div>
-            <div class="job-company">Premium Care Solutions Philippines Inc.<br>(Client: Klik Solutions LLC)</div>
-          </div>
-          <div>
-            <h3 class="job-title">Technical Support Analyst</h3>
-            <ul class="job-points">
-              <li>Administer client networks and endpoints using Datto RMM — resolving infrastructure tickets involving remote access, software deployments, and automated patching.</li>
-              <li>Manage Microsoft 365 environments including user provisioning, Exchange configuration, license management, and conditional access policies.</li>
-              <li>Monitor network health with Auvik and Kaseya Autotask for proactive issue resolution.</li>
-              <li>Collaborate with NOC, SOC, and Engineering teams to resolve endpoint security and infrastructure alerts.</li>
-              <li>Maintain comprehensive technical documentation and network diagrams in ITGlue for SLA compliance.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="job-card">
-          <div class="job-meta">
-            <div class="job-period">Mar 2025 — Aug 2025</div>
-            <div class="job-company">Rubixcare Ltd.<br>London, UK · Remote</div>
-          </div>
-          <div>
-            <h3 class="job-title">IT Support</h3>
-            <ul class="job-points">
-              <li>Managed complete user lifecycle in Google Admin Console with regular Google Drive security audits.</li>
-              <li>Performed scheduled maintenance, security updates, and automated backups of company web platforms.</li>
-              <li>Handled network connectivity diagnostics and application troubleshooting for remote workforce.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="job-card">
-          <div class="job-meta">
-            <div class="job-period">Apr 2022 — Sep 2024</div>
-            <div class="job-company">Nearsol Philippines Inc.<br>Iloilo Business Park</div>
-          </div>
-          <div>
-            <h3 class="job-title">IT Support Specialist</h3>
-            <ul class="job-points">
-              <li>Configured and maintained Windows Servers, Active Directory/Azure AD, Fortinet firewalls, and Cisco routing/switching for large-scale BPO operations.</li>
-              <li>Supported 200+ monthly infrastructure requests via Freshdesk, maintaining 90% SLA compliance.</li>
-              <li>Led IT asset procurement and vendor negotiations to reduce infrastructure costs.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="job-card">
-          <div class="job-meta">
-            <div class="job-period">Dec 2019 — Feb 2021</div>
-            <div class="job-company">World Source Pettigrew Philippines Inc.<br>Iloilo City</div>
-          </div>
-          <div>
-            <h3 class="job-title">IT Admin / Support</h3>
-            <ul class="job-points">
-              <li>Architected and maintained Windows Terminal Servers, Active Directory, and CCTV physical security systems.</li>
-              <li>Maintained SonicWall firewalls and enforced network security compliance.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="job-card">
-          <div class="job-meta">
-            <div class="job-period">Nov 2018 — Mar 2019</div>
-            <div class="job-company">PLDT Site Office<br>La Paz, Iloilo City</div>
-          </div>
-          <div>
-            <h3 class="job-title">IT Intern</h3>
-            <ul class="job-points">
-              <li>Assisted enterprise engineers in structured cabling, network hardware testing, and infrastructure troubleshooting.</li>
-            </ul>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS -->
-    <section id="certifications" class="fade-in-section">
-      <span class="section-label"><i class="fas fa-certificate fa-xs" aria-hidden="true"></i> Credentials</span>
-      <h2 class="section-title">Certifications</h2>
-      <p class="section-desc">9 verified certifications spanning MSP tooling, cybersecurity, AI, networking, and foundational IT support.</p>
-      <br>
-      <div class="cert-grid">
-        <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Kaseya Certified Technician — RocketCyber</div><div class="cert-issuer">Kaseya · Feb 2026</div></div></div>
-        <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Kaseya Certified Technician — IT Glue</div><div class="cert-issuer">Kaseya · Feb 2026</div></div></div>
-        <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Kaseya Certified Technician — Datto RMM</div><div class="cert-issuer">Kaseya · Feb 2026</div></div></div>
-        <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Kaseya Certified Technician — Autotask PSA</div><div class="cert-issuer">Kaseya · Feb 2026</div></div></div>
-        <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Google AI Essentials</div><div class="cert-issuer">Coursera · Dec 2025</div></div></div>
-        <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Google Cybersecurity Professional Certificate</div><div class="cert-issuer">Coursera · Oct 2025</div></div></div>
-        <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Google IT Support Professional Certificate</div><div class="cert-issuer">Coursera · Oct 2025</div></div></div>
-        <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">Network Technician Career Path</div><div class="cert-issuer">Cisco · Oct 2025</div></div></div>
-        <div class="cert-card"><div class="cert-dot"></div><div><div class="cert-name">CompTIA A+ Network</div><div class="cert-issuer">CompTIA · Oct 2024</div></div></div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="fade-in-section">
-      <span class="section-label"><i class="fas fa-paper-plane fa-xs" aria-hidden="true"></i> Contact</span>
-      <h2 class="section-title">Get In Touch</h2>
-      <p class="section-desc">Open to Systems Engineer, Network Administrator, and Technical Support Analyst roles. Feel free to reach out.</p>
-      <br>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h3 style="margin-bottom:1rem;font-size:var(--text-base)">Direct Contact</h3>
-          <a class="contact-item" href="mailto:gabriielpparinas@gmail.com">
-            <strong><i class="fas fa-envelope" aria-hidden="true"></i> Email</strong>
-            <span>gabriielpparinas@gmail.com</span>
-          </a>
-          <a class="contact-item" href="https://github.com/gpparinas" target="_blank" rel="noopener noreferrer">
-            <strong><i class="fab fa-github" aria-hidden="true"></i> GitHub</strong>
-            <span>github.com/gpparinas</span>
-          </a>
-          <a class="contact-item" href="resume.pdf" download>
-            <strong><i class="fas fa-file-pdf" aria-hidden="true"></i> Resume PDF</strong>
-            <span>Download the latest version</span>
-          </a>
-        </div>
-        <div class="contact-card">
-          <h3 style="margin-bottom:1rem;font-size:var(--text-base)">Education &amp; Location</h3>
-          <div class="contact-item" style="cursor:default">
-            <strong><i class="fas fa-graduation-cap" aria-hidden="true"></i> BS Information Technology</strong>
-            <span>University of San Agustin, Iloilo · 2014 — 2018</span>
-          </div>
-          <div class="contact-item" style="cursor:default">
-            <strong><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Location</strong>
-            <span>Brgy. Cagay, Roxas City, Capiz, Philippines</span>
-          </div>
-          <div class="contact-item" style="cursor:default">
-            <strong><i class="fas fa-bullseye" aria-hidden="true"></i> Target Roles</strong>
-            <span>System Administrator · Network Administrator · Technical Support Analyst · Junior Systems Engineer</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="container">
-    <span>&copy; 2026 Gabriel Philip Pariñas. All rights reserved.</span>
-    <span>Roxas City, Capiz, Philippines</span>
-  </footer>
+    </main>
+  </div>
 
   <script src="script.js" defer></script>
 </body>
