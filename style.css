@@ -11,22 +11,24 @@
    ------------------------------------ */
 :root {
   color-scheme: light;
-  --bg:            #eef0f3;
+  --on-primary:    #ffffff;  /* text/icons placed on --primary */
+  --status:        #333333;
+  --bg:            #f2f2f2;
   --surface:       #ffffff;
-  --surface-2:     #f4f5f7;
-  --frame:         #e3e9f4;
-  --frame-border:  #d3ddef;
-  --text:          #14161b;
-  --muted:         #6b7079;
-  --faint:         #b4b8bf;
-  --border:        rgba(20,22,27,.09);
-  --primary:       #f26b1d;
-  --primary-hover: #d95a10;
-  --accent-bg:     #fff0e6;
-  --accent-text:   #c2500c;
-  --ink:           #14161b;
+  --surface-2:     #f7f7f7;
+  --frame:         #e6e6e6;
+  --frame-border:  #cccccc;
+  --text:          #000000;
+  --muted:         #666666;
+  --faint:         #999999;
+  --border:        rgba(0,0,0,.10);
+  --primary:       #000000;
+  --primary-hover: #333333;
+  --accent-bg:     #e6e6e6;
+  --accent-text:   #333333;
+  --ink:           #000000;
   --ink-text:      #ffffff;
-  --window:        #16171a;
+  --window:        #000000;
   --shadow-sm:     0 1px 2px rgba(20,22,27,.05), 0 1px 3px rgba(20,22,27,.05);
   --shadow-md:     0 8px 24px rgba(20,22,27,.08);
   --shadow-lg:     0 20px 50px rgba(20,22,27,.12);
@@ -54,27 +56,30 @@
   --font-serif:   'Instrument Serif', Georgia, serif;
 }
 
-/* Dark = AMOLED: true black page, near-black cards, thin borders for separation.
+/* Monochrome palette: #000000 · #333333 · #666666 · #999999 · #CCCCCC
+   Dark = AMOLED: true black page, near-black cards, thin borders for separation.
    Kept identical in both blocks below so System-dark and a manual Dark choice match. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
+    --on-primary:    #000000;
+    --status:        #cccccc;
     --bg:            #000000;
-    --surface:       #0b0b0d;
-    --surface-2:     #131316;
-    --frame:         #050506;
-    --frame-border:  #1c1d22;
-    --text:          #f2f3f5;
-    --muted:         #a1a5ad;
-    --faint:         #5a5e66;
-    --border:        rgba(242,243,245,.10);
-    --primary:       #ff8a3d;
-    --primary-hover: #ffa366;
-    --accent-bg:     #23160d;
-    --accent-text:   #ffa366;
-    --ink:           #f2f3f5;
+    --surface:       #0d0d0d;
+    --surface-2:     #1a1a1a;
+    --frame:         #050505;
+    --frame-border:  #333333;
+    --text:          #f2f2f2;
+    --muted:         #999999;
+    --faint:         #666666;
+    --border:        rgba(255,255,255,.12);
+    --primary:       #cccccc;
+    --primary-hover: #ffffff;
+    --accent-bg:     #333333;
+    --accent-text:   #cccccc;
+    --ink:           #f2f2f2;
     --ink-text:      #000000;
-    --window:        #000000;
+    --window:        #0d0d0d;
     --shadow-sm:     none;
     --shadow-md:     0 0 0 1px rgba(255,255,255,.06);
     --shadow-lg:     0 0 0 1px rgba(255,255,255,.08), 0 20px 50px rgba(0,0,0,.8);
@@ -82,22 +87,24 @@
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
+    --on-primary:    #000000;
+    --status:        #cccccc;
   --bg:            #000000;
-  --surface:       #0b0b0d;
-  --surface-2:     #131316;
-  --frame:         #050506;
-  --frame-border:  #1c1d22;
-  --text:          #f2f3f5;
-  --muted:         #a1a5ad;
-  --faint:         #5a5e66;
-  --border:        rgba(242,243,245,.10);
-  --primary:       #ff8a3d;
-  --primary-hover: #ffa366;
-  --accent-bg:     #23160d;
-  --accent-text:   #ffa366;
-  --ink:           #f2f3f5;
+  --surface:       #0d0d0d;
+  --surface-2:     #1a1a1a;
+  --frame:         #050505;
+  --frame-border:  #333333;
+  --text:          #f2f2f2;
+  --muted:         #999999;
+  --faint:         #666666;
+  --border:        rgba(255,255,255,.12);
+  --primary:       #cccccc;
+  --primary-hover: #ffffff;
+  --accent-bg:     #333333;
+  --accent-text:   #cccccc;
+  --ink:           #f2f2f2;
   --ink-text:      #000000;
-  --window:        #000000;
+  --window:        #0d0d0d;
   --shadow-sm:     none;
   --shadow-md:     0 0 0 1px rgba(255,255,255,.06);
   --shadow-lg:     0 0 0 1px rgba(255,255,255,.08), 0 20px 50px rgba(0,0,0,.8);
@@ -152,7 +159,7 @@ p, li { text-wrap: pretty; }
 a.sr-only:focus {
   position: fixed; top: var(--s4); left: var(--s4); z-index: 9999;
   width: auto; height: auto; clip: auto; white-space: normal;
-  background: var(--primary); color: #fff;
+  background: var(--primary); color: var(--on-primary);
   padding: var(--s3) var(--s5); border-radius: var(--radius-sm);
   font-weight: 600; box-shadow: var(--shadow-md);
 }
@@ -192,8 +199,8 @@ a.sr-only:focus {
   margin-top: var(--s2); font-size: var(--text-xs); color: var(--muted);
 }
 .status-dot {
-  width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
-  box-shadow: 0 0 0 3px color-mix(in srgb, #22c55e 25%, transparent);
+  width: 8px; height: 8px; border-radius: 50%; background: var(--status);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--status) 25%, transparent);
 }
 .socials { display: flex; gap: var(--s2); margin-top: var(--s4); }
 .socials a, .theme-toggle {
@@ -202,7 +209,7 @@ a.sr-only:focus {
   background: var(--surface); border: 1px solid var(--border); color: var(--text);
   transition: background var(--transition), color var(--transition), transform var(--transition);
 }
-.socials a:hover, .theme-toggle:hover { background: var(--primary); color: #fff; transform: translateY(-1px); }
+.socials a:hover, .theme-toggle:hover { background: var(--primary); color: var(--on-primary); transform: translateY(-1px); }
 
 .side-nav { display: flex; flex-direction: column; gap: 2px; margin-top: var(--s2); }
 .side-nav a {
@@ -336,7 +343,7 @@ main {
 .bento-icon {
   width: 24px; height: 24px; border-radius: 7px; flex-shrink: 0;
   display: grid; place-items: center; font-size: .7rem;
-  background: var(--primary); color: #fff;
+  background: var(--primary); color: var(--on-primary);
 }
 .bento-head h3 {
   font-family: var(--font-display); font-size: .78rem; font-weight: 800;
@@ -358,11 +365,11 @@ main {
   padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,.08);
 }
 .window-bar span { width: 7px; height: 7px; border-radius: 50%; background: #3a3b40; }
-.window-bar span:first-child { background: #ff5f57; }
+.window-bar span:first-child { background: #999999; }
 .window-bar em { margin-left: auto; font-size: .6rem; font-style: normal; color: #7b7d83; font-family: ui-monospace, monospace; }
 .window-body { display: flex; justify-content: space-between; gap: var(--s4); padding: var(--s4) var(--s4) var(--s8); }
 .window-quote { font-family: var(--font-serif); font-size: 1.5rem; line-height: 1.05; }
-.window-quote em { color: var(--primary); }
+.window-quote em { color: #cccccc; }  /* window is always dark */
 .window-stats { list-style: none; font-size: .62rem; color: #9a9ca3; display: grid; gap: 4px; align-content: start; white-space: nowrap; }
 .window-stats b { color: #fff; }
 
@@ -468,7 +475,7 @@ h2.section-title {
 .skill-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 .skill-icon {
   width: 36px; height: 36px; border-radius: var(--radius-sm);
-  background: var(--primary); color: #fff;
+  background: var(--primary); color: var(--on-primary);
   display: grid; place-items: center; font-size: .9rem; margin-bottom: var(--s4);
 }
 .skill-card h3 { font-family: var(--font-display); font-size: var(--text-base); font-weight: 700; margin-bottom: var(--s3); }
