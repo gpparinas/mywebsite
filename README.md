@@ -22,7 +22,8 @@ A single-page portfolio website for Gabriel Philip Pariñas, showcasing IT infra
 - Light and dark mode
 - Sidebar navigation with active section highlighting
 - Smooth scrolling and fade-in reveal animations
-- Skills, tools, experience timeline, certifications, and contact sections
+- About, featured homelab project with diagram, work highlights, skills & tools, experience timeline, certifications & training, and contact sections
+- Theme follows the device (System) by default, with Light and Dark (AMOLED) options
 - Resume download and external profile links
 - Accessible structure with skip link, semantic sections, and focus states
 - GitHub Pages deployment with no build step required

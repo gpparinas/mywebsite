@@ -80,9 +80,9 @@
 
       <nav class="side-nav" aria-label="Main navigation">
         <a href="#home"           class="nav-link active"><i class="fas fa-house" aria-hidden="true"></i> Home</a>
+        <a href="#about"          class="nav-link"><i class="far fa-user" aria-hidden="true"></i> About</a>
         <a href="#case-studies"   class="nav-link"><i class="far fa-folder" aria-hidden="true"></i> Projects</a>
         <a href="#competencies"   class="nav-link"><i class="fas fa-layer-group" aria-hidden="true"></i> Skills</a>
-        <a href="#tools"          class="nav-link"><i class="fas fa-toolbox" aria-hidden="true"></i> Tools</a>
         <a href="#experience"     class="nav-link"><i class="far fa-star" aria-hidden="true"></i> Experience</a>
         <a href="#certifications" class="nav-link"><i class="fas fa-award" aria-hidden="true"></i> Credentials</a>
         <a href="#contact"        class="nav-link"><i class="far fa-circle-user" aria-hidden="true"></i> Contact</a>
@@ -112,7 +112,10 @@
               can stop thinking about IT.
             </p>
           </div>
-          <a class="btn-dark" href="#contact">Get in touch <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+          <div class="hero-actions">
+            <a class="btn-dark" href="#contact">Get in touch <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            <a class="btn-ghost" href="resume.pdf" download><i class="fas fa-download" aria-hidden="true"></i> Resume</a>
+          </div>
         </div>
 
         <!-- Tools strip -->
@@ -160,21 +163,21 @@
                 <span class="bento-icon"><i class="far fa-folder" aria-hidden="true"></i></span>
                 <h3>Projects</h3>
               </div>
-              <p class="bento-desc">Infrastructure work and lab builds that solve real problems.</p>
+              <p class="bento-desc">Infrastructure work, role highlights, and my homelab build.</p>
               <div class="preview-window" aria-hidden="true">
-                <div class="window-bar"><span></span><span></span><span></span><em>gp@homelab ~</em></div>
+                <div class="window-bar"><span></span><span></span><span></span><em>career.log</em></div>
                 <div class="window-body">
                   <p class="window-quote">Five years of keeping<br>systems <em>online.</em></p>
                   <ul class="window-stats">
-                    <li><b>200+</b> requests / month</li>
-                    <li><b>90%</b> SLA compliance</li>
+                    <li><b>200+</b> requests / mo at Nearsol</li>
+                    <li><b>90%</b> SLA compliance there</li>
                     <li><b>5+</b> years in IT</li>
                   </ul>
                 </div>
               </div>
             </a>
 
-            <a class="bento-card" href="#contact">
+            <a class="bento-card" href="#about">
               <div class="bento-head">
                 <span class="bento-icon"><i class="far fa-user" aria-hidden="true"></i></span>
                 <h3>About</h3>
@@ -187,12 +190,12 @@
               </div>
             </a>
 
-            <a class="bento-card" href="#case-studies">
+            <a class="bento-card" href="#homelab">
               <div class="bento-head">
                 <span class="bento-icon"><i class="fas fa-flask" aria-hidden="true"></i></span>
                 <h3>Homelab &amp; AI</h3>
               </div>
-              <p class="bento-desc">The self-hosted lab and the AI tools I run on it.</p>
+              <p class="bento-desc">The self-hosted lab where I practice servers, Linux, and monitoring.</p>
               <div class="pill-cloud" aria-hidden="true">
                 <span>Claude Code</span>
                 <span>Zabbix</span>
@@ -207,10 +210,10 @@
                 <span class="bento-icon"><i class="fas fa-award" aria-hidden="true"></i></span>
                 <h3>Credentials</h3>
               </div>
-              <p class="bento-desc">Kaseya certified, plus Google, Cisco, and CompTIA training.</p>
+              <p class="bento-desc">4 Kaseya technician certifications, plus Google, Cisco, and CompTIA training.</p>
               <div class="badge" aria-hidden="true">
                 <span class="badge-medal"><b>9</b></span>
-                <span class="badge-pill"><i class="fas fa-circle-check"></i> Kaseya Certified</span>
+                <span class="badge-pill"><i class="fas fa-circle-check"></i> Credentials</span>
               </div>
             </a>
 
@@ -219,7 +222,7 @@
                 <span class="bento-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></span>
                 <h3>Skills</h3>
               </div>
-              <p class="bento-desc">What I handle day to day.</p>
+              <p class="bento-desc">What I work with, grouped by area.</p>
               <ol class="mini-list" role="list">
                 <li><i class="fas fa-server" aria-hidden="true"></i> SysAdmin &amp; Cloud <span>01</span></li>
                 <li><i class="fas fa-network-wired" aria-hidden="true"></i> Networking <span>02</span></li>
@@ -262,11 +265,115 @@
         </div>
       </section>
 
+      <!-- ABOUT -->
+      <section id="about" class="fade-in-section">
+        <span class="section-label"><i class="far fa-user fa-xs" aria-hidden="true"></i> About</span>
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I'm Gabriel, an IT support professional based in Roxas City, Capiz. For more than five years I've kept
+              systems running across BPO, MSP, and remote roles, from Fortinet and Cisco infrastructure for a large BPO
+              in Iloilo to first-line support for a US-based managed services provider today.
+            </p>
+            <p>
+              I care about the parts of IT that users never see: clear documentation, patches that go out on time, and
+              escalations that reach the next team with everything they need. Outside of tickets, I run a homelab to
+              practice Linux, Active Directory, monitoring, and AI-assisted scripting.
+            </p>
+            <p>
+              I'm working toward a System Administrator or Network Administrator role.
+            </p>
+          </div>
+          <dl class="about-facts">
+            <div><dt>Currently</dt><dd>Support Analyst I (Tier 1), supporting a US-based MSP</dd></div>
+            <div><dt>Based in</dt><dd>Roxas City, Capiz, Philippines</dd></div>
+            <div><dt>Education</dt><dd>BS Information Technology, University of San Agustin</dd></div>
+            <div><dt>Looking for</dt><dd>System Administrator · Network Administrator · Junior Systems Engineer</dd></div>
+          </dl>
+        </div>
+      </section>
+
       <!-- CASE STUDIES -->
       <section id="case-studies" class="fade-in-section">
-        <span class="section-label"><i class="fas fa-briefcase fa-xs" aria-hidden="true"></i> Case Studies</span>
-        <h2 class="section-title">Key Projects &amp; Achievements</h2>
-        <p class="section-desc">Real-world infrastructure challenges solved across MSP, enterprise, and remote environments.</p>
+        <span class="section-label"><i class="fas fa-briefcase fa-xs" aria-hidden="true"></i> Projects</span>
+        <h2 class="section-title">Projects &amp; Highlights</h2>
+        <p class="section-desc">A hands-on lab I built and maintain, plus highlights from my work across MSP, BPO, and remote roles.</p>
+
+        <article class="featured-project" id="homelab">
+          <div class="featured-copy">
+            <span class="featured-kicker">Featured project</span>
+            <h3>Homelab: Self-Hosted Infrastructure Lab</h3>
+            <p class="featured-why">
+              <strong>Why I built it.</strong> At work I see many systems from the support side. The homelab is where I
+              build and break them myself, without risking anyone's production environment.
+            </p>
+            <div class="featured-cols">
+              <div>
+                <h4>What's running</h4>
+                <ul class="featured-list">
+                  <li>Windows Server with Active Directory and DNS: domain, users, and Group Policy</li>
+                  <li>Rocky Linux server for day-to-day Linux administration</li>
+                  <li>Zabbix monitoring for host availability and alerts</li>
+                  <li>Jellyfin media server as an always-on service to keep healthy</li>
+                  <li>Claude and Claude Code for scripting and automation</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Skills it builds</h4>
+                <div class="tag-group">
+                  <span class="tag">Active Directory</span><span class="tag">Group Policy</span>
+                  <span class="tag">DNS</span><span class="tag">Linux admin</span>
+                  <span class="tag">Monitoring &amp; alerting</span><span class="tag">Service uptime</span>
+                  <span class="tag">AI-assisted scripting</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figure class="lab-diagram">
+            <svg viewBox="0 0 360 300" role="img" aria-labelledby="labTitle labDesc">
+              <title id="labTitle">Homelab overview</title>
+              <desc id="labDesc">A home router connects a Windows Server running Active Directory and DNS, a Rocky Linux server running Zabbix and Jellyfin, and a workstation running Claude Code. Zabbix monitors the other machines.</desc>
+              <g class="lab-lines">
+                <line x1="180" y1="62" x2="180" y2="96"/>
+                <line x1="60" y1="96" x2="300" y2="96"/>
+                <line x1="60" y1="96" x2="60" y2="128"/>
+                <line x1="180" y1="96" x2="180" y2="128"/>
+                <line x1="300" y1="96" x2="300" y2="128"/>
+              </g>
+              <g class="lab-monitor">
+                <path d="M150 250 C 110 280, 70 260, 60 214"/>
+                <path d="M210 250 C 250 280, 290 260, 300 214"/>
+              </g>
+              <g class="lab-node lab-node--top">
+                <rect x="120" y="18" width="120" height="44" rx="10"/>
+                <text x="180" y="45">Home router</text>
+              </g>
+              <g class="lab-node">
+                <rect x="8" y="128" width="104" height="86" rx="10"/>
+                <text x="60" y="154" class="lab-title">Windows</text>
+                <text x="60" y="170" class="lab-title">Server</text>
+                <text x="60" y="192" class="lab-sub">AD · DNS · GPO</text>
+              </g>
+              <g class="lab-node">
+                <rect x="128" y="128" width="104" height="122" rx="10"/>
+                <text x="180" y="154" class="lab-title">Rocky Linux</text>
+                <text x="180" y="180" class="lab-sub">Zabbix</text>
+                <text x="180" y="198" class="lab-sub">Jellyfin</text>
+                <text x="180" y="230" class="lab-sub lab-faint">monitors all hosts</text>
+              </g>
+              <g class="lab-node">
+                <rect x="248" y="128" width="104" height="86" rx="10"/>
+                <text x="300" y="154" class="lab-title">Workstation</text>
+                <text x="300" y="180" class="lab-sub">Claude Code</text>
+                <text x="300" y="196" class="lab-sub">scripts</text>
+              </g>
+            </svg>
+            <figcaption>Simplified overview of the lab.</figcaption>
+          </figure>
+        </article>
+
+        <h3 class="subsection-title">Work highlights</h3>
         <div class="skills-grid">
 
           <article class="skill-card">
@@ -306,25 +413,14 @@
             </p>
           </article>
 
-          <article class="skill-card">
-            <div class="skill-icon"><i class="fas fa-flask" aria-hidden="true"></i></div>
-            <h3>Homelab — Home Infrastructure Lab</h3>
-            <p class="card-text">
-              Maintain a self-built home lab environment running Rocky Linux, Windows Server, and Active Directory,
-              with hands-on deployment of enterprise monitoring via Zabbix, AI-assisted scripting and automation using Claude and Claude Code,
-              and media server hosting via Jellyfin — used for continuous self-directed study in systems administration, Linux infrastructure,
-              and applied AI integration.
-            </p>
-          </article>
-
         </div>
       </section>
 
-      <!-- CORE COMPETENCIES -->
+      <!-- SKILLS & TOOLS -->
       <section id="competencies" class="fade-in-section">
-        <span class="section-label"><i class="fas fa-microchip fa-xs" aria-hidden="true"></i> Technical Skills</span>
-        <h2 class="section-title">Core Competencies</h2>
-        <p class="section-desc">Grouped by operational domain — infrastructure, cloud, networking, monitoring, security, and AI-assisted operations.</p>
+        <span class="section-label"><i class="fas fa-microchip fa-xs" aria-hidden="true"></i> Skills</span>
+        <h2 class="section-title">Skills &amp; Tools</h2>
+        <p class="section-desc">Everything I work with, grouped by area.</p>
         <div class="skills-grid">
 
           <article class="skill-card">
@@ -333,8 +429,8 @@
             <div class="tag-group">
               <span class="tag">Windows Server</span><span class="tag">Active Directory</span>
               <span class="tag">Azure AD</span><span class="tag">Microsoft 365</span>
-              <span class="tag">Exchange Admin</span><span class="tag">Virtualization</span>
-              <span class="tag">Group Policy</span>
+              <span class="tag">Exchange Admin</span><span class="tag">Group Policy</span>
+              <span class="tag">Virtualization</span><span class="tag">Google Admin</span>
             </div>
           </article>
 
@@ -342,20 +438,20 @@
             <div class="skill-icon"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
             <h3>Networking &amp; Infrastructure</h3>
             <div class="tag-group">
-              <span class="tag">Cisco</span><span class="tag">Fortinet</span>
+              <span class="tag">Cisco IOS</span><span class="tag">Fortinet</span>
               <span class="tag">SonicWall</span><span class="tag">UniFi AP</span>
               <span class="tag">VLANs</span><span class="tag">VPNs</span>
-              <span class="tag">DNS</span><span class="tag">TCP/IP</span><span class="tag">DHCP</span>
+              <span class="tag">DNS</span><span class="tag">DHCP</span><span class="tag">TCP/IP</span>
             </div>
           </article>
 
           <article class="skill-card">
             <div class="skill-icon"><i class="fas fa-desktop" aria-hidden="true"></i></div>
-            <h3>Remote Management &amp; Monitoring</h3>
+            <h3>RMM, Ticketing &amp; Documentation</h3>
             <div class="tag-group">
               <span class="tag">Datto RMM</span><span class="tag">Kaseya Autotask</span>
               <span class="tag">Auvik</span><span class="tag">Zabbix</span>
-              <span class="tag">ITGlue</span>
+              <span class="tag">ITGlue</span><span class="tag">Freshdesk</span>
             </div>
           </article>
 
@@ -364,8 +460,8 @@
             <h3>Security &amp; Endpoint Protection</h3>
             <div class="tag-group">
               <span class="tag">Access Control</span><span class="tag">Vulnerability Analysis</span>
-              <span class="tag">Sentinel</span><span class="tag">Sophos</span>
-              <span class="tag">Endpoint Lifecycle</span>
+              <span class="tag">RocketCyber</span><span class="tag">Sophos</span>
+              <span class="tag">Sentinel</span><span class="tag">Endpoint Lifecycle</span>
             </div>
           </article>
 
@@ -373,43 +469,12 @@
             <div class="skill-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
             <h3>AI &amp; Scripting</h3>
             <div class="tag-group">
-              <span class="tag">Shell/Batch Scripting</span><span class="tag">Copilot AI Agent</span>
-              <span class="tag">Claude</span><span class="tag">Claude Code</span><span class="tag">Python</span>
+              <span class="tag">PowerShell</span><span class="tag">Shell/Batch Scripting</span>
+              <span class="tag">Python</span><span class="tag">Copilot AI Agent</span>
+              <span class="tag">Claude</span><span class="tag">Claude Code</span>
             </div>
           </article>
 
-        </div>
-      </section>
-
-      <!-- TOOLS -->
-      <section id="tools" class="fade-in-section">
-        <span class="section-label"><i class="fas fa-toolbox fa-xs" aria-hidden="true"></i> Toolstack</span>
-        <h2 class="section-title">Tools &amp; Platforms</h2>
-        <p class="section-desc">The full stack of tools I work with daily across infrastructure, cloud, monitoring, and security.</p>
-        <div class="tools-grid">
-          <div class="tool-chip">Windows Server</div>
-          <div class="tool-chip">Azure AD</div>
-          <div class="tool-chip">Microsoft 365</div>
-          <div class="tool-chip">Exchange Admin</div>
-          <div class="tool-chip">Datto RMM</div>
-          <div class="tool-chip">Kaseya Autotask</div>
-          <div class="tool-chip">Auvik</div>
-          <div class="tool-chip">Zabbix</div>
-          <div class="tool-chip">ITGlue</div>
-          <div class="tool-chip">RocketCyber</div>
-          <div class="tool-chip">Fortinet</div>
-          <div class="tool-chip">Sophos</div>
-          <div class="tool-chip">Cisco IOS</div>
-          <div class="tool-chip">UniFi AP</div>
-          <div class="tool-chip">Active Directory</div>
-          <div class="tool-chip">Group Policy</div>
-          <div class="tool-chip">Freshdesk</div>
-          <div class="tool-chip">Google Admin</div>
-          <div class="tool-chip">Copilot AI</div>
-          <div class="tool-chip">Claude</div>
-          <div class="tool-chip">Claude Code</div>
-          <div class="tool-chip">PowerShell</div>
-          <div class="tool-chip">Batch Scripting</div>
         </div>
       </section>
 
