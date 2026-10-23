@@ -1,8 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#eef0f3" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+
+  <!-- Apply the saved theme before the page paints (prevents a light flash in dark mode).
+       No saved choice = follow the device setting automatically. -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') root.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <title>Gabriel Philip Pariñas — IT Infrastructure & Support Engineer</title>
   <meta name="description" content="Results-oriented IT professional with 6+ years of experience in network infrastructure, Windows Server, Azure AD, and managed services. Based in Roxas City, Philippines." />
   <meta property="og:title" content="Gabriel Philip Pariñas — IT Portfolio" />
@@ -55,9 +71,10 @@
           <a href="https://linkedin.com/in/gpparinas" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
           <a href="https://github.com/gpparinas" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
           <a href="mailto:gabriielpparinas@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-          <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-            <i id="sunIcon"  class="fas fa-sun hidden" aria-hidden="true"></i>
-            <i id="moonIcon" class="fas fa-moon"       aria-hidden="true"></i>
+          <button id="darkModeToggle" class="theme-toggle" type="button" aria-label="Theme: System. Click to switch to Light." title="Theme: System">
+            <i id="systemIcon" class="fas fa-circle-half-stroke" aria-hidden="true"></i>
+            <i id="sunIcon"    class="fas fa-sun hidden"         aria-hidden="true"></i>
+            <i id="moonIcon"   class="fas fa-moon hidden"        aria-hidden="true"></i>
           </button>
         </div>
       </div>

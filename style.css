@@ -3,8 +3,14 @@
    Design: sidebar profile + bento dashboard, custom tokens, dark mode
    ============================================================ */
 
-/* ---------- DESIGN TOKENS ---------- */
-:root, [data-theme="light"] {
+/* ---------- DESIGN TOKENS ----------
+   Theme rules:
+   - No data-theme attribute  = follow the device setting (System)
+   - data-theme="light"       = always light
+   - data-theme="dark"        = always dark (AMOLED true black)
+   ------------------------------------ */
+:root {
+  color-scheme: light;
   --bg:            #eef0f3;
   --surface:       #ffffff;
   --surface-2:     #f4f5f7;
@@ -48,26 +54,53 @@
   --font-serif:   'Instrument Serif', Georgia, serif;
 }
 
-[data-theme="dark"] {
-  --bg:            #0e0f12;
-  --surface:       #17191d;
-  --surface-2:     #1f2126;
-  --frame:         #151a24;
-  --frame-border:  #232b3b;
-  --text:          #eceef2;
-  --muted:         #9a9fa8;
-  --faint:         #555a63;
-  --border:        rgba(236,238,242,.09);
+/* Dark = AMOLED: true black page, near-black cards, thin borders for separation.
+   Kept identical in both blocks below so System-dark and a manual Dark choice match. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg:            #000000;
+    --surface:       #0b0b0d;
+    --surface-2:     #131316;
+    --frame:         #050506;
+    --frame-border:  #1c1d22;
+    --text:          #f2f3f5;
+    --muted:         #a1a5ad;
+    --faint:         #5a5e66;
+    --border:        rgba(242,243,245,.10);
+    --primary:       #ff8a3d;
+    --primary-hover: #ffa366;
+    --accent-bg:     #23160d;
+    --accent-text:   #ffa366;
+    --ink:           #f2f3f5;
+    --ink-text:      #000000;
+    --window:        #000000;
+    --shadow-sm:     none;
+    --shadow-md:     0 0 0 1px rgba(255,255,255,.06);
+    --shadow-lg:     0 0 0 1px rgba(255,255,255,.08), 0 20px 50px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:            #000000;
+  --surface:       #0b0b0d;
+  --surface-2:     #131316;
+  --frame:         #050506;
+  --frame-border:  #1c1d22;
+  --text:          #f2f3f5;
+  --muted:         #a1a5ad;
+  --faint:         #5a5e66;
+  --border:        rgba(242,243,245,.10);
   --primary:       #ff8a3d;
   --primary-hover: #ffa366;
-  --accent-bg:     #2c1d12;
+  --accent-bg:     #23160d;
   --accent-text:   #ffa366;
-  --ink:           #eceef2;
-  --ink-text:      #14161b;
-  --window:        #0b0c0e;
-  --shadow-sm:     0 1px 3px rgba(0,0,0,.3);
-  --shadow-md:     0 8px 24px rgba(0,0,0,.35);
-  --shadow-lg:     0 20px 50px rgba(0,0,0,.45);
+  --ink:           #f2f3f5;
+  --ink-text:      #000000;
+  --window:        #000000;
+  --shadow-sm:     none;
+  --shadow-md:     0 0 0 1px rgba(255,255,255,.06);
+  --shadow-lg:     0 0 0 1px rgba(255,255,255,.08), 0 20px 50px rgba(0,0,0,.8);
 }
 
 /* ---------- BASE RESET ---------- */
@@ -79,7 +112,9 @@ html {
   text-rendering: optimizeLegibility;
 }
 body {
+  min-height: 100vh;      /* fallback for older browsers */
   min-height: 100dvh;
+  overflow-x: hidden;
   font-family: 'Inter', system-ui, sans-serif;
   font-size: var(--text-base);
   background: var(--bg);
@@ -126,12 +161,15 @@ a.sr-only:focus {
 .app {
   display: grid;
   grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  min-height: 100vh;
   min-height: 100dvh;
 }
 
 /* ---------- SIDEBAR ---------- */
 .sidebar {
-  position: sticky; top: 0; height: 100dvh;
+  position: sticky; top: 0;
+  height: 100vh;          /* fallback */
+  height: 100dvh;
   display: flex; flex-direction: column; gap: var(--s5);
   padding: var(--s8) var(--s4) var(--s5);
   border-right: 1px solid var(--border);
@@ -207,9 +245,13 @@ a.sr-only:focus {
 
 /* ---------- MAIN ---------- */
 main {
-  padding: var(--s10) clamp(var(--s4), 3vw, var(--s10)) var(--s8);
+  padding-block: var(--s10) var(--s8);
+  padding-left:  max(clamp(var(--s4), 3vw, var(--s10)), env(safe-area-inset-left, 0px));
+  padding-right: max(clamp(var(--s4), 3vw, var(--s10)), env(safe-area-inset-right, 0px));
   max-width: calc(var(--max-w) + 2 * var(--s10));
   width: 100%;
+  min-width: 0;
+  margin-inline: auto;    /* centers content on ultra-wide screens */
 }
 
 /* ---------- HOME HEADER ---------- */
@@ -520,12 +562,25 @@ footer {
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--s3);
 }
 
-/* ---------- FADE-IN ANIMATION ---------- */
-.fade-in-section {
+/* ---------- FADE-IN ANIMATION ----------
+   Only hides sections when JavaScript is running (html.js),
+   so content is never stuck invisible if a script fails. */
+.js .fade-in-section {
   opacity: 0; transform: translateY(20px);
   transition: opacity .6s ease-out, transform .6s ease-out;
 }
-.fade-in-section.is-visible { opacity: 1; transform: none; }
+.js .fade-in-section.is-visible { opacity: 1; transform: none; }
+
+/* ---------- TOUCH DEVICES ----------
+   Hover lift effects only on devices with a real mouse,
+   so cards don't stay "stuck" raised after a tap on phones. */
+@media (hover: none) {
+  .bento-card:hover, .skill-card:hover, .btn-dark:hover,
+  .socials a:hover, .theme-toggle:hover { transform: none; }
+  .bento-card:hover .preview-window { transform: translateY(var(--s6)) rotate(-1deg); }
+  .bento-card:hover .stack-back { transform: rotate(-12deg) translateX(-14px); }
+  .bento-card:hover .stack-mid  { transform: rotate(8deg) translateX(12px); }
+}
 
 /* ---------- PRINT ---------- */
 @media print {
@@ -545,7 +600,9 @@ footer {
   .topbar {
     position: sticky; top: 0; z-index: 40;
     display: flex; align-items: center; justify-content: space-between;
-    padding: var(--s3) var(--s4);
+    padding-block: max(var(--s3), env(safe-area-inset-top, 0px)) var(--s3);
+    padding-left:  max(var(--s4), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--s4), env(safe-area-inset-right, 0px));
     background: color-mix(in srgb, var(--bg) 85%, transparent);
     backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
@@ -577,6 +634,17 @@ footer {
   .contact-grid { grid-template-columns: 1fr; }
 }
 
+/* Ultra-wide screens: slightly wider content area */
+@media (min-width: 1800px) {
+  :root { --max-w: 1400px; --sidebar-w: 260px; }
+}
+
+/* Short screens (landscape phones, small laptops): tighter sidebar */
+@media (max-height: 700px) and (min-width: 901px) {
+  .sidebar { padding-top: var(--s5); gap: var(--s3); }
+  .avatar { width: 72px; height: 72px; }
+}
+
 @media (max-width: 640px) {
   .bento { grid-template-columns: 1fr; }
   .bento-card.span-2 { grid-column: auto; }
@@ -584,4 +652,13 @@ footer {
   .bento-split { grid-template-columns: 1fr; }
   .tools-strip { flex-direction: column; align-items: stretch; padding: var(--s3); }
   .window-stats { display: none; }
+  .headline { letter-spacing: -.025em; }
+}
+
+/* Very small phones (e.g. 320px wide) */
+@media (max-width: 360px) {
+  .bento-frame { padding: var(--s2); }
+  .bento-card, .skill-card, .contact-card { padding: var(--s4); }
+  .job-card { padding: var(--s4); }
+  .marquee-list li { padding: .6rem 1rem; }
 }

@@ -2,46 +2,57 @@
 // GABRIEL PARINAS PORTFOLIO — script.js
 // ============================================================
 
-// ── 1. THEME (dark / light) ──────────────────────────────────
+// ── 1. THEME (System / Light / Dark-AMOLED) ──────────────────
+// "system" = no data-theme attribute, so CSS follows the device
+// setting automatically (and updates live if the device switches).
+// The button cycles: System → Light → Dark → System.
 const themeToggle = document.getElementById('darkModeToggle');
 const html = document.documentElement;
+const THEME_ORDER = ['system', 'light', 'dark'];
+const THEME_LABEL = { system: 'System', light: 'Light', dark: 'Dark' };
 
-const getPreferred = () =>
-  window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+function readTheme() {
+  try {
+    const t = localStorage.getItem('theme');
+    return t === 'light' || t === 'dark' ? t : 'system';
+  } catch (e) { return 'system'; }
+}
 
-let currentTheme = localStorage.getItem('theme') || getPreferred();
-html.setAttribute('data-theme', currentTheme);
-updateThemeIcon(currentTheme);
+function saveTheme(theme) {
+  try {
+    if (theme === 'system') localStorage.removeItem('theme');
+    else localStorage.setItem('theme', theme);
+  } catch (e) { /* storage blocked: choice lasts until reload */ }
+}
 
-themeToggle && themeToggle.addEventListener('click', () => {
-  currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  html.setAttribute('data-theme', currentTheme);
-  localStorage.setItem('theme', currentTheme);
-  updateThemeIcon(currentTheme);
-});
+function applyTheme(theme) {
+  if (theme === 'system') html.removeAttribute('data-theme');
+  else html.setAttribute('data-theme', theme);
+  updateThemeButton(theme);
+}
 
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-  if (!localStorage.getItem('theme')) {
-    currentTheme = e.matches ? 'dark' : 'light';
-    html.setAttribute('data-theme', currentTheme);
-    updateThemeIcon(currentTheme);
-  }
-});
-
-function updateThemeIcon(theme) {
-  const sun  = document.getElementById('sunIcon');
-  const moon = document.getElementById('moonIcon');
-  if (!sun || !moon) return;
-  if (theme === 'dark') {
-    sun.classList.remove('hidden');
-    moon.classList.add('hidden');
-    themeToggle && themeToggle.setAttribute('aria-pressed', 'true');
-  } else {
-    moon.classList.remove('hidden');
-    sun.classList.add('hidden');
-    themeToggle && themeToggle.setAttribute('aria-pressed', 'false');
+function updateThemeButton(theme) {
+  const icons = {
+    system: document.getElementById('systemIcon'),
+    light:  document.getElementById('sunIcon'),
+    dark:   document.getElementById('moonIcon'),
+  };
+  Object.entries(icons).forEach(([key, el]) => el && el.classList.toggle('hidden', key !== theme));
+  if (themeToggle) {
+    const next = THEME_ORDER[(THEME_ORDER.indexOf(theme) + 1) % THEME_ORDER.length];
+    themeToggle.setAttribute('aria-label', `Theme: ${THEME_LABEL[theme]}. Click to switch to ${THEME_LABEL[next]}.`);
+    themeToggle.title = `Theme: ${THEME_LABEL[theme]}`;
   }
 }
+
+let currentTheme = readTheme();
+applyTheme(currentTheme);
+
+themeToggle && themeToggle.addEventListener('click', () => {
+  currentTheme = THEME_ORDER[(THEME_ORDER.indexOf(currentTheme) + 1) % THEME_ORDER.length];
+  saveTheme(currentTheme);
+  applyTheme(currentTheme);
+});
 
 // ── 2. MOBILE MENU (slide-out sidebar) ───────────────────────
 const mobileBtn = document.getElementById('mobileMenuButton');
@@ -92,7 +103,7 @@ const sections = [...navLinks]
   .map(a => document.querySelector(a.getAttribute('href')))
   .filter(Boolean);
 
-const navObserver = new IntersectionObserver(entries => {
+const navObserver = 'IntersectionObserver' in window && new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       navLinks.forEach(l => l.classList.remove('active'));
@@ -102,16 +113,23 @@ const navObserver = new IntersectionObserver(entries => {
   });
 }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
 
-sections.forEach(s => navObserver.observe(s));
+navObserver && sections.forEach(s => navObserver.observe(s));
 
 // ── 5. FADE-IN ON SCROLL ─────────────────────────────────────
-const fadeObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      fadeObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.08 });
+const fadeSections = document.querySelectorAll('.fade-in-section');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-document.querySelectorAll('.fade-in-section').forEach(el => fadeObserver.observe(el));
+if (!('IntersectionObserver' in window) || reduceMotion) {
+  // Older browsers or reduced-motion users: just show everything.
+  fadeSections.forEach(el => el.classList.add('is-visible'));
+} else {
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  fadeSections.forEach(el => fadeObserver.observe(el));
+}
