@@ -11,7 +11,8 @@ A single-page portfolio website for Gabriel Philip Pariñas, showcasing IT infra
 | `index.html` | Main single-page portfolio layout and content |
 | `style.css` | Custom design system, responsive layout, dark mode styling, cards, timeline, and section styling |
 | `script.js` | Theme toggle, mobile navigation, smooth scrolling, fade-in effects, and active nav highlighting |
-| `photo.png` | Professional headshot shown in the hero section |
+| `photo.webp` | Optimized headshot used on the site (400px wide) |
+| `photo.png` | Original full-size headshot (source for `photo.webp`) |
 | `resume.pdf` | Downloadable résumé for recruiters and hiring managers |
 
 ## Features
@@ -42,10 +43,9 @@ This site is deployed with GitHub Pages from the repository branch.
 
 ## Updating assets
 
-To update the profile photo or résumé, replace these files with the same filenames:
+To update the résumé, replace `resume.pdf` with the same filename.
 
-- `photo.png`
-- `resume.pdf`
+To update the profile photo, replace `photo.png`, then export a 400px-wide WebP copy as `photo.webp` (that is the file the site loads).
 
 GitHub Pages will publish the updated versions after the next commit.
 
