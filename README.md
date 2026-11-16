@@ -14,6 +14,8 @@ A single-page portfolio website for Gabriel Philip Pariñas, showcasing IT infra
 | `photo.webp` | Optimized headshot used on the site (400px wide) |
 | `photo.png` | Original full-size headshot (source for `photo.webp`) |
 | `resume.pdf` | Downloadable résumé for recruiters and hiring managers |
+| `favicon.svg` | Browser tab icon |
+| `og-image.png` | Preview image shown when the link is shared |
 
 ## Features
 
@@ -22,7 +24,7 @@ A single-page portfolio website for Gabriel Philip Pariñas, showcasing IT infra
 - Light and dark mode
 - Sidebar navigation with active section highlighting
 - Smooth scrolling and fade-in reveal animations
-- About, featured homelab project with diagram, work highlights, skills & tools, experience timeline, certifications & training, and contact sections
+- About, work highlights, skills & tools, experience timeline, verifiable certifications & training, and contact sections
 - Theme follows the device (System) by default, with Light and Dark (AMOLED) options
 - Resume download and external profile links
 - Accessible structure with skip link, semantic sections, and focus states

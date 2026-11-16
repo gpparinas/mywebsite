@@ -62,13 +62,18 @@ const backdrop  = document.getElementById('sidebarBackdrop');
 
 function setMenu(open) {
   if (!mobileNav) return;
+  const wasOpen = mobileNav.classList.contains('open');
   mobileNav.classList.toggle('open', open);
+  document.body.classList.toggle('menu-open', open);
   mobileBtn && mobileBtn.setAttribute('aria-expanded', open);
   if (backdrop) backdrop.hidden = !open;
   if (menuIcon) {
     menuIcon.classList.toggle('fa-bars', !open);
     menuIcon.classList.toggle('fa-times', open);
   }
+  // Move keyboard focus with the menu: into it on open, back to the button on close.
+  if (open && !wasOpen) mobileNav.querySelector('.side-nav a')?.focus();
+  if (!open && wasOpen && mobileNav.contains(document.activeElement)) mobileBtn?.focus();
 }
 
 mobileBtn && mobileBtn.addEventListener('click', () => {
@@ -76,6 +81,8 @@ mobileBtn && mobileBtn.addEventListener('click', () => {
 });
 backdrop && backdrop.addEventListener('click', () => setMenu(false));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+// Rotating or widening past the mobile layout closes the drawer so the page is never left locked.
+window.matchMedia('(min-width: 901px)').addEventListener?.('change', (e) => { if (e.matches) setMenu(false); });
 mobileNav && mobileNav.querySelectorAll('.side-nav a').forEach(link => {
   link.addEventListener('click', () => setMenu(false));
 });
@@ -90,7 +97,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     const offset = (document.querySelector('.topbar')?.offsetHeight || 0) + 16;
     const top = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
+    window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
     history.pushState(null, null, id);
     target.setAttribute('tabindex', '-1');
     target.focus({ preventScroll: true });
