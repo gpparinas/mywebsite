@@ -62,22 +62,89 @@ story = [
               + link("https://www.credly.com/users/gpparinas", "credly.com/users/gpparinas"), S["contact"]),
     Spacer(1, 6),
     Paragraph(
-        "IT support professional with five years of experience across MSP, BPO, and remote roles, from Fortinet and "
-        "Cisco infrastructure for a large BPO in Iloilo to first-line support for a US-based managed services provider "
-        "today. I care about the parts of IT that users never see: clear documentation, patches that go out on time, "
-        "and escalations that reach the next team with everything they need. Working toward a System Administrator, "
-        "Network Administrator, or Junior Systems Engineer role.", S["body"]),
+        "Tier 1 Support Analyst at a US-based managed services provider, with five years in IT support that began in "
+        "BPO operations supporting US-based companies. I have closed more than 1,700 tickets since February 2026, and "
+        "the move to an MSP widened my stack quickly: Sophos Firewall and OPNsense, Microsoft 365 across multiple "
+        "tenants, and the Kaseya tools. I learn new systems fast and use AI assistants, mostly Claude, to work faster. "
+        "Working toward a System Administrator or Junior Systems Engineer role, with more hands-on exposure to cloud "
+        "and networking.", S["body"]),
 ]
 
 story += section("Skills")
 story += bullets([
-    "<b>System Administration &amp; Cloud:</b> Windows Server, Active Directory, Azure AD, Microsoft 365, "
+    "<b>System Administration &amp; Cloud:</b> Windows Server, Active Directory, Microsoft Entra ID (Azure AD), Microsoft 365, "
     "Exchange Admin, Group Policy, Virtualization, Google Admin",
-    "<b>Networking &amp; Infrastructure:</b> Cisco IOS, Fortinet, SonicWall, UniFi AP, VLANs, VPNs, DNS, DHCP, TCP/IP",
+    "<b>Networking &amp; Infrastructure:</b> Fortinet, Sophos Firewall, OPNsense, SonicWall, Cisco IOS, UniFi AP, "
+    "VLANs, VPNs, DNS, DHCP, TCP/IP",
     "<b>RMM, Ticketing &amp; Documentation:</b> Datto RMM, Kaseya Autotask, Auvik, Zabbix, ITGlue, Freshdesk",
     "<b>Security &amp; Endpoint Protection:</b> Access Control, Vulnerability Analysis, RocketCyber, Sophos, "
     "Sentinel, Endpoint Lifecycle",
-    "<b>AI &amp; Scripting:</b> PowerShell, Shell/Batch Scripting, Python, Copilot AI Agent, Claude, Claude Code",
+    "<b>AI &amp; Automation:</b> Claude (most used), Claude Code, Gemini, Copilot, Merlin AI, Perplexity, Make, PowerShell, "
+    "Shell/Batch Scripting, Python",
+])
+
+story += section("Professional Experience")
+story += job("Support Analyst I (Tier 1)",
+             "<b>Premium Care Solutions Philippines Inc.</b> (Client: Klik Solutions LLC) | Roxas City · Remote",
+             "February 2026 – Present", [
+    "Closed more than 1,700 tickets since February 2026 across multiple MSP client environments.",
+    "Serve as first point of contact for MSP clients, handling inbound calls, emails, and voicemails and triaging "
+    "incidents and service requests in Autotask PSA.",
+    "Troubleshoot and resolve Tier 1 issues on first contact using remote support tools and Datto RMM, covering "
+    "Windows and macOS endpoints, connectivity, and business applications.",
+    "Support Microsoft 365 administration tasks, including user onboarding and offboarding, license assignment, "
+    "group management, and shared mailboxes.",
+    "Handle day-to-day network troubleshooting in client environments that include Sophos Firewall and OPNsense.",
+    "Escalate issues beyond Tier 1 scope to NOC, SOC, and Engineering teams following documented procedures, with "
+    "clear handoffs and timely customer updates within SLA.",
+    "Document troubleshooting steps and resolutions in Autotask and ITGlue, and take part in the on-call support rotation.",
+])
+story += job("Professional development", "Certificates in IT support, security, and networking",
+             "September 2025 – January 2026",
+             note="Completed the Google IT Support and Google Cybersecurity Professional Certificates, Cisco's Network "
+                  "Technician Career Path, and Google AI Essentials before joining Premium Care Solutions.")
+story += job("IT Support", "<b>Rubixcare Ltd.</b> | London, United Kingdom · Remote",
+             "March 2025 – August 2025", [
+    "Managed the complete user lifecycle in the Google Admin Console and conducted regular security audits of "
+    "Google Drive to enforce data protection policies.",
+    "Performed scheduled maintenance, security updates, and automated full backups of company web platforms.",
+    "Handled network connectivity diagnostics and application troubleshooting to minimize downtime for a remote workforce.",
+    "Took part in planning sessions to improve processes and evaluate new software (e.g., RotaCloud) for team efficiency.",
+])
+story += job("Career transition", "Upskilling and the move to remote work", "October 2024 – February 2025",
+             note="Left Nearsol to look for my next role. Completed Coursera's CompTIA A+ Network course in October "
+                  "2024, then moved into remote IT support with Rubixcare in March 2025.")
+story += job("IT Support Specialist",
+             "<b>Nearsol Philippines Inc.</b> | Iloilo Business Park, Mandurriao, Iloilo City",
+             "April 2022 – September 2024", [
+    "Supported Windows Servers, Active Directory/Azure AD, Fortinet firewalls, and Cisco routing and switching for a "
+    "large-scale BPO operation, working alongside the network engineers and assisting them on projects.",
+    "Supported over 200 monthly infrastructure and user requests via Freshdesk, maintaining 90% SLA compliance.",
+    "As one of the tenured members of the team, trained teammates on the site's infrastructure.",
+    "Led IT asset procurement and vendor negotiations to reduce infrastructure costs.",
+])
+story += job("Career break", "Family care during the pandemic", "March 2021 – March 2022",
+             note="Returned home during the COVID-19 pandemic to take care of my family, then went back to "
+                  "full-time IT work in April 2022.")
+story += job("IT Admin / Support",
+             "<b>World Source Pettigrew Philippines Inc.</b> | General Luna Street, Iloilo City",
+             "December 2019 – February 2021", [
+    "Architected and maintained Windows Terminal Servers, Active Directory, and physical security (CCTV) systems.",
+    "Configured and maintained SonicWall firewalls and enforced security compliance across the local network.",
+    "Monitored newly deployed Windows server environments through regular health checks and configuration tuning.",
+])
+story += job("IT Intern", "<b>PLDT Site Office – La Paz Branch</b> | Iloilo City",
+             "November 2018 – March 2019", [
+    "Assisted enterprise engineers in structured cabling, network hardware testing, and infrastructure troubleshooting.",
+])
+
+story += section("Projects")
+story += [Paragraph("Daily IT news briefing and weekly jobs roundup", S["job"]),
+          Paragraph("Personal automation &nbsp;|&nbsp; Make, Gemini, Claude, Gmail", S["meta"])]
+story += bullets([
+    "Built a Make scenario that reads IT news feeds, has Gemini summarize them, and emails the briefing to my Gmail "
+    "every morning.",
+    "Set up a scheduled Claude task that searches new job listings each week and sends me the best matches.",
 ])
 
 story += section("Certifications &amp; Training")
@@ -109,58 +176,6 @@ story += bullets([
 ])
 story.append(Paragraph("Every credential can be verified online: " + link(SITE + "#credentials",
                        "gpparinas.github.io/mywebsite/#credentials"), S["note"]))
-
-story += section("Professional Experience")
-story += job("Support Analyst I (Tier 1)",
-             "<b>Premium Care Solutions Philippines Inc.</b> (Client: Klik Solutions LLC) | Roxas City · Remote",
-             "February 2026 – Present", [
-    "Serve as first point of contact for MSP clients, handling inbound calls, emails, and voicemails and triaging "
-    "incidents and service requests in Autotask PSA.",
-    "Troubleshoot and resolve Tier 1 issues on first contact using remote support tools and Datto RMM, covering "
-    "Windows and macOS endpoints, connectivity, and business applications.",
-    "Support Microsoft 365 administration tasks, including user onboarding and offboarding, license assignment, "
-    "group management, and shared mailboxes.",
-    "Escalate issues beyond Tier 1 scope to NOC, SOC, and Engineering teams following documented procedures, with "
-    "clear handoffs and timely customer updates within SLA.",
-    "Document troubleshooting steps and resolutions in Autotask and ITGlue, and take part in the on-call support rotation.",
-])
-story += job("Professional development", "Certificates in IT support, security, and networking",
-             "September 2025 – January 2026",
-             note="Completed the Google IT Support and Google Cybersecurity Professional Certificates, Cisco's Network "
-                  "Technician Career Path, and Google AI Essentials before joining Premium Care Solutions.")
-story += job("IT Support", "<b>Rubixcare Ltd.</b> | London, United Kingdom · Remote",
-             "March 2025 – August 2025", [
-    "Managed the complete user lifecycle in the Google Admin Console and conducted regular security audits of "
-    "Google Drive to enforce data protection policies.",
-    "Performed scheduled maintenance, security updates, and automated full backups of company web platforms.",
-    "Handled network connectivity diagnostics and application troubleshooting to minimize downtime for a remote workforce.",
-    "Took part in planning sessions to improve processes and evaluate new software (e.g., RotaCloud) for team efficiency.",
-])
-story += job("Career transition", "Upskilling and the move to remote work", "October 2024 – February 2025",
-             note="Left Nearsol to look for my next role. Completed Coursera's CompTIA A+ Network course in October "
-                  "2024, then moved into remote IT support with Rubixcare in March 2025.")
-story += job("IT Support Specialist",
-             "<b>Nearsol Philippines Inc.</b> | Iloilo Business Park, Mandurriao, Iloilo City",
-             "April 2022 – September 2024", [
-    "Configured, deployed, and maintained Windows Servers, Active Directory/Azure AD, Fortinet firewalls, and Cisco "
-    "routing and switching devices for a large-scale BPO operation.",
-    "Supported over 200 monthly infrastructure and user requests via Freshdesk, maintaining 90% SLA compliance.",
-    "Led IT asset procurement and vendor negotiations to reduce infrastructure costs.",
-])
-story += job("Career break", "Family care during the pandemic", "March 2021 – March 2022",
-             note="Returned home during the COVID-19 pandemic to take care of my family, then went back to "
-                  "full-time IT work in April 2022.")
-story += job("IT Admin / Support",
-             "<b>World Source Pettigrew Philippines Inc.</b> | General Luna Street, Iloilo City",
-             "December 2019 – February 2021", [
-    "Architected and maintained Windows Terminal Servers, Active Directory, and physical security (CCTV) systems.",
-    "Configured and maintained SonicWall firewalls and enforced security compliance across the local network.",
-    "Monitored newly deployed Windows server environments through regular health checks and configuration tuning.",
-])
-story += job("IT Intern", "<b>PLDT Site Office – La Paz Branch</b> | Iloilo City",
-             "November 2018 – March 2019", [
-    "Assisted enterprise engineers in structured cabling, network hardware testing, and infrastructure troubleshooting.",
-])
 
 story += section("Education")
 story += [Paragraph("Bachelor of Science in Information Technology", S["job"]),
