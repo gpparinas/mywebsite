@@ -66,19 +66,20 @@ story = [
         "BPO operations supporting US-based companies. I have closed more than 1,700 tickets since February 2026, and "
         "the move to an MSP widened my stack quickly: Sophos Firewall and OPNsense, Microsoft 365 across multiple "
         "tenants, and the Kaseya tools. I learn new systems fast and use AI assistants, mostly Claude, to work faster. "
-        "Working toward a System Administrator, Network Administrator, or Junior Systems Engineer role.", S["body"]),
+        "Working toward a System Administrator or Junior Systems Engineer role, with more hands-on exposure to cloud "
+        "and networking.", S["body"]),
 ]
 
 story += section("Skills")
 story += bullets([
-    "<b>System Administration &amp; Cloud:</b> Windows Server, Active Directory, Azure AD, Microsoft 365, "
+    "<b>System Administration &amp; Cloud:</b> Windows Server, Active Directory, Microsoft Entra ID (Azure AD), Microsoft 365, "
     "Exchange Admin, Group Policy, Virtualization, Google Admin",
     "<b>Networking &amp; Infrastructure:</b> Fortinet, Sophos Firewall, OPNsense, SonicWall, Cisco IOS, UniFi AP, "
     "VLANs, VPNs, DNS, DHCP, TCP/IP",
     "<b>RMM, Ticketing &amp; Documentation:</b> Datto RMM, Kaseya Autotask, Auvik, Zabbix, ITGlue, Freshdesk",
     "<b>Security &amp; Endpoint Protection:</b> Access Control, Vulnerability Analysis, RocketCyber, Sophos, "
     "Sentinel, Endpoint Lifecycle",
-    "<b>AI &amp; Automation:</b> Claude (most used), Claude Code, ChatGPT, Copilot, Gemini, Make, PowerShell, "
+    "<b>AI &amp; Automation:</b> Claude (most used), Claude Code, Gemini, Copilot, Merlin AI, Perplexity, Make, PowerShell, "
     "Shell/Batch Scripting, Python",
 ])
 
