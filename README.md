@@ -14,7 +14,8 @@ A single-page portfolio website for Gabriel Philip Pariñas, showcasing IT infra
 | `photo.webp` | Small headshot used in the hero (400px wide) |
 | `photo-800.webp` | Larger headshot used in the About section |
 | `photo.png` | Original full-size headshot (source for the two above) |
-| `resume.pdf` | Downloadable résumé for recruiters and hiring managers |
+| `Gabriel-Philip-Parinas-CV.pdf` | Downloadable CV for recruiters and hiring managers |
+| `build_cv.py` | Rebuilds the CV PDF (`python build_cv.py`, needs `reportlab`) |
 | `favicon.svg` | Browser tab icon |
 | `og-image.png` | Preview image shown when the link is shared |
 
@@ -46,7 +47,7 @@ This site is deployed with GitHub Pages from the repository branch.
 
 ## Updating assets
 
-To update the résumé, replace `resume.pdf` with the same filename.
+To update the CV, edit the text in `build_cv.py` and run `python build_cv.py` (needs `pip install reportlab`). It rewrites `Gabriel-Philip-Parinas-CV.pdf`, which is the file the site links to.
 
 To update the profile photo, replace `photo.png`, then export a 400px-wide WebP copy as `photo.webp` (that is the file the site loads).
 
