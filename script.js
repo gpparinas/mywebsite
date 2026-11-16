@@ -1,135 +1,117 @@
 // ============================================================
 // GABRIEL PARINAS PORTFOLIO — script.js
+// Light/dark follows the browser automatically (CSS only), so
+// there is no theme code here. This file handles the menu and
+// the scroll effects. The page works without it.
 // ============================================================
 
-// ── 1. THEME (System / Light / Dark-AMOLED) ──────────────────
-// "system" = no data-theme attribute, so CSS follows the device
-// setting automatically (and updates live if the device switches).
-// The button cycles: System → Light → Dark → System.
-const themeToggle = document.getElementById('darkModeToggle');
-const html = document.documentElement;
-const THEME_ORDER = ['system', 'light', 'dark'];
-const THEME_LABEL = { system: 'System', light: 'Light', dark: 'Dark' };
-
-function readTheme() {
-  try {
-    const t = localStorage.getItem('theme');
-    return t === 'light' || t === 'dark' ? t : 'system';
-  } catch (e) { return 'system'; }
-}
-
-function saveTheme(theme) {
-  try {
-    if (theme === 'system') localStorage.removeItem('theme');
-    else localStorage.setItem('theme', theme);
-  } catch (e) { /* storage blocked: choice lasts until reload */ }
-}
-
-function applyTheme(theme) {
-  if (theme === 'system') html.removeAttribute('data-theme');
-  else html.setAttribute('data-theme', theme);
-  updateThemeButton(theme);
-}
-
-function updateThemeButton(theme) {
-  const icons = {
-    system: document.getElementById('systemIcon'),
-    light:  document.getElementById('sunIcon'),
-    dark:   document.getElementById('moonIcon'),
-  };
-  Object.entries(icons).forEach(([key, el]) => el && el.classList.toggle('hidden', key !== theme));
-  if (themeToggle) {
-    const next = THEME_ORDER[(THEME_ORDER.indexOf(theme) + 1) % THEME_ORDER.length];
-    themeToggle.setAttribute('aria-label', `Theme: ${THEME_LABEL[theme]}. Click to switch to ${THEME_LABEL[next]}.`);
-    themeToggle.title = `Theme: ${THEME_LABEL[theme]}`;
-  }
-}
-
-let currentTheme = readTheme();
-applyTheme(currentTheme);
-
-themeToggle && themeToggle.addEventListener('click', () => {
-  currentTheme = THEME_ORDER[(THEME_ORDER.indexOf(currentTheme) + 1) % THEME_ORDER.length];
-  saveTheme(currentTheme);
-  applyTheme(currentTheme);
-});
-
-// ── 2. MOBILE MENU (slide-out sidebar) ───────────────────────
-const mobileBtn = document.getElementById('mobileMenuButton');
-const mobileNav = document.getElementById('mobileNav');
-const menuIcon  = document.getElementById('mobileMenuIcon');
-const backdrop  = document.getElementById('sidebarBackdrop');
-
-function setMenu(open) {
-  if (!mobileNav) return;
-  mobileNav.classList.toggle('open', open);
-  mobileBtn && mobileBtn.setAttribute('aria-expanded', open);
-  if (backdrop) backdrop.hidden = !open;
-  if (menuIcon) {
-    menuIcon.classList.toggle('fa-bars', !open);
-    menuIcon.classList.toggle('fa-times', open);
-  }
-}
-
-mobileBtn && mobileBtn.addEventListener('click', () => {
-  setMenu(!mobileNav.classList.contains('open'));
-});
-backdrop && backdrop.addEventListener('click', () => setMenu(false));
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
-mobileNav && mobileNav.querySelectorAll('.side-nav a').forEach(link => {
-  link.addEventListener('click', () => setMenu(false));
-});
-
-// ── 3. SMOOTH SCROLL ─────────────────────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    const id = this.getAttribute('href');
-    if (id === '#') return;
-    const target = document.querySelector(id);
-    if (!target) return;
-    e.preventDefault();
-    const offset = (document.querySelector('.topbar')?.offsetHeight || 0) + 16;
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
-    history.pushState(null, null, id);
-    target.setAttribute('tabindex', '-1');
-    target.focus({ preventScroll: true });
-  });
-});
-
-// ── 4. ACTIVE NAV HIGHLIGHTING ───────────────────────────────
-const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-const sections = [...navLinks]
-  .map(a => document.querySelector(a.getAttribute('href')))
-  .filter(Boolean);
-
-const navObserver = 'IntersectionObserver' in window && new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      const active = [...navLinks].find(l => l.getAttribute('href') === '#' + entry.target.id);
-      active && active.classList.add('active');
-    }
-  });
-}, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
-
-navObserver && sections.forEach(s => navObserver.observe(s));
-
-// ── 5. FADE-IN ON SCROLL ─────────────────────────────────────
-const fadeSections = document.querySelectorAll('.fade-in-section');
+const root = document.documentElement;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// ── 1. MOBILE MENU ───────────────────────────────────────────
+const nav       = document.getElementById('nav');
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.getElementById('navLinks');
+
+function setMenu(open) {
+  root.classList.toggle('menu-open', open);
+  if (navToggle) {
+    navToggle.setAttribute('aria-expanded', open);
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+}
+const menuIsOpen = () => root.classList.contains('menu-open');
+
+navToggle && navToggle.addEventListener('click', () => setMenu(!menuIsOpen()));
+navLinks && navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && menuIsOpen()) { setMenu(false); navToggle && navToggle.focus(); }
+});
+// Rotating or widening past the mobile layout closes the menu so the page is never left locked.
+window.matchMedia('(min-width: 821px)').addEventListener?.('change', (e) => { if (e.matches) setMenu(false); });
+
+const sectionLinks = navLinks ? [...navLinks.querySelectorAll('a[href^="#"]')] : [];
+
+// ── 2. SCROLL-LINKED EFFECTS ─────────────────────────────────
+// a) hairline under the nav once the page has moved
+// b) hero gently fades and shrinks as it scrolls away
+// c) the About statement lights up word by word
+const heroInner = document.querySelector('.hero-inner');
+const statement = document.getElementById('statement');
+let words = [];
+
+if (statement && !reduceMotion) {
+  const text = statement.textContent.trim().split(/\s+/);
+  statement.textContent = '';
+  text.forEach((word, i) => {
+    const span = document.createElement('span');
+    span.className = 'w';
+    span.textContent = word;
+    statement.append(span, i < text.length - 1 ? ' ' : '');
+    words.push(span);
+  });
+}
+
+const clamp01 = (n) => Math.min(1, Math.max(0, n));
+let ticking = false;
+
+function onScroll() {
+  ticking = false;
+  const y  = window.scrollY;
+  const vh = window.innerHeight;
+
+  nav && nav.classList.toggle('is-scrolled', y > 4);
+  // Back at the top (hero), no section link is highlighted.
+  if (y < vh * 0.35) sectionLinks.forEach(a => a.classList.remove('is-active'));
+  if (reduceMotion) return;
+
+  if (heroInner) {
+    const p = clamp01((y - vh * 0.18) / (vh * 0.62));
+    heroInner.style.opacity   = String(1 - p);
+    heroInner.style.transform = p ? `translateY(${p * -24}px) scale(${1 - p * 0.05})` : '';
+  }
+
+  if (words.length) {
+    const r = statement.getBoundingClientRect();
+    // 0 when the paragraph enters near the bottom, 1 once it sits in the upper half
+    const p = clamp01((vh * 0.88 - r.top) / (r.height + vh * 0.4));
+    const lit = Math.round(p * words.length);
+    words.forEach((w, i) => w.classList.toggle('on', i < lit));
+  }
+}
+
+window.addEventListener('scroll', () => {
+  if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+}, { passive: true });
+window.addEventListener('resize', onScroll);
+onScroll();
+
+// ── 3. REVEAL ON SCROLL ──────────────────────────────────────
+// Items fade and rise in; items arriving together are staggered.
+const revealItems = document.querySelectorAll('[data-reveal]');
+
 if (!('IntersectionObserver' in window) || reduceMotion) {
-  // Older browsers or reduced-motion users: just show everything.
-  fadeSections.forEach(el => el.classList.add('is-visible'));
+  revealItems.forEach(el => el.classList.add('is-in'));
 } else {
-  const fadeObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        fadeObserver.unobserve(entry.target);
-      }
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.filter(e => e.isIntersecting).forEach((entry, i) => {
+      entry.target.style.setProperty('--d', `${Math.min(i, 6) * 90}ms`);
+      entry.target.classList.add('is-in');
+      revealObserver.unobserve(entry.target);
     });
-  }, { threshold: 0.08 });
-  fadeSections.forEach(el => fadeObserver.observe(el));
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  revealItems.forEach(el => revealObserver.observe(el));
+}
+
+// ── 4. ACTIVE NAV LINK ───────────────────────────────────────
+const sections = sectionLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+if ('IntersectionObserver' in window && sections.length) {
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      sectionLinks.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + entry.target.id));
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+  sections.forEach(s => navObserver.observe(s));
 }
